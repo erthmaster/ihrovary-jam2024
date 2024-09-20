@@ -1,5 +1,6 @@
 using GameJam.Behaviours;
 using GameJam.Managers;
+using GameJam.UI;
 using UnityEngine;
 using Zenject;
 
@@ -12,6 +13,7 @@ namespace GameJam
             Container.Bind<GameManager>().FromComponentInHierarchy().AsSingle();
             Container.Bind<PlayerManager>().FromComponentInHierarchy().AsSingle();
             Container.Bind<Player>().FromComponentInHierarchy().AsSingle();
+            Container.Bind<ManaManager>().FromComponentInHierarchy().AsSingle();
         }
     }
 }
