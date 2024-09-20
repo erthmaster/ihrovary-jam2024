@@ -1,6 +1,5 @@
 using System;
 using GameJam.Behaviours;
-using GameJam.ScriptableObjects;
 using UnityEngine;
 using Zenject;
 
@@ -26,7 +25,7 @@ namespace GameJam.Managers
             }
         }
 
-        private void MoveTo(BoardTile tile)
+        public void MoveTo(BoardTile tile)
         {
             if(!IsEverMoved) IsEverMoved = true;
             _player.transform.position = tile.transform.position;

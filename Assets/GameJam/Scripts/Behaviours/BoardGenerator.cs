@@ -1,6 +1,6 @@
 using System;
+using GameJam.Behaviours;
 using GameJam.Managers;
-using GameJam.ScriptableObjects;
 using UnityEngine;
 using UnityEngine.Serialization;
 using Zenject;
@@ -21,7 +21,6 @@ namespace GameJam.Board
 
         private void Update()
         {
-            Debug.Log(_playerManager);
             if (_playerManager.IsEverMoved && _playerManager.PlayerTile.Row > _rows - _maxBoardHeightFromPlayer)
             {
                 int needToAdd = _playerManager.PlayerTile.Row - (_rows - _maxBoardHeightFromPlayer);
@@ -32,22 +31,32 @@ namespace GameJam.Board
             }
         }
 
-        public void GenerateStartBoard()
+        public BoardTile[,] GenerateStartBoard()
         {
-            for (int x = 0; x < _boardWidth; x++)
+            BoardTile[,] boardTiles = new BoardTile[_boardWidth, _boardStartHeight];
+            for (int i = 0; i < _boardStartHeight; i++)
             {
-                Vector3 tileScale = _boardTilePrefab.transform.localScale;
-                
-                GameObject tile = Instantiate(_boardTilePrefab,
-                    new Vector2(x * tileScale.x - ((_boardWidth-1) * tileScale.x)/2, _rows * tileScale.y),
-                    Quaternion.identity, _boardTilesParent);
-                if(_rows % 2 == 0)
-                    tile.AddComponent<BoardTile>().Construct(x % 2 == 0, false);
-                else
-                    tile.AddComponent<BoardTile>().Construct(x % 2 != 0, false);
-                tile.GetComponent<BoardTile>().Row = _rows;
+                for (int x = 0; x < _boardWidth; x++)
+                {
+                    Vector3 tileScale = _boardTilePrefab.transform.localScale;
+                    
+                    GameObject tile = Instantiate(_boardTilePrefab,
+                        new Vector2(x * tileScale.x - ((_boardWidth-1) * tileScale.x)/2, _rows * tileScale.y),
+                        Quaternion.identity, _boardTilesParent);
+                    if(_rows % 2 == 0)
+                        tile.AddComponent<BoardTile>().Construct(x % 2 == 0, false);
+                    else
+                        tile.AddComponent<BoardTile>().Construct(x % 2 != 0, false);
+                    tile.GetComponent<BoardTile>().Row = _rows;
+                    
+                    boardTiles[x, i] = tile.GetComponent<BoardTile>();
+                }
+                _rows++;
             }
-            _rows++;
+            GenerateNewRow();
+            GenerateNewRow();
+            GenerateNewRow();
+            return boardTiles;
         }
 
         void GenerateNewRow()

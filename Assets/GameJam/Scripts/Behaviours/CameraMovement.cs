@@ -14,7 +14,7 @@ namespace GameJam.Behaviours
         {
             Vector3 targetPosition = _player.gameObject.transform.position + _offset;
             Vector2 move = Vector2.Lerp(transform.position, targetPosition, _followSpeed * Time.deltaTime);
-            float clampedY = Mathf.Clamp(move.y, 4, float.MaxValue);
+            float clampedY = Mathf.Clamp(move.y, 5.5f, float.MaxValue);
             transform.position = new(0, clampedY, -10);
         }
     }

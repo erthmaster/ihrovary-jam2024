@@ -2,7 +2,7 @@ using System;
 using UnityEngine;
 using UnityEngine.Serialization;
 
-namespace GameJam.ScriptableObjects
+namespace GameJam.Behaviours
 {
     public class BoardTile : MonoBehaviour
     {

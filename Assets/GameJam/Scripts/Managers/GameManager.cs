@@ -7,12 +7,13 @@ namespace GameJam.Managers
 {
     public class GameManager : MonoBehaviour
     {
-        [Inject] private Player _player;
+        [Inject] private PlayerManager _playerManager;
         [Inject] private BoardGenerator _boardGenerator;
 
         void Awake()
         {
-            _boardGenerator.GenerateStartBoard();
+            BoardTile[,] boardTiles = _boardGenerator.GenerateStartBoard();
+            _playerManager.MoveTo(boardTiles[3, 1]);
         }
     }
 }
