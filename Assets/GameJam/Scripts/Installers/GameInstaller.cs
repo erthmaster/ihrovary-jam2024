@@ -1,5 +1,5 @@
-using Game.Managers;
 using GameJam.Behaviours;
+using GameJam.Managers;
 using UnityEngine;
 using Zenject;
 

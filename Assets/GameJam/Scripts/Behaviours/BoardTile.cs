@@ -8,6 +8,7 @@ namespace GameJam.ScriptableObjects
     {
         [field:SerializeField] public bool IsBlack { get; private set; }
         [field:SerializeField] public bool IsHole {get; private set;}
+        [field:SerializeField] public int Row { get; set; }
         [field:SerializeField] private SpriteRenderer _spriteRenderer;
 
         private void Awake()
@@ -21,6 +22,8 @@ namespace GameJam.ScriptableObjects
             IsHole = isHole;
             
             _spriteRenderer.color = IsBlack ? Color.black : Color.white;
+            
+            if(isHole) _spriteRenderer.color = Color.red;
         }
     }
 }

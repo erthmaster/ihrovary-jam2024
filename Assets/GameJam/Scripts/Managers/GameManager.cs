@@ -1,16 +1,18 @@
+using GameJam.Behaviours;
+using GameJam.Board;
 using UnityEngine;
+using Zenject;
 
-public class GameManager : MonoBehaviour
+namespace GameJam.Managers
 {
-    // Start is called once before the first execution of Update after the MonoBehaviour is created
-    void Start()
+    public class GameManager : MonoBehaviour
     {
-        
-    }
+        [Inject] private Player _player;
+        [Inject] private BoardGenerator _boardGenerator;
 
-    // Update is called once per frame
-    void Update()
-    {
-        
+        void Awake()
+        {
+            _boardGenerator.GenerateStartBoard();
+        }
     }
 }
