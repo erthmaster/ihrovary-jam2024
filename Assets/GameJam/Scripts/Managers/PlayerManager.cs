@@ -1,4 +1,5 @@
 using System;
+using System.Collections;
 using GameJam.Behaviours;
 using UnityEngine;
 using Zenject;
@@ -27,12 +28,16 @@ namespace GameJam.Managers
         [field:SerializeField] public int Row { get; private set; }
         [field:SerializeField] public int Collum { get; private set; }
         [field:SerializeField] public bool IsEverMoved { get; private set; }
+        [field:SerializeField] public Sprite[] Skins { get; private set; }
         private void Start()
         {
             RaycastHit2D hit = Physics2D.Raycast(_player.transform.position, Vector2.zero);
-            if (hit.collider && hit.collider.gameObject.TryGetComponent<BoardTile>(out BoardTile boardTileComponent) && !boardTileComponent.IsHole)
+            if (hit.collider && hit.collider.gameObject.TryGetComponent<BoardTile>(out BoardTile tile) && !tile.IsHole)
             {
-                MoveTo(boardTileComponent);
+                if (!IsEverMoved) IsEverMoved = true;
+                PlayerTile = tile;
+                Row = tile.Row;
+                Collum = tile.Collum;
             }
         }
 
@@ -53,9 +58,32 @@ namespace GameJam.Managers
         {
             Debug.Log($" TurnedInTo: {piece} Was: {CurrentChessType}");
             CurrentChessType = piece;
+            switch (CurrentChessType)
+            {
+                case ChessPiece.King:
+                    _player.transform.GetChild(0).GetComponent<SpriteRenderer>().sprite = Skins[1];
+                    break;
+                case ChessPiece.Queen:
+                    _player.transform.GetChild(0).GetComponent<SpriteRenderer>().sprite = Skins[5];
+                    break;
+                case ChessPiece.Rook:
+                    _player.transform.GetChild(0).GetComponent<SpriteRenderer>().sprite = Skins[3];
+                    break;
+                case ChessPiece.Bishop:
+                    _player.transform.GetChild(0).GetComponent<SpriteRenderer>().sprite = Skins[2];
+                    break;
+                case ChessPiece.Pawn:
+                    _player.transform.GetChild(0).GetComponent<SpriteRenderer>().sprite = Skins[0];
+                    break;
+                case ChessPiece.Knight:
+                    _player.transform.GetChild(0).GetComponent<SpriteRenderer>().sprite = Skins[4];
+                    break;
+                default:
+                    break;
+            }
+
 
         }
-
 
         public void TryMoveTo(BoardTile tile)
         {
@@ -87,15 +115,63 @@ namespace GameJam.Managers
         {
             if (CurrentChessType != ChessPiece.Knight && CheckForHoles(tile))
                 return;
-
-
+            switch (CurrentChessType)
+            {
+                case ChessPiece.King:
+                    _player.transform.GetChild(0).GetComponent<Animator>().Play("Player_Walk");
+                    break;
+                case ChessPiece.Queen:
+                    _player.transform.GetChild(0).GetComponent<Animator>().Play("Player_RookWalk");
+                    break;
+                case ChessPiece.Rook:
+                    _player.transform.GetChild(0).GetComponent<Animator>().Play("Player_RookWalk");
+                    break;
+                case ChessPiece.Bishop:
+                    _player.transform.GetChild(0).GetComponent<Animator>().Play("Player_RookWalk");
+                    break;
+                case ChessPiece.Pawn:
+                    _player.transform.GetChild(0).GetComponent<Animator>().Play("Player_Walk");
+                    break;
+                case ChessPiece.Knight:
+                    _player.transform.GetChild(0).GetComponent<Animator>().Play("Player_KnightWalk");
+                    break;
+                default:
+                    break;
+            }
+            StartCoroutine( Walk(tile.transform.position, 5));
 
             if (!IsEverMoved) IsEverMoved = true;
-            _player.transform.position = tile.transform.position;
             PlayerTile = tile;
             Row = tile.Row;
             Collum = tile.Collum;
         }
+
+        private IEnumerator Walk(Vector3 pos,float speed)
+        {
+            float time = 0;
+
+
+            while (time < 1)
+            {
+                float t = InOutQuint(time);
+                _player.transform.position = Vector3.Lerp(_player.transform.position, pos, t);
+                time += Time.deltaTime * speed;
+                yield return null;
+            }
+            transform.position = pos;
+            _player.transform.GetChild(0).GetComponent<Animator>().Play("Player_Idle");
+        }
+
+        public static float GptEase(float t)
+        {
+            return 0.5f - 0.5f * Mathf.Cos(t * Mathf.PI);
+        }
+        public static float InOutQuint(float t)
+        {
+            if (t < 0.5) return InQuint(t * 2) / 2;
+            return 1 - InQuint((1 - t) * 2) / 2;
+        } //coolest one
+        public static float InQuint(float t) => t * t * t * t * t;
 
         private bool CheckForHoles(BoardTile tile)
         {
