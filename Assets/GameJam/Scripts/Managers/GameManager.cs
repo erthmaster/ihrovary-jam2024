@@ -13,7 +13,7 @@ namespace GameJam.Managers
         void Awake()
         {
             BoardTile[,] boardTiles = _boardGenerator.GenerateStartBoard();
-            _playerManager.MoveTo(boardTiles[3, 1]);
+            _playerManager.TryMoveTo(boardTiles[3, 1]);
         }
     }
 }
