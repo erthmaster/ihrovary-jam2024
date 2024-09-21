@@ -272,6 +272,94 @@ TextureImporter:
       indices: 
       edges: []
       weights: []
+    - serializedVersion: 2
+      name: eligirsheet_6
+      rect:
+        serializedVersion: 2
+        x: 72
+        y: 0
+        width: 69
+        height: 6
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: f55bbf75c2de7754a879037a0ce64abd
+      internalID: -916791451
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: eligirsheet_7
+      rect:
+        serializedVersion: 2
+        x: 145
+        y: 16
+        width: 69
+        height: 6
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 894034562fc9449408ea0162bbc46d9e
+      internalID: 1895366113
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: eligirsheet_8
+      rect:
+        serializedVersion: 2
+        x: 145
+        y: 8
+        width: 69
+        height: 6
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 12b5462794051844d9dea472bacac63b
+      internalID: -1112350498
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: eligirsheet_9
+      rect:
+        serializedVersion: 2
+        x: 145
+        y: 0
+        width: 69
+        height: 6
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 3265c97d45aee5f47a5b6ea35e06e4a1
+      internalID: 1121673333
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
     outline: []
     customData: 
     physicsShape: []
@@ -292,6 +380,10 @@ TextureImporter:
       eligirsheet_3: -5666543055877801959
       eligirsheet_4: 6489933000438196525
       eligirsheet_5: -5031129723613163161
+      eligirsheet_6: -916791451
+      eligirsheet_7: 1895366113
+      eligirsheet_8: -1112350498
+      eligirsheet_9: 1121673333
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 
