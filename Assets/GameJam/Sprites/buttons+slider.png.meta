@@ -1,13 +1,10 @@
 fileFormatVersion: 2
-guid: 75fad4d1fa05cf54cb006539cfec3910
+guid: cedefab4c156b154d842e49a2b20f12b
 TextureImporter:
   internalIDToNameTable:
   - first:
-      213: -7499487375766681878
-    second: Chess_Board_Tiles_Sprite_Sheet_0
-  - first:
-      213: 5516271672008490599
-    second: Chess_Board_Tiles_Sprite_Sheet_1
+      213: 5554499803756642628
+    second: buttons+slider_0
   externalObjects: {}
   serializedVersion: 13
   mipmaps:
@@ -54,7 +51,7 @@ TextureImporter:
   spriteMeshType: 1
   alignment: 0
   spritePivot: {x: 0.5, y: 0.5}
-  spritePixelsToUnits: 50
+  spritePixelsToUnits: 100
   spriteBorder: {x: 0, y: 0, z: 0, w: 0}
   spriteGenerateFallbackPhysicsShape: 1
   alphaUsage: 1
@@ -87,6 +84,19 @@ TextureImporter:
     androidETC2FallbackOverride: 0
     forceMaximumCompressionQuality_BC6H_BC7: 0
   - serializedVersion: 4
+    buildTarget: Win64
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 4
     buildTarget: Standalone
     maxTextureSize: 2048
     resizeAlgorithm: 0
@@ -104,7 +114,7 @@ TextureImporter:
     maxTextureSize: 2048
     resizeAlgorithm: 0
     textureFormat: -1
-    textureCompression: 0
+    textureCompression: 1
     compressionQuality: 50
     crunchedCompression: 0
     allowsAlphaSplitting: 0
@@ -116,13 +126,13 @@ TextureImporter:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: Chess_Board_Tiles_Sprite_Sheet_0
+      name: buttons+slider_0
       rect:
         serializedVersion: 2
         x: 0
-        y: 436
-        width: 64
-        height: 64
+        y: 0
+        width: 32
+        height: 32
       alignment: 0
       pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -131,74 +141,118 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: -1
       bones: []
-      spriteID: ae686e937f77ce790800000000000000
-      internalID: -7499487375766681878
+      spriteID: 44144eb742c851d40800000000000000
+      internalID: 5554499803756642628
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Chess_Board_Tiles_Sprite_Sheet_1
+      name: buttons+slider_1
       rect:
         serializedVersion: 2
-        x: 0
-        y: 341
-        width: 64
-        height: 74
-      alignment: 9
-      pivot: {x: 0.5215181, y: 0.5682377}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      customData: 
-      outline: []
-      physicsShape: []
-      tessellationDetail: -1
-      bones: []
-      spriteID: 76ebd96fbdbbd8c40800000000000000
-      internalID: 5516271672008490599
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: Chess_Board_Tiles_Sprite_Sheet_2
-      rect:
-        serializedVersion: 2
-        x: 64
-        y: 436
-        width: 64
-        height: 64
+        x: 32
+        y: 16
+        width: 32
+        height: 16
       alignment: 0
-      pivot: {x: 0.5, y: 0.5}
+      pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       customData: 
       outline: []
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: ae0ee05a0ad28774d9a5f3b80649cd03
-      internalID: 122546171
+      spriteID: b982db3c407139e4ebb6241398c5bb91
+      internalID: 844383268
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Chess_Board_Tiles_Sprite_Sheet_3
+      name: buttons+slider_2
       rect:
         serializedVersion: 2
         x: 64
-        y: 342
+        y: 16
         width: 64
-        height: 73
-      alignment: 9
-      pivot: {x: 0.489241, y: 0.5691725}
+        height: 16
+      alignment: 0
+      pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       customData: 
       outline: []
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: ccba4306d58a14b42a25e7326b9db9a3
-      internalID: -416881835
+      spriteID: da3f660f11bc54344be5ce8a2dcc23da
+      internalID: -2135523698
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: buttons+slider_3
+      rect:
+        serializedVersion: 2
+        x: 65
+        y: 10
+        width: 62
+        height: 4
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: e9901fc394fed96429e107aa2f51494b
+      internalID: -1866240337
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: buttons+slider_4
+      rect:
+        serializedVersion: 2
+        x: 64
+        y: 1
+        width: 64
+        height: 6
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: a1167555a4ac390469da7116887673e5
+      internalID: -2003158690
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: buttons+slider_5
+      rect:
+        serializedVersion: 2
+        x: 55
+        y: 1
+        width: 4
+        height: 10
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 256d397159f93284da7ba8d04ff7c484
+      internalID: -1132340750
       vertices: []
       indices: 
       edges: []
@@ -207,22 +261,22 @@ TextureImporter:
     customData: 
     physicsShape: []
     bones: []
-    spriteID: 40c73ce0695426c4f9da096fae1ce5d9
+    spriteID: a2e63a3e2f9511a418e49065097e9d20
     internalID: 0
     vertices: []
     indices: 
     edges: []
     weights: []
-    secondaryTextures:
-    - texture: {fileID: 2800000, guid: 1a235813e4fc3ce4b8cdb23e59fe5969, type: 3}
-      name: _NormalMap
+    secondaryTextures: []
     spriteCustomMetadata:
       entries: []
     nameFileIdTable:
-      Chess_Board_Tiles_Sprite_Sheet_0: -7499487375766681878
-      Chess_Board_Tiles_Sprite_Sheet_1: 5516271672008490599
-      Chess_Board_Tiles_Sprite_Sheet_2: 122546171
-      Chess_Board_Tiles_Sprite_Sheet_3: -416881835
+      buttons+slider_0: 5554499803756642628
+      buttons+slider_1: 844383268
+      buttons+slider_2: -2135523698
+      buttons+slider_3: -1866240337
+      buttons+slider_4: -2003158690
+      buttons+slider_5: -1132340750
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 
