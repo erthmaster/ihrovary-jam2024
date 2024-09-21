@@ -2,13 +2,13 @@ using UnityEngine;
 using UnityEditor.SceneManagement;
 using UnityEngine.SceneManagement;
 
-namespace GameJam
+namespace GameJam.UI
 {
     public class PauseManager : MonoBehaviour
     {
         public bool IsPaused { get; private set; }
-        [SerializeField] private GameObject menuObj;
-        [SerializeField] private GameObject settingsObj;
+        [SerializeField] private GameObject _menuObj;
+        [SerializeField] private GameObject _settingsObj;
         private void Update()
         {
             if (Input.GetKeyDown(KeyCode.Escape))
@@ -18,7 +18,8 @@ namespace GameJam
             if (IsPaused)
             {
                 Time.timeScale = 0.0f;
-                menuObj.SetActive(true);
+                if(!_settingsObj.activeInHierarchy)
+                    _menuObj.SetActive(true);
             }
             else
             {
@@ -27,21 +28,22 @@ namespace GameJam
         }
         public void DisPause()
         {
-            if (settingsObj.activeInHierarchy)
+            if (_settingsObj.activeInHierarchy)
             {
-                settingsObj.SetActive(false);
+                _settingsObj.SetActive(false);
             }
             Time.timeScale = 1.0f;
-            menuObj.SetActive(false);
+            _menuObj.SetActive(false);
         }
         public void GoMenu()
         {
+            IsPaused = false;
             SceneManager.LoadScene(0);
         }
         public void GoSettings()
         {
-            settingsObj.SetActive(true);
-            menuObj.SetActive(false);
+            _settingsObj.SetActive(true);
+            _menuObj.SetActive(false);
         }
     }
 }

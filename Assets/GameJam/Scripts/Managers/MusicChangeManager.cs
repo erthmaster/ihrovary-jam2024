@@ -33,7 +33,7 @@ namespace GameJam
                 activeSource.clip = _musicPatterns[currentPatternIndex];
                 activeSource.Play();
 
-                yield return new WaitForSeconds(_earlyStartTime);
+                yield return new WaitForSecondsRealtime(_earlyStartTime);
                 if (currentIndexNeed > currentPatternIndex)
                 {
                     nextSource.clip = _musicPatterns[(currentPatternIndex + 1) % _musicPatterns.Length];

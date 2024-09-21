@@ -1,7 +1,7 @@
 using UnityEngine;
 using UnityEngine.SceneManagement;
 
-namespace GameJam
+namespace GameJam.UI
 {
     public class MenuUIScript : MonoBehaviour
     {
