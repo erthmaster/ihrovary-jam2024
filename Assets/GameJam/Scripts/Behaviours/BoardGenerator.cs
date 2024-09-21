@@ -21,12 +21,15 @@ namespace GameJam.Board
 
         private void Update()
         {
+
             if (_playerManager.IsEverMoved && _playerManager.PlayerTile.Row > _rows - _maxBoardHeightFromPlayer)
             {
+
                 int needToAdd = _playerManager.PlayerTile.Row - (_rows - _maxBoardHeightFromPlayer);
                 for (int i = 0; i < needToAdd; i++)
                 {
                     GenerateNewRow();
+
                 }
             }
         }
@@ -39,16 +42,17 @@ namespace GameJam.Board
                 for (int x = 0; x < _boardWidth; x++)
                 {
                     Vector3 tileScale = _boardTilePrefab.transform.localScale;
-                    
+
                     GameObject tile = Instantiate(_boardTilePrefab,
-                        new Vector2(x * tileScale.x - ((_boardWidth-1) * tileScale.x)/2, _rows * tileScale.y),
+                        new Vector2(x * tileScale.x - ((_boardWidth - 1) * tileScale.x) / 2, _rows * tileScale.y),
                         Quaternion.identity, _boardTilesParent);
-                    if(_rows % 2 == 0)
-                        tile.AddComponent<BoardTile>().Construct(x % 2 == 0, false);
+                    if (_rows % 2 == 0)
+                        tile.GetComponent<BoardTile>().Construct(x % 2 == 0, false);
                     else
-                        tile.AddComponent<BoardTile>().Construct(x % 2 != 0, false);
+                        tile.GetComponent<BoardTile>().Construct(x % 2 != 0, false);
                     tile.GetComponent<BoardTile>().Row = _rows;
-                    
+                    tile.GetComponent<BoardTile>()._spriteRenderer.sortingOrder = -_rows;
+                    tile.GetComponent<BoardTile>().Collum = x;
                     boardTiles[x, i] = tile.GetComponent<BoardTile>();
                 }
                 _rows++;
@@ -59,20 +63,26 @@ namespace GameJam.Board
             return boardTiles;
         }
 
+
         void GenerateNewRow()
         {
             for (int x = 0; x < _boardWidth; x++)
             {
                 Vector3 tileScale = _boardTilePrefab.transform.localScale;
-                
+                //Debug.Log(x);
                 GameObject tile = Instantiate(_boardTilePrefab,
                     new Vector2(x * tileScale.x - ((_boardWidth-1) * tileScale.x)/2, _rows * tileScale.y),
                     Quaternion.identity, _boardTilesParent);
+
                 if(_rows % 2 == 0)
-                    tile.AddComponent<BoardTile>().Construct(x % 2 == 0, Random.value < _holeTileChance);
+                    tile.GetComponent<BoardTile>().Construct(x % 2 == 0, Random.value < _holeTileChance);
                 else
-                    tile.AddComponent<BoardTile>().Construct(x % 2 != 0, Random.value < _holeTileChance);
+                    tile.GetComponent<BoardTile>().Construct(x % 2 != 0, Random.value < _holeTileChance);
+
+                tile.GetComponent<BoardTile>().Collum = x;
+
                 tile.GetComponent<BoardTile>().Row = _rows;
+                tile.GetComponent<BoardTile>()._spriteRenderer.sortingOrder = -_rows;
             }
             _rows++;
         }
