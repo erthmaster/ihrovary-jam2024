@@ -3,12 +3,14 @@ using System.Collections;
 using GameJam.Behaviours;
 using UnityEngine;
 using Zenject;
+using static UnityEngine.ParticleSystem;
 
 namespace GameJam.Managers
 {
     public class PlayerManager : MonoBehaviour
     {
         [Inject] private Player _player;
+        [Inject] private PlayerAudioManager audioManager;
         public ChessPiece CurrentChessType = ChessPiece.Pawn;
         public enum ChessPiece
         {
@@ -23,7 +25,7 @@ namespace GameJam.Managers
 
 
 
-
+        [SerializeField] private ParticleSystem _paricle;
         [field:SerializeField] public BoardTile PlayerTile { get; private set; }
         [field:SerializeField] public int Row { get; private set; }
         [field:SerializeField] public int Collum { get; private set; }
@@ -121,13 +123,13 @@ namespace GameJam.Managers
                     _player.transform.GetChild(0).GetComponent<Animator>().Play("Player_Walk");
                     break;
                 case ChessPiece.Queen:
-                    _player.transform.GetChild(0).GetComponent<Animator>().Play("Player_RookWalk");
+                    _player.transform.GetChild(0).GetComponent<Animator>().Play("Player_Walk");
                     break;
                 case ChessPiece.Rook:
                     _player.transform.GetChild(0).GetComponent<Animator>().Play("Player_RookWalk");
                     break;
                 case ChessPiece.Bishop:
-                    _player.transform.GetChild(0).GetComponent<Animator>().Play("Player_RookWalk");
+                    _player.transform.GetChild(0).GetComponent<Animator>().Play("Player_Walk");
                     break;
                 case ChessPiece.Pawn:
                     _player.transform.GetChild(0).GetComponent<Animator>().Play("Player_Walk");
@@ -138,7 +140,7 @@ namespace GameJam.Managers
                 default:
                     break;
             }
-            StartCoroutine( Walk(tile.transform.position, 5));
+            StartCoroutine( Walk(tile.transform.position, 3));
 
             if (!IsEverMoved) IsEverMoved = true;
             PlayerTile = tile;
@@ -160,6 +162,8 @@ namespace GameJam.Managers
             }
             transform.position = pos;
             _player.transform.GetChild(0).GetComponent<Animator>().Play("Player_Idle");
+            Instantiate(_paricle, transform.position, Quaternion.identity);
+            audioManager.Walk();
         }
 
         public static float GptEase(float t)
