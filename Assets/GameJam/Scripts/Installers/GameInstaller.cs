@@ -1,6 +1,7 @@
 using GameJam.Behaviours;
 using GameJam.Board;
 using GameJam.Managers;
+using GameJam.UI;
 using UnityEngine;
 using Zenject;
 
@@ -14,6 +15,8 @@ namespace GameJam
             Container.Bind<GameManager>().FromComponentInHierarchy().AsSingle();
             Container.Bind<PlayerManager>().FromComponentInHierarchy().AsSingle();
             Container.Bind<BoardGenerator>().FromComponentInHierarchy().AsSingle();
+            Container.Bind<ManaManager>().FromComponentInHierarchy().AsSingle();
+            Container.Bind<PiecesBuyingManager>().FromComponentInHierarchy().AsSingle();
             
             // Tags
             Container.Bind<Player>().FromComponentInHierarchy().AsSingle();

@@ -1,28 +1,27 @@
 using UnityEngine;
+using UnityEngine.Serialization;
 using UnityEngine.UI;
 
 namespace GameJam.UI
 {
     public class ManaManager : MonoBehaviour
     {
-        [SerializeField]private int _maxMana;
-
-        public float mana;
+        public float ManaAmount;
+        
+        [SerializeField] private int _maxMana;
         [SerializeField] private float _speed;
-
-
         [SerializeField] private Slider _slider;
         private void Start()
         {
-            mana = _maxMana;
+            // ManaAmount = _maxMana;
         }
         private void FixedUpdate()
         {
-            if (mana < _maxMana)
-                mana += _speed;
-            if (mana < 0)
-                mana = 0;
-                _slider.value = mana;
+            if (ManaAmount < _maxMana)
+                ManaAmount += _speed * Time.fixedDeltaTime;
+    
+            ManaAmount = Mathf.Clamp(ManaAmount, 0, _maxMana);
+            _slider.value = ManaAmount;
         }
     }
 }

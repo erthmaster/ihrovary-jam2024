@@ -51,10 +51,10 @@ TextureImporter:
   compressionQuality: 50
   spriteMode: 2
   spriteExtrude: 1
-  spriteMeshType: 1
+  spriteMeshType: 0
   alignment: 0
   spritePivot: {x: 0.5, y: 0.5}
-  spritePixelsToUnits: 50
+  spritePixelsToUnits: 64
   spriteBorder: {x: 0, y: 0, z: 0, w: 0}
   spriteGenerateFallbackPhysicsShape: 1
   alphaUsage: 1
@@ -99,93 +99,62 @@ TextureImporter:
     ignorePlatformSupport: 0
     androidETC2FallbackOverride: 0
     forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 4
+    buildTarget: WebGL
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 0
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
   spriteSheet:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: Chess_Board_Tiles_Sprite_Sheet_0
+      name: White
       rect:
         serializedVersion: 2
         x: 0
-        y: 436
+        y: 342
         width: 64
-        height: 64
+        height: 73
       alignment: 0
       pivot: {x: 0.5, y: 0.5}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      customData: 
-      outline: []
-      physicsShape: []
-      tessellationDetail: -1
-      bones: []
-      spriteID: ae686e937f77ce790800000000000000
-      internalID: -7499487375766681878
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: Chess_Board_Tiles_Sprite_Sheet_1
-      rect:
-        serializedVersion: 2
-        x: 0
-        y: 341
-        width: 64
-        height: 74
-      alignment: 9
-      pivot: {x: 0.5215181, y: 0.5682377}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      customData: 
-      outline: []
-      physicsShape: []
-      tessellationDetail: -1
-      bones: []
-      spriteID: 76ebd96fbdbbd8c40800000000000000
-      internalID: 5516271672008490599
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: Chess_Board_Tiles_Sprite_Sheet_2
-      rect:
-        serializedVersion: 2
-        x: 64
-        y: 436
-        width: 64
-        height: 64
-      alignment: 0
-      pivot: {x: 0.5, y: 0.5}
-      border: {x: 0, y: 0, z: 0, w: 0}
+      border: {x: 0, y: 9, z: 0, w: 0}
       customData: 
       outline: []
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: ae0ee05a0ad28774d9a5f3b80649cd03
-      internalID: 122546171
+      spriteID: 440b33f93d37f6d3a827d73d92925aae
+      internalID: 126034964
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Chess_Board_Tiles_Sprite_Sheet_3
+      name: Blac
       rect:
         serializedVersion: 2
         x: 64
         y: 342
         width: 64
         height: 73
-      alignment: 9
-      pivot: {x: 0.489241, y: 0.5691725}
-      border: {x: 0, y: 0, z: 0, w: 0}
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 9, z: 0, w: 0}
       customData: 
       outline: []
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: ccba4306d58a14b42a25e7326b9db9a3
-      internalID: -416881835
+      spriteID: 9a51618e39211aeafa8c47699e75b555
+      internalID: 950524292
       vertices: []
       indices: 
       edges: []
@@ -206,10 +175,10 @@ TextureImporter:
     spriteCustomMetadata:
       entries: []
     nameFileIdTable:
-      Chess_Board_Tiles_Sprite_Sheet_0: -7499487375766681878
-      Chess_Board_Tiles_Sprite_Sheet_1: 5516271672008490599
-      Chess_Board_Tiles_Sprite_Sheet_2: 122546171
-      Chess_Board_Tiles_Sprite_Sheet_3: -416881835
+      Blac: 950524292
+      Black hole tile: -416881835
+      White: 126034964
+      White hole tile: 5516271672008490599
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 

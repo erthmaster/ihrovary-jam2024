@@ -1,6 +1,8 @@
 using System;
+using GameJam.Managers;
 using UnityEngine;
 using UnityEngine.Serialization;
+using Zenject;
 
 namespace GameJam.Behaviours
 {
@@ -9,7 +11,13 @@ namespace GameJam.Behaviours
         [field:SerializeField] public bool IsBlack { get; private set; }
         [field:SerializeField] public bool IsHole {get; private set;}
         [field:SerializeField] public int Row { get; set; }
-        [field:SerializeField] private SpriteRenderer _spriteRenderer;
+        [field:SerializeField] public SpriteRenderer _spriteRenderer;
+        
+        [field:SerializeField] public Sprite BlackSprite { get; private set; }
+        [field:SerializeField] public Sprite WhiteSprite { get; private set; }
+        
+        [field:SerializeField] public Sprite BlackHoleSprite { get; private set; }
+        [field:SerializeField] public Sprite WhiteHoleSprite { get; private set; }
 
         private void Awake()
         {
@@ -21,9 +29,11 @@ namespace GameJam.Behaviours
             IsBlack = isBlack;
             IsHole = isHole;
             
-            _spriteRenderer.color = IsBlack ? Color.black : Color.white;
-            
-            if(isHole) _spriteRenderer.color = Color.red;
+            _spriteRenderer.sprite = isHole ?
+                null :
+                isBlack ? BlackSprite : WhiteSprite;
+                //     IsHole ? BlackHoleSprite : BlackSprite 
+                // : IsHole ?  WhiteHoleSprite : WhiteSprite;
         }
     }
 }

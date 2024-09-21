@@ -304,7 +304,7 @@ GameObject:
   - component: {fileID: 42325525}
   - component: {fileID: 42325524}
   m_Layer: 0
-  m_Name: particles (1)
+  m_Name: SunlightParticles
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -5898,15 +5898,15 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 249005083}
   serializedVersion: 2
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0.25, y: 4.1, z: 0}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: 0.8244964, y: -2.5088024, z: 0.10021887}
   m_LocalScale: {x: 4, y: 4, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 1305937061}
   - {fileID: 1899396445}
   - {fileID: 42325523}
-  m_Father: {fileID: 0}
+  m_Father: {fileID: 1012558810}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &272817929
 GameObject:
@@ -7698,6 +7698,40 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
+--- !u!1 &1012558809
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1012558810}
+  m_Layer: 0
+  m_Name: GlobalEffects
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &1012558810
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1012558809}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: -0.5744964, y: 6.6088023, z: -0.10021887}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children:
+  - {fileID: 1474211006}
+  - {fileID: 1161393178}
+  - {fileID: 249005085}
+  m_Father: {fileID: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1028952244
 GameObject:
   m_ObjectHideFlags: 0
@@ -8418,7 +8452,7 @@ GameObject:
   - component: {fileID: 1161393177}
   - component: {fileID: 1161393176}
   m_Layer: 0
-  m_Name: Mist1
+  m_Name: Mist
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -13233,12 +13267,12 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1161393175}
   serializedVersion: 2
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0.21, y: 1.26, z: 0}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: 0.78449637, y: -5.3488026, z: 0.10021887}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
-  m_Father: {fileID: 0}
+  m_Father: {fileID: 1012558810}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1175012547
 GameObject:
@@ -13773,7 +13807,7 @@ GameObject:
   - component: {fileID: 1305937061}
   - component: {fileID: 1305937062}
   m_Layer: 0
-  m_Name: 2
+  m_Name: SpotLight
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -14292,7 +14326,7 @@ GameObject:
   - component: {fileID: 1474211006}
   - component: {fileID: 1474211005}
   m_Layer: 0
-  m_Name: GLIght
+  m_Name: GlobalLIght
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -14358,12 +14392,12 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1474211004}
   serializedVersion: 2
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 1.2198192, y: 3.1695635, z: -0.03871297}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: 1.7943156, y: -3.4392388, z: 0.0615059}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
-  m_Father: {fileID: 0}
+  m_Father: {fileID: 1012558810}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1526280724
 GameObject:
@@ -15595,7 +15629,7 @@ GameObject:
   - component: {fileID: 1899396447}
   - component: {fileID: 1899396446}
   m_Layer: 0
-  m_Name: particles
+  m_Name: DustParticles
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -21031,6 +21065,4 @@ SceneRoots:
   m_Roots:
   - {fileID: 810869501}
   - {fileID: 1136675014}
-  - {fileID: 249005085}
-  - {fileID: 1474211006}
-  - {fileID: 1161393178}
+  - {fileID: 1012558810}

@@ -4,7 +4,7 @@ using Zenject;
 
 namespace GameJam
 {
-    public class PiesesBuyingManager : MonoBehaviour
+    public class PiecesBuyingManager : MonoBehaviour
     {
         [SerializeField] int _queenPrice;
 
@@ -33,13 +33,13 @@ namespace GameJam
         }
         private void BuyPiece(int price)
         {
-            if (_manaManager.mana < price)
+            if (_manaManager.ManaAmount < price)
             {
                 Debug.Log("Not Enough Mana!");
                 return;
             }
-            _manaManager.mana -= price;
-            //метод заміни
+            _manaManager.ManaAmount -= price;
+            //пїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅ
         }
     }
 }
