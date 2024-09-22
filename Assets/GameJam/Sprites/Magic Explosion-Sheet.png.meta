@@ -162,6 +162,19 @@ TextureImporter:
     ignorePlatformSupport: 0
     androidETC2FallbackOverride: 0
     forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 4
+    buildTarget: WebGL
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
   spriteSheet:
     serializedVersion: 2
     sprites:
@@ -684,7 +697,30 @@ TextureImporter:
     secondaryTextures: []
     spriteCustomMetadata:
       entries: []
-    nameFileIdTable: {}
+    nameFileIdTable:
+      Magic Explosion-Sheet_0: -4390674989814744957
+      Magic Explosion-Sheet_1: 4599473421409522283
+      Magic Explosion-Sheet_10: 8784097113028655162
+      Magic Explosion-Sheet_11: 1710522004237992772
+      Magic Explosion-Sheet_12: -5496772393427296776
+      Magic Explosion-Sheet_13: -2954387371091405234
+      Magic Explosion-Sheet_14: 2828771198344758140
+      Magic Explosion-Sheet_15: -3250014650289999927
+      Magic Explosion-Sheet_16: 4753518122038978415
+      Magic Explosion-Sheet_17: -5451869467221342908
+      Magic Explosion-Sheet_18: -8651018720934491099
+      Magic Explosion-Sheet_19: -8082654289567121557
+      Magic Explosion-Sheet_2: -135427021461538421
+      Magic Explosion-Sheet_20: -3748576014912285386
+      Magic Explosion-Sheet_21: 435301415779925414
+      Magic Explosion-Sheet_22: 3648598081291959433
+      Magic Explosion-Sheet_3: -8308977907110158629
+      Magic Explosion-Sheet_4: 4925790240418596257
+      Magic Explosion-Sheet_5: -384123774746570024
+      Magic Explosion-Sheet_6: 5414369651155997891
+      Magic Explosion-Sheet_7: 3800814946473142546
+      Magic Explosion-Sheet_8: -6842252367002837172
+      Magic Explosion-Sheet_9: 5085695695672169063
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 

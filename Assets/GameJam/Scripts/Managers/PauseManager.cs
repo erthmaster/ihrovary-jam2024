@@ -6,7 +6,7 @@ namespace GameJam.UI
 {
     public class PauseManager : MonoBehaviour
     {
-        public bool IsPaused { get; private set; }
+        public bool IsPaused { get;  set; }
         [SerializeField] private GameObject _menuObj;
         [SerializeField] private GameObject _settingsObj;
         private void Update()

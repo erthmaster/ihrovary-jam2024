@@ -8,6 +8,7 @@ using TMPro;
 using System.Xml;
 using System.Threading.Tasks;
 using Unity.VisualScripting;
+using GameJam.UI;
 
 namespace GameJam.Managers
 {
@@ -15,6 +16,7 @@ namespace GameJam.Managers
     {
         [Inject] private Player _player;
         [Inject] private PlayerAudioManager audioManager;
+        [Inject] private PauseManager pauseManager;
         public ChessPiece CurrentChessType = ChessPiece.Pawn;
         public enum ChessPiece
         {
@@ -44,8 +46,6 @@ namespace GameJam.Managers
         [SerializeField] private ParticleSystem _paricle;
         public event Action OnWalk;
 
-
-        //��������� �� � ��� ���� ����� �� �������� ������������� �� ���� ������� �����
         public void SetInitPosition()
         {
             RaycastHit2D hit = Physics2D.Raycast(_player.transform.position, Vector2.zero);
@@ -80,6 +80,7 @@ namespace GameJam.Managers
         public void GameOver()
         {
             gameOverObj.SetActive(true);
+            pauseManager.IsPaused = true;
         }
         async private Task TurnInAnimation()
         {

@@ -10625,8 +10625,8 @@ MonoBehaviour:
       m_Calls: []
   m_text: Game Created by Erthmaster, UniBake, DAFP
   m_isRightToLeft: 0
-  m_fontAsset: {fileID: 11400000, guid: e7c14ef2aceeb7847a2c13dfba6361f3, type: 2}
-  m_sharedMaterial: {fileID: 8022131000051355662, guid: e7c14ef2aceeb7847a2c13dfba6361f3, type: 2}
+  m_fontAsset: {fileID: 11400000, guid: e27fd21fde5741f4faf6b821ce4f6fd0, type: 2}
+  m_sharedMaterial: {fileID: -1479512995096794541, guid: e27fd21fde5741f4faf6b821ce4f6fd0, type: 2}
   m_fontSharedMaterials: []
   m_fontMaterial: {fileID: 0}
   m_fontMaterials: []
@@ -10848,8 +10848,8 @@ MonoBehaviour:
       m_Calls: []
   m_text: PLAY
   m_isRightToLeft: 0
-  m_fontAsset: {fileID: 11400000, guid: e7c14ef2aceeb7847a2c13dfba6361f3, type: 2}
-  m_sharedMaterial: {fileID: 8022131000051355662, guid: e7c14ef2aceeb7847a2c13dfba6361f3, type: 2}
+  m_fontAsset: {fileID: 11400000, guid: e27fd21fde5741f4faf6b821ce4f6fd0, type: 2}
+  m_sharedMaterial: {fileID: -1479512995096794541, guid: e27fd21fde5741f4faf6b821ce4f6fd0, type: 2}
   m_fontSharedMaterials: []
   m_fontMaterial: {fileID: 0}
   m_fontMaterials: []
