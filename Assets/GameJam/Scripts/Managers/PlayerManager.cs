@@ -22,10 +22,6 @@ namespace GameJam.Managers
             Knight,
 
         }
-
-
-
-
         [field:SerializeField] public BoardTile PlayerTile { get; private set; }
         [field:SerializeField] public int Row { get; private set; }
         [field:SerializeField] public int Column { get; private set; }
@@ -33,6 +29,7 @@ namespace GameJam.Managers
         [field:SerializeField] public Sprite[] Skins { get; private set; }
         
         [SerializeField] private ParticleSystem _paricle;
+        [SerializeField] private GameObject gameOverObj;
         private void Start()
         {
             RaycastHit2D hit = Physics2D.Raycast(_player.transform.position, Vector2.zero);
@@ -65,7 +62,7 @@ namespace GameJam.Managers
 
         void GameOver()
         {
-            Debug.Log("Game Over!");
+            gameOverObj.SetActive(true);
         }
         
         public void TurnInTo(ChessPiece piece)

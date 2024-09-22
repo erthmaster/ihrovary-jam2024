@@ -45,5 +45,9 @@ namespace GameJam.UI
             _settingsObj.SetActive(true);
             _menuObj.SetActive(false);
         }
+        public void Restart()
+        {
+            SceneManager.LoadScene(1);
+        }
     }
 }
