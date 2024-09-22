@@ -1,10 +1,9 @@
+using System;
 using System.Collections;
 using GameJam.Behaviours;
 using UnityEngine;
 using Zenject;
-using TMPro;
-using System.Threading.Tasks;
-using GameJam.UI;
+using static UnityEngine.ParticleSystem;
 
 namespace GameJam.Managers
 {
@@ -12,7 +11,6 @@ namespace GameJam.Managers
     {
         [Inject] private Player _player;
         [Inject] private PlayerAudioManager audioManager;
-        [Inject] private PauseManager pauseManager;
         public ChessPiece CurrentChessType = ChessPiece.Pawn;
         public enum ChessPiece
         {
@@ -24,36 +22,27 @@ namespace GameJam.Managers
             Knight,
 
         }
-        [field: SerializeField] public float MoveCoolDown { get; private set; }
-        [field: SerializeField] public float MaxMoveCoolDown { get; private set; }
-        [field: SerializeField] public BoardTile PlayerTile { get; private set; }
-        [field: SerializeField] public int Row { get; private set; }
-        [field: SerializeField] public int Column { get; private set; }
-        [field: SerializeField] public bool IsEverMoved { get; private set; }
-        [field: SerializeField] public Sprite[] Skins { get; private set; }
+        [field:SerializeField] public BoardTile PlayerTile { get; private set; }
+        [field:SerializeField] public int Row { get; private set; }
+        [field:SerializeField] public int Column { get; private set; }
+        [field:SerializeField] public bool IsEverMoved { get; private set; }
+        [field:SerializeField] public Sprite[] Skins { get; private set; }
 
-        private bool canMove = true;
-
-        [SerializeField] private TMP_Text _currentMovesText;
-        [SerializeField] private int[] _movesCount;
+        [SerializeField] private int[] movesCount;
         private int currentMoves;
-
-        [SerializeField] private Animator _turnIntoAnim;
+        
         [SerializeField] private ParticleSystem _paricle;
 
 
-        //пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅ пїЅ пїЅпїЅпїЅ пїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅ пїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅ пїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅ
-        public void SetInitPosition()
-        {
-            RaycastHit2D hit = Physics2D.Raycast(_player.transform.position, Vector2.zero);
+        //перемістив бо є баг якщо тайли не вспівають згенеруватися до поки гравецт чекне
+        public void SetInitPosition(){RaycastHit2D hit = Physics2D.Raycast(_player.transform.position, Vector2.zero);
             if (hit.collider && hit.collider.gameObject.TryGetComponent<BoardTile>(out BoardTile tile) && !tile.IsHole)
             {
-
+                
                 PlayerTile = tile;
                 Row = tile.Row;
                 Column = tile.Collum;
-            }
-        }
+            }}
 
 
         [SerializeField] private GameObject gameOverObj;
@@ -61,88 +50,62 @@ namespace GameJam.Managers
 
         private void Update()
         {
-            if (Input.GetMouseButtonDown(0) && MoveCoolDown >= MaxMoveCoolDown)
+            if (Input.GetMouseButtonDown(0))
             {
                 Vector2 mousePosition = Camera.main.ScreenToWorldPoint(Input.mousePosition);
                 RaycastHit2D hit = Physics2D.Raycast(mousePosition, Vector2.zero);
-                if (hit.collider && hit.collider.gameObject.TryGetComponent<BoardTile>(out BoardTile boardTileComponent) && !boardTileComponent.IsHole)
+                if(hit.collider && hit.collider.gameObject.TryGetComponent<BoardTile>(out BoardTile boardTileComponent) && !boardTileComponent.IsHole)
                 {
                     TryMoveTo(boardTileComponent);
                 }
             }
-            if (IsEverMoved && !PlayerTile.isActiveAndEnabled)
-            {
-                GameOver();
-            }
 
 
-            MoveCoolDown = Mathf.Clamp(MoveCoolDown + Time.deltaTime, 0, MaxMoveCoolDown);
         }
-        
-        void GameOver()
+
+         void GameOver()
         {
             gameOverObj.SetActive(true);
         }
-        async private Task TurnInAnimation()
-        {
-            _turnIntoAnim.gameObject.SetActive(true);
-            _turnIntoAnim.SetBool("Turn", true);
-            await Task.Delay(1000);
-        }
-        IEnumerator WaitEndOfAnim()
-        {
-            yield return new WaitForSeconds(0.2f);
-            _turnIntoAnim.SetBool("Turn", false);
-            _turnIntoAnim.gameObject.SetActive(false);
-        }
-        async public void TurnInTo(ChessPiece piece)
-        {
-            if(pauseManager.IsPaused) return;
 
+        public void TurnInTo(ChessPiece piece)
+        {
             Debug.Log($" TurnedInTo: {piece} Was: {CurrentChessType}");
-
-            canMove = false;
-            await TurnInAnimation();
-
-            StartCoroutine(WaitEndOfAnim());
-            canMove = true;
-
             CurrentChessType = piece;
             switch (CurrentChessType)
             {
                 case ChessPiece.King:
                     _player.transform.GetChild(0).GetComponent<SpriteRenderer>().sprite = Skins[1];
-                    currentMoves = _movesCount[0];
+                    currentMoves = movesCount[1];
                     break;
                 case ChessPiece.Queen:
                     _player.transform.GetChild(0).GetComponent<SpriteRenderer>().sprite = Skins[5];
-                    currentMoves = _movesCount[4];
+                    currentMoves = movesCount[5];
                     break;
                 case ChessPiece.Rook:
                     _player.transform.GetChild(0).GetComponent<SpriteRenderer>().sprite = Skins[3];
-                    currentMoves = _movesCount[2];
+                    currentMoves = movesCount[3];
                     break;
                 case ChessPiece.Bishop:
                     _player.transform.GetChild(0).GetComponent<SpriteRenderer>().sprite = Skins[2];
-                    currentMoves = _movesCount[1];
+                    currentMoves = movesCount[2];
                     break;
                 case ChessPiece.Pawn:
                     _player.transform.GetChild(0).GetComponent<SpriteRenderer>().sprite = Skins[0];
                     break;
                 case ChessPiece.Knight:
                     _player.transform.GetChild(0).GetComponent<SpriteRenderer>().sprite = Skins[4];
-                    currentMoves = _movesCount[3];
+                    currentMoves = movesCount[4];
                     break;
                 default:
                     break;
             }
-            ShowMoves();
+
+
         }
 
         public void TryMoveTo(BoardTile tile)
         {
-            if (pauseManager.IsPaused) return;
-
             switch (CurrentChessType)
             {
                 case ChessPiece.King:
@@ -172,10 +135,7 @@ namespace GameJam.Managers
         }
         public void MoveTo(BoardTile tile)
         {
-            if (pauseManager.IsPaused) return;
-            if (!canMove) return;
-            
-            if (!CheckForHoles(tile))
+            if (CheckForHoles(tile)&& CurrentChessType!= ChessPiece.Knight)
                 return;
             switch (CurrentChessType)
             {
@@ -200,13 +160,12 @@ namespace GameJam.Managers
                 default:
                     break;
             }
-            StartCoroutine(Walk(tile.transform.position, 3));
+            StartCoroutine( Walk(tile.transform.position, 3));
 
             if (!IsEverMoved) IsEverMoved = true;
             PlayerTile = tile;
             Row = tile.Row;
             Column = tile.Collum;
-            MoveCoolDown = 0;
         }
 
         private bool CheckForHoles(BoardTile tile)
@@ -218,31 +177,44 @@ namespace GameJam.Managers
             Vector2 target = tile.transform.position;
             Vector2 direction = (target - origin).normalized;
             float distance = Vector2.Distance(origin, target);
-            
+
+
+            // Cast the ray from PlayerTile towards the target tile
+
+            //print(origin + " : " + target);
+
+    
+            // Cast the ray from PlayerTile towards the target tile
+
+
+            print(origin + " : " + target);
+
+
             RaycastHit2D[] hits = Physics2D.RaycastAll(origin, direction, distance);
+
+            print(origin + " : " + target);
 
             foreach (var hit in hits)
             {
-                if (hit.collider != null && hit.collider.gameObject != tile.gameObject
+                if (hit.collider != null && hit.collider.gameObject != tile.gameObject // Ignore the target tile
                                          && hit.collider.gameObject.TryGetComponent<BoardTile>(out var tileComponent) && tileComponent.IsHole)
                 {
                     Debug.Log("Cannot move through the hole!");
-                    return false;
+                    return true;
                 }
             }
 
-            return true;
+            //Debug.Log("yep");
+            return false;
+
+
+
         }
 
-        private IEnumerator Walk(Vector3 pos, float speed)
+        private IEnumerator Walk(Vector3 pos,float speed)
         {
             float time = 0;
 
-            if (CurrentChessType != ChessPiece.Pawn)
-            {
-                currentMoves--;
-                ShowMoves();
-            }
 
             while (time < 1)
             {
@@ -253,21 +225,13 @@ namespace GameJam.Managers
             }
             transform.position = pos;
 
-            audioManager.Walk();
+            currentMoves--;
             _player.transform.GetChild(0).GetComponent<Animator>().Play("Player_Idle");
             Instantiate(_paricle, transform.position, Quaternion.identity);
-            if (currentMoves <= 0 && CurrentChessType != ChessPiece.Pawn)
+            if(currentMoves <= 0)
             {
-                TurnInTo(ChessPiece.Pawn);
+                TurnInTo(0);
             }
-        }
-        private void ShowMoves()
-        {
-            char dot = '.';
-            if(currentMoves < 0)
-                _currentMovesText.text = " ";
-            else
-                _currentMovesText.text = new string(dot, currentMoves);
         }
 
         public static float GptEase(float t)
@@ -282,13 +246,13 @@ namespace GameJam.Managers
         public static float InQuint(float t) => t * t * t * t * t;
 
 
-        public static bool TryWalkKing(int rowpos, int collumpos, int rowTo, int collumTo)
+        public static bool TryWalkKing(int rowpos, int collumpos,int rowTo,int collumTo)
         {
             if (rowpos == rowTo && collumpos == collumTo)
                 return false;
-            bool IsCloseByX = (collumpos - 1 == collumTo) || (collumpos + 1 == collumTo) || collumpos == collumTo;
+            bool IsCloseByX = (collumpos - 1 == collumTo )|| (collumpos + 1 == collumTo) || collumpos == collumTo;
             bool IsCloseByY = (rowpos - 1 == rowTo) || (rowpos + 1 == rowTo) || (rowTo == rowpos);
-            return (IsCloseByX && IsCloseByY);
+            return ( IsCloseByX && IsCloseByY );
         }
         public static bool TryWalkPawn(int rowPos, int columnPos, int rowTo, int columnTo)
         {
@@ -298,7 +262,7 @@ namespace GameJam.Managers
             bool IsCloseByX = columnPos == columnTo;
             bool IsCloseByY = (rowPos + 1 == rowTo) || (rowTo == rowPos);
 
-            return (IsCloseByY && IsCloseByX);
+            return (IsCloseByY&&IsCloseByX);
         }
         public static bool TryWalkPawnInital(int rowpos, int collumpos, int rowTo, int collumTo)
         {
@@ -312,7 +276,7 @@ namespace GameJam.Managers
         {
             if (rowpos == rowTo && collumpos == collumTo)
                 return false;
-            bool IsSameCollum = collumpos == collumTo;
+            bool IsSameCollum = collumpos==collumTo;
             bool IsSameRow = rowTo == rowpos;
             if (IsSameCollum == true && IsSameRow == true)
                 return false;
@@ -330,19 +294,19 @@ namespace GameJam.Managers
         {
             if (rowpos == rowTo && collumpos == collumTo)
                 return false;
-            bool isinbottomright = (rowpos - 2 == rowTo && collumpos + 1 == collumTo) || (rowpos - 1 == rowTo && collumpos + 2 == collumTo);
-            bool isinupperleft = (rowpos + 2 == rowTo && collumpos - 1 == collumTo) || (rowpos + 1 == rowTo && collumpos - 2 == collumTo);
-            bool isinbottomleft = (rowpos - 2 == rowTo && collumpos - 1 == collumTo) || (rowpos - 1 == rowTo && collumpos - 2 == collumTo);
-            bool isinupperright = (rowpos + 2 == rowTo && collumpos + 1 == collumTo) || (rowpos + 1 == rowTo && collumpos + 2 == collumTo);
+            bool isinbottomright = (rowpos - 2 == rowTo && collumpos + 1 == collumTo)|| (rowpos - 1 == rowTo && collumpos + 2 == collumTo);
+            bool isinupperleft = (rowpos +2 == rowTo && collumpos - 1 == collumTo)|| (rowpos + 1 == rowTo && collumpos - 2 == collumTo);
+            bool isinbottomleft = (rowpos -2 == rowTo && collumpos - 1 == collumTo)|| (rowpos - 1 == rowTo && collumpos - 2 == collumTo);
+            bool isinupperright = (rowpos +2 == rowTo && collumpos + 1 == collumTo)|| (rowpos + 1 == rowTo && collumpos + 2 == collumTo);
 
-            return isinupperleft || isinbottomright || isinbottomleft || isinupperright;
+            return isinupperleft||isinbottomright||isinbottomleft||isinupperright;
         }
         public static bool TryWalkQueen(int rowpos, int collumpos, int rowTo, int collumTo)
         {
 
             if (rowpos == rowTo && collumpos == collumTo)
                 return false;
-            return TryWalkBishop(rowpos, collumpos, rowTo, collumTo) || TryWalkRook(rowpos, collumpos, rowTo, collumTo);
+            return  TryWalkBishop(rowpos, collumpos, rowTo, collumTo) || TryWalkRook(rowpos,collumpos,rowTo,collumTo);
         }
     }
 }
