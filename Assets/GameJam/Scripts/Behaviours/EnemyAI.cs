@@ -88,6 +88,8 @@ namespace GameJam.Behaviours
 
         private BoardTile GetDesiredWalkTile()
         {
+            if (transform == null)
+                return null;
             Collider2D[] bts = Physics2D.OverlapCircleAll(transform.position, 25);
 
             BoardTile winner = null;

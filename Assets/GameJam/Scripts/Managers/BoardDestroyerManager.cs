@@ -30,7 +30,7 @@ namespace GameJam.Managers
         private void Tick()
         {
             _boardDestroyer.transform.position += _boardDestroyer.transform.up*TickStep;
-            if (Physics2D.OverlapCircleAll(transform.position, 6).Any(n=>n.transform.GetComponent<Player>()!=null))
+            if (Physics2D.OverlapCircleAll(_boardDestroyer.transform.position, 4).Any(n=>n.transform.GetComponent<Player>()!=null))
             {
                 player.GameOver();
             }

@@ -270,10 +270,10 @@ namespace GameJam.Managers
                 TurnInTo(ChessPiece.Pawn);
             }
             OnWalk?.Invoke();
-            foreach (var v in Physics2D.OverlapPointAll(transform.position))
+            foreach (var v in Physics2D.OverlapCircleAll(transform.position,2))
             {
                 if(v.TryGetComponent(out EnemyAI ai))
-                 {
+                {
                     ai.Die();
                 }
             }
