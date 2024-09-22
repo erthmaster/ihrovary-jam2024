@@ -127,7 +127,7 @@ namespace GameJam.Managers
         }
         public void MoveTo(BoardTile tile)
         {
-            if (CurrentChessType != ChessPiece.Knight && CheckForHoles(tile))
+            if (!CheckForHoles(tile))
                 return;
             switch (CurrentChessType)
             {
@@ -162,18 +162,29 @@ namespace GameJam.Managers
         
         private bool CheckForHoles(BoardTile tile)
         {
-            Vector2 direction = (tile.transform.position - PlayerTile.transform.position).normalized;
-            float distance = Vector2.Distance(PlayerTile.transform.position, tile.transform.position);
-            RaycastHit2D hit = Physics2D.Raycast(tile.transform.position, direction, distance);
-            
-            print(distance + " : " + direction);
-            
-            if (hit.collider //&& hit.collider.transform.position == new Vector3(hit.point.x, hit.point.y, 0)
-                             && hit.collider.gameObject.TryGetComponent<BoardTile>(out var tileComponent) && tileComponent.IsHole)
+            if (CurrentChessType == ChessPiece.Knight)
+                return true;
+
+            Vector2 origin = PlayerTile.transform.position;
+            Vector2 target = tile.transform.position;
+            Vector2 direction = (target - origin).normalized;
+            float distance = Vector2.Distance(origin, target);
+    
+            // Cast the ray from PlayerTile towards the target tile
+            RaycastHit2D[] hits = Physics2D.RaycastAll(origin, direction, distance);
+
+            print(origin + " : " + target);
+
+            foreach (var hit in hits)
             {
-                Debug.Log("Cannot move through the hole!");
-                return false;
+                if (hit.collider != null && hit.collider.gameObject != tile.gameObject // Ignore the target tile
+                                         && hit.collider.gameObject.TryGetComponent<BoardTile>(out var tileComponent) && tileComponent.IsHole)
+                {
+                    Debug.Log("Cannot move through the hole!");
+                    return false;
+                }
             }
+
             Debug.Log("yep");
             return true;
         }
