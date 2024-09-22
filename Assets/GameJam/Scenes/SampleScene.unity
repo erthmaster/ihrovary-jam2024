@@ -2771,7 +2771,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _maxMana: 10
   mana: 0
-  _speed: 0.01
+  _speed: 0.5
   _slider: {fileID: 915443139}
 --- !u!114 &961388543
 MonoBehaviour:

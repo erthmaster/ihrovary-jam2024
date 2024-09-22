@@ -27,6 +27,9 @@ namespace GameJam.Managers
         [field:SerializeField] public int Column { get; private set; }
         [field:SerializeField] public bool IsEverMoved { get; private set; }
         [field:SerializeField] public Sprite[] Skins { get; private set; }
+
+        [SerializeField] private int[] movesCount;
+        private int currentMoves;
         
         [SerializeField] private ParticleSystem _paricle;
         [SerializeField] private GameObject gameOverObj;
@@ -73,21 +76,26 @@ namespace GameJam.Managers
             {
                 case ChessPiece.King:
                     _player.transform.GetChild(0).GetComponent<SpriteRenderer>().sprite = Skins[1];
+                    currentMoves = movesCount[1];
                     break;
                 case ChessPiece.Queen:
                     _player.transform.GetChild(0).GetComponent<SpriteRenderer>().sprite = Skins[5];
+                    currentMoves = movesCount[5];
                     break;
                 case ChessPiece.Rook:
                     _player.transform.GetChild(0).GetComponent<SpriteRenderer>().sprite = Skins[3];
+                    currentMoves = movesCount[3];
                     break;
                 case ChessPiece.Bishop:
                     _player.transform.GetChild(0).GetComponent<SpriteRenderer>().sprite = Skins[2];
+                    currentMoves = movesCount[2];
                     break;
                 case ChessPiece.Pawn:
                     _player.transform.GetChild(0).GetComponent<SpriteRenderer>().sprite = Skins[0];
                     break;
                 case ChessPiece.Knight:
                     _player.transform.GetChild(0).GetComponent<SpriteRenderer>().sprite = Skins[4];
+                    currentMoves = movesCount[4];
                     break;
                 default:
                     break;
@@ -132,13 +140,13 @@ namespace GameJam.Managers
                     _player.transform.GetChild(0).GetComponent<Animator>().Play("Player_Walk");
                     break;
                 case ChessPiece.Queen:
-                    _player.transform.GetChild(0).GetComponent<Animator>().Play("Player_RookWalk");
+                    _player.transform.GetChild(0).GetComponent<Animator>().Play("Player_Walk");
                     break;
                 case ChessPiece.Rook:
                     _player.transform.GetChild(0).GetComponent<Animator>().Play("Player_RookWalk");
                     break;
                 case ChessPiece.Bishop:
-                    _player.transform.GetChild(0).GetComponent<Animator>().Play("Player_RookWalk");
+                    _player.transform.GetChild(0).GetComponent<Animator>().Play("Player_Walk");
                     break;
                 case ChessPiece.Pawn:
                     _player.transform.GetChild(0).GetComponent<Animator>().Play("Player_Walk");
@@ -149,7 +157,7 @@ namespace GameJam.Managers
                 default:
                     break;
             }
-            StartCoroutine( Walk(tile.transform.position, 5));
+            StartCoroutine( Walk(tile.transform.position, 3));
 
             if (!IsEverMoved) IsEverMoved = true;
             PlayerTile = tile;
@@ -199,7 +207,14 @@ namespace GameJam.Managers
                 yield return null;
             }
             transform.position = pos;
+
+            currentMoves--;
             _player.transform.GetChild(0).GetComponent<Animator>().Play("Player_Idle");
+            Instantiate(_paricle, transform.position, Quaternion.identity);
+            if(currentMoves <= 0)
+            {
+                TurnInTo(0);
+            }
         }
 
         public static float GptEase(float t)
