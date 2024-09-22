@@ -23,14 +23,16 @@ namespace GameJam.Behaviours
             transform.position = new(0, clampedY, -10);
         }
 
-        void Shake()
+        public void Shake()
         {
             Vector3 originalPosition = transform.localPosition;
 
-            // Tween.ShakeCamera(
-            //     GetComponent<Camera>(),
-            //     
-            // );
+            Tween.ShakeCamera(
+                GetComponent<Camera>(),
+                _shakeFactor,
+                _shakeDuration,
+                _shakeStrength
+            );
         }
     }
 }
