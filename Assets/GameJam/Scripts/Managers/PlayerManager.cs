@@ -6,6 +6,7 @@ using Zenject;
 using UnityEngine.UI;
 using TMPro;
 using System.Xml;
+using System.Threading.Tasks;
 
 namespace GameJam.Managers
 {
@@ -36,6 +37,7 @@ namespace GameJam.Managers
         [SerializeField] private int[] _movesCount;
         private int currentMoves;
 
+        [SerializeField] private Animator _turnIntoAnim;
         [SerializeField] private ParticleSystem _paricle;
 
 
@@ -75,10 +77,24 @@ namespace GameJam.Managers
         {
             gameOverObj.SetActive(true);
         }
-
-        public void TurnInTo(ChessPiece piece)
+        async private Task TurnInAnimation()
+        {
+            _turnIntoAnim.SetBool("Turn", true);
+            await Task.Delay(1000);
+        }
+        IEnumerator WaitEndOfAnim()
+        {
+            yield return new WaitForSeconds(0.2f);
+            _turnIntoAnim.SetBool("Turn", false);
+        }
+        async public void TurnInTo(ChessPiece piece)
         {
             Debug.Log($" TurnedInTo: {piece} Was: {CurrentChessType}");
+
+            await TurnInAnimation();
+
+            StartCoroutine(WaitEndOfAnim());
+
             CurrentChessType = piece;
             switch (CurrentChessType)
             {
@@ -223,7 +239,7 @@ namespace GameJam.Managers
             audioManager.Walk();
             _player.transform.GetChild(0).GetComponent<Animator>().Play("Player_Idle");
             Instantiate(_paricle, transform.position, Quaternion.identity);
-            if (currentMoves <= 0)
+            if (currentMoves <= 0 && CurrentChessType != ChessPiece.Pawn)
             {
                 TurnInTo(ChessPiece.Pawn);
             }

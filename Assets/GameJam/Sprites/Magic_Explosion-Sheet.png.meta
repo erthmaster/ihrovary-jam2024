@@ -1,0 +1,582 @@
+fileFormatVersion: 2
+guid: 829a3021c36da93419d5fce150f75d57
+TextureImporter:
+  internalIDToNameTable:
+  - first:
+      213: 5663489495554765676
+    second: Magic_Explosion-Sheet_0
+  - first:
+      213: 4326859495145867465
+    second: Magic_Explosion-Sheet_1
+  - first:
+      213: -8171623072944148016
+    second: Magic_Explosion-Sheet_2
+  - first:
+      213: 6013714844302076723
+    second: Magic_Explosion-Sheet_3
+  - first:
+      213: 6220039720186657547
+    second: Magic_Explosion-Sheet_4
+  - first:
+      213: 4121740834178284754
+    second: Magic_Explosion-Sheet_5
+  - first:
+      213: -8518114788268574196
+    second: Magic_Explosion-Sheet_6
+  - first:
+      213: -14500908464146961
+    second: Magic_Explosion-Sheet_7
+  - first:
+      213: 1584023572777639802
+    second: Magic_Explosion-Sheet_8
+  - first:
+      213: -4370422067181911188
+    second: Magic_Explosion-Sheet_9
+  - first:
+      213: -3305910105742223485
+    second: Magic_Explosion-Sheet_10
+  - first:
+      213: -8987662973415504538
+    second: Magic_Explosion-Sheet_11
+  - first:
+      213: -8643209978647016342
+    second: Magic_Explosion-Sheet_12
+  - first:
+      213: 7176623355526929069
+    second: Magic_Explosion-Sheet_13
+  - first:
+      213: -1281363179927108946
+    second: Magic_Explosion-Sheet_14
+  - first:
+      213: -2443480936871913769
+    second: Magic_Explosion-Sheet_15
+  - first:
+      213: -5337298478297290377
+    second: Magic_Explosion-Sheet_16
+  - first:
+      213: 1738744920549066507
+    second: Magic_Explosion-Sheet_17
+  - first:
+      213: -3456949678096694328
+    second: Magic_Explosion-Sheet_18
+  - first:
+      213: -1819820007798426095
+    second: Magic_Explosion-Sheet_19
+  - first:
+      213: 7033441329061636112
+    second: Magic_Explosion-Sheet_20
+  - first:
+      213: 609747111828299458
+    second: Magic_Explosion-Sheet_21
+  - first:
+      213: 5233972850155216189
+    second: Magic_Explosion-Sheet_22
+  externalObjects: {}
+  serializedVersion: 13
+  mipmaps:
+    mipMapMode: 0
+    enableMipMap: 0
+    sRGBTexture: 1
+    linearTexture: 0
+    fadeOut: 0
+    borderMipMap: 0
+    mipMapsPreserveCoverage: 0
+    alphaTestReferenceValue: 0.5
+    mipMapFadeDistanceStart: 1
+    mipMapFadeDistanceEnd: 3
+  bumpmap:
+    convertToNormalMap: 0
+    externalNormalMap: 0
+    heightScale: 0.25
+    normalMapFilter: 0
+    flipGreenChannel: 0
+  isReadable: 0
+  streamingMipmaps: 0
+  streamingMipmapsPriority: 0
+  vTOnly: 0
+  ignoreMipmapLimit: 0
+  grayScaleToAlpha: 0
+  generateCubemap: 6
+  cubemapConvolution: 0
+  seamlessCubemap: 0
+  textureFormat: 1
+  maxTextureSize: 2048
+  textureSettings:
+    serializedVersion: 2
+    filterMode: 0
+    aniso: 1
+    mipBias: 0
+    wrapU: 1
+    wrapV: 1
+    wrapW: 1
+  nPOTScale: 0
+  lightmap: 0
+  compressionQuality: 50
+  spriteMode: 2
+  spriteExtrude: 1
+  spriteMeshType: 1
+  alignment: 0
+  spritePivot: {x: 0.5, y: 0.5}
+  spritePixelsToUnits: 100
+  spriteBorder: {x: 0, y: 0, z: 0, w: 0}
+  spriteGenerateFallbackPhysicsShape: 1
+  alphaUsage: 1
+  alphaIsTransparency: 1
+  spriteTessellationDetail: -1
+  textureType: 8
+  textureShape: 1
+  singleChannelComponent: 0
+  flipbookRows: 1
+  flipbookColumns: 1
+  maxTextureSizeSet: 0
+  compressionQualitySet: 0
+  textureFormatSet: 0
+  ignorePngGamma: 0
+  applyGammaDecoding: 0
+  swizzle: 50462976
+  cookieLightType: 0
+  platformSettings:
+  - serializedVersion: 4
+    buildTarget: DefaultTexturePlatform
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 0
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 4
+    buildTarget: Win64
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 4
+    buildTarget: Standalone
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 4
+    buildTarget: WebGL
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  spriteSheet:
+    serializedVersion: 2
+    sprites:
+    - serializedVersion: 2
+      name: Magic_Explosion-Sheet_0
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 70
+        width: 44
+        height: 60
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: c46d5098db837354da4e370b97335aff
+      internalID: -1113348679
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Magic_Explosion-Sheet_1
+      rect:
+        serializedVersion: 2
+        x: 44
+        y: 70
+        width: 44
+        height: 60
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: a922e350dad4f3d4889c1e2374757192
+      internalID: 603303416
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Magic_Explosion-Sheet_2
+      rect:
+        serializedVersion: 2
+        x: 88
+        y: 70
+        width: 44
+        height: 60
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 750062f728f4a7a4ebd0564c01711d7a
+      internalID: 1438654719
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Magic_Explosion-Sheet_3
+      rect:
+        serializedVersion: 2
+        x: 132
+        y: 70
+        width: 44
+        height: 60
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: e751e8c7deaf88d499b8f8e063eb1e1d
+      internalID: 1244704296
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Magic_Explosion-Sheet_4
+      rect:
+        serializedVersion: 2
+        x: 176
+        y: 70
+        width: 44
+        height: 60
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: cea674aae0acad5418df4c736e7205a4
+      internalID: 664116265
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Magic_Explosion-Sheet_5
+      rect:
+        serializedVersion: 2
+        x: 220
+        y: 70
+        width: 44
+        height: 60
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 67a5235468bedfc4199f5630148f1532
+      internalID: -1694624716
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Magic_Explosion-Sheet_6
+      rect:
+        serializedVersion: 2
+        x: 264
+        y: 70
+        width: 44
+        height: 60
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: d65dd59a9103b1847832052b7eb4c5ec
+      internalID: 607477772
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Magic_Explosion-Sheet_7
+      rect:
+        serializedVersion: 2
+        x: 308
+        y: 70
+        width: 44
+        height: 60
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 0718dfdc03d388a4d8f410501d170867
+      internalID: 1926814712
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Magic_Explosion-Sheet_8
+      rect:
+        serializedVersion: 2
+        x: 352
+        y: 70
+        width: 44
+        height: 60
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 9a688517ee84882458b7ce2f11dcb581
+      internalID: -684167325
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Magic_Explosion-Sheet_9
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 6
+        width: 58
+        height: 60
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: f509034a238370348a40fd7a7c1e3f8a
+      internalID: 493342534
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Magic_Explosion-Sheet_10
+      rect:
+        serializedVersion: 2
+        x: 58
+        y: 6
+        width: 58
+        height: 60
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: d8a3759ab6190f34ea2611d1cec2dfa8
+      internalID: -1220566520
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Magic_Explosion-Sheet_11
+      rect:
+        serializedVersion: 2
+        x: 116
+        y: 6
+        width: 58
+        height: 60
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 6e5e162a5c8e4bb4c87115af4493f1c5
+      internalID: 1742817219
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Magic_Explosion-Sheet_12
+      rect:
+        serializedVersion: 2
+        x: 174
+        y: 6
+        width: 58
+        height: 60
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 3c0f70d4bc439c04aa576e949c2dc3ba
+      internalID: -410358609
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Magic_Explosion-Sheet_13
+      rect:
+        serializedVersion: 2
+        x: 232
+        y: 6
+        width: 58
+        height: 60
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 55973f42c19f633429765a496dcefcfe
+      internalID: 1990472305
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Magic_Explosion-Sheet_14
+      rect:
+        serializedVersion: 2
+        x: 290
+        y: 6
+        width: 58
+        height: 60
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 255fafc484260364b8cfa192c95bf2d0
+      internalID: 1626029370
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Magic_Explosion-Sheet_15
+      rect:
+        serializedVersion: 2
+        x: 348
+        y: 6
+        width: 48
+        height: 60
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: d6bbfbeb623a05e4a9f51f15338e350c
+      internalID: 1215061666
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    outline: []
+    customData: 
+    physicsShape: []
+    bones: []
+    spriteID: 83012673c360ffa4bb13d1cf61a7c9d8
+    internalID: 0
+    vertices: []
+    indices: 
+    edges: []
+    weights: []
+    secondaryTextures: []
+    spriteCustomMetadata:
+      entries: []
+    nameFileIdTable:
+      Magic_Explosion-Sheet_0: -1113348679
+      Magic_Explosion-Sheet_1: 603303416
+      Magic_Explosion-Sheet_10: -1220566520
+      Magic_Explosion-Sheet_11: 1742817219
+      Magic_Explosion-Sheet_12: -410358609
+      Magic_Explosion-Sheet_13: 1990472305
+      Magic_Explosion-Sheet_14: 1626029370
+      Magic_Explosion-Sheet_15: 1215061666
+      Magic_Explosion-Sheet_16: -1555004446
+      Magic_Explosion-Sheet_17: 1173646668
+      Magic_Explosion-Sheet_2: 1438654719
+      Magic_Explosion-Sheet_3: 1244704296
+      Magic_Explosion-Sheet_4: 664116265
+      Magic_Explosion-Sheet_5: -1694624716
+      Magic_Explosion-Sheet_6: 607477772
+      Magic_Explosion-Sheet_7: 1926814712
+      Magic_Explosion-Sheet_8: -684167325
+      Magic_Explosion-Sheet_9: 493342534
+  mipmapLimitGroupName: 
+  pSDRemoveMatte: 0
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
