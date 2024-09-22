@@ -31,14 +31,18 @@ namespace GameJam.Managers
         [field:SerializeField] public int Column { get; private set; }
         [field:SerializeField] public bool IsEverMoved { get; private set; }
         [field:SerializeField] public Sprite[] Skins { get; private set; }
+
         
         [SerializeField] private ParticleSystem _paricle;
-        private void Start()
+
+        //перемістив бо є баг якщо тайли не вспівають згенеруватися до поки гравецт чекне
+        public void SetInitPosition()
+
         {
             RaycastHit2D hit = Physics2D.Raycast(_player.transform.position, Vector2.zero);
             if (hit.collider && hit.collider.gameObject.TryGetComponent<BoardTile>(out BoardTile tile) && !tile.IsHole)
             {
-                if (!IsEverMoved) IsEverMoved = true;
+                
                 PlayerTile = tile;
                 Row = tile.Row;
                 Column = tile.Collum;
@@ -57,17 +61,14 @@ namespace GameJam.Managers
                 }
             }
 
-            if (PlayerTile == null)
-            {
-                GameOver();
-            }
+
         }
 
-        void GameOver()
+         void GameOver()
         {
             Debug.Log("Game Over!");
         }
-        
+
         public void TurnInTo(ChessPiece piece)
         {
             Debug.Log($" TurnedInTo: {piece} Was: {CurrentChessType}");
@@ -116,7 +117,10 @@ namespace GameJam.Managers
                     if (TryWalkBishop(Row, Column, tile.Row, tile.Collum)) MoveTo(tile);
                     break;
                 case ChessPiece.Pawn:
-                    if (TryWalkPawn(Row, Column, tile.Row, tile.Collum)) MoveTo(tile);
+                    if (!IsEverMoved)
+                    { if (TryWalkPawnInital(Row, Column, tile.Row, tile.Collum)) { MoveTo(tile); } }
+                    else
+                    { if (TryWalkPawn(Row, Column, tile.Row, tile.Collum)) { MoveTo(tile); } }
                     break;
                 case ChessPiece.Knight:
                     if (TryWalkKnight(Row, Column, tile.Row, tile.Collum)) MoveTo(tile);
@@ -159,23 +163,34 @@ namespace GameJam.Managers
             Row = tile.Row;
             Column = tile.Collum;
         }
-        
+
         private bool CheckForHoles(BoardTile tile)
         {
-            Vector2 direction = (tile.transform.position - PlayerTile.transform.position).normalized;
-            float distance = Vector2.Distance(PlayerTile.transform.position, tile.transform.position);
-            RaycastHit2D hit = Physics2D.Raycast(tile.transform.position, direction, distance);
-            
-            print(distance + " : " + direction);
-            
-            if (hit.collider //&& hit.collider.transform.position == new Vector3(hit.point.x, hit.point.y, 0)
-                             && hit.collider.gameObject.TryGetComponent<BoardTile>(out var tileComponent) && tileComponent.IsHole)
+            if (CurrentChessType == ChessPiece.Knight)
+                return true;
+
+            Vector2 origin = PlayerTile.transform.position;
+            Vector2 target = tile.transform.position;
+            Vector2 direction = (target - origin).normalized;
+            float distance = Vector2.Distance(origin, target);
+
+            // Cast the ray from PlayerTile towards the target tile
+            RaycastHit2D[] hits = Physics2D.RaycastAll(origin, direction, distance);
+
+            //print(origin + " : " + target);
+
+            foreach (var hit in hits)
             {
-                Debug.Log("Cannot move through the hole!");
-                return false;
+                if (hit.collider != null && hit.collider.gameObject != tile.gameObject // Ignore the target tile
+                                         && hit.collider.gameObject.TryGetComponent<BoardTile>(out var tileComponent) && tileComponent.IsHole)
+                {
+                    //Debug.Log("Cannot move through the hole!");
+                    return true;
+                }
             }
-            Debug.Log("yep");
-            return true;
+
+            //Debug.Log("yep");
+            return false;
         }
 
         private IEnumerator Walk(Vector3 pos,float speed)
@@ -208,7 +223,8 @@ namespace GameJam.Managers
 
         public static bool TryWalkKing(int rowpos, int collumpos,int rowTo,int collumTo)
         {
-
+            if (rowpos == rowTo && collumpos == collumTo)
+                return false;
             bool IsCloseByX = (collumpos - 1 == collumTo )|| (collumpos + 1 == collumTo) || collumpos == collumTo;
             bool IsCloseByY = (rowpos - 1 == rowTo) || (rowpos + 1 == rowTo) || (rowTo == rowpos);
             return ( IsCloseByX && IsCloseByY );
@@ -216,13 +232,25 @@ namespace GameJam.Managers
         public static bool TryWalkPawn(int rowPos, int columnPos, int rowTo, int columnTo)
         {
 
+            if (rowPos == rowTo && columnPos == columnTo)
+                return false;
             bool IsCloseByX = columnPos == columnTo;
             bool IsCloseByY = (rowPos + 1 == rowTo) || (rowTo == rowPos);
+
             return (IsCloseByY&&IsCloseByX);
+        }
+        public static bool TryWalkPawnInital(int rowpos, int collumpos, int rowTo, int collumTo)
+        {
+            if (rowpos == rowTo && collumpos == collumTo)
+                return false;
+            bool IsCloseByX = collumpos == collumTo;
+            bool IsCloseByY = (rowpos + 1 == rowTo) || (rowTo == rowpos) || (rowpos + 2 == rowTo);
+            return (IsCloseByY && IsCloseByX);
         }
         public static bool TryWalkRook(int rowpos, int collumpos, int rowTo, int collumTo)
         {
-
+            if (rowpos == rowTo && collumpos == collumTo)
+                return false;
             bool IsSameCollum = collumpos==collumTo;
             bool IsSameRow = rowTo == rowpos;
             if (IsSameCollum == true && IsSameRow == true)
@@ -231,13 +259,16 @@ namespace GameJam.Managers
         }
         public static bool TryWalkBishop(int rowpos, int collumpos, int rowTo, int collumTo)
         {
+            if (rowpos == rowTo && collumpos == collumTo)
+                return false;
             bool isonthesamedigonal = Mathf.Abs(collumpos - collumTo) == Mathf.Abs(rowpos - rowTo);
             return isonthesamedigonal;
 
         }
         public static bool TryWalkKnight(int rowpos, int collumpos, int rowTo, int collumTo)
         {
-
+            if (rowpos == rowTo && collumpos == collumTo)
+                return false;
             bool isinbottomright = (rowpos - 2 == rowTo && collumpos + 1 == collumTo)|| (rowpos - 1 == rowTo && collumpos + 2 == collumTo);
             bool isinupperleft = (rowpos +2 == rowTo && collumpos - 1 == collumTo)|| (rowpos + 1 == rowTo && collumpos - 2 == collumTo);
             bool isinbottomleft = (rowpos -2 == rowTo && collumpos - 1 == collumTo)|| (rowpos - 1 == rowTo && collumpos - 2 == collumTo);
@@ -248,7 +279,8 @@ namespace GameJam.Managers
         public static bool TryWalkQueen(int rowpos, int collumpos, int rowTo, int collumTo)
         {
 
-
+            if (rowpos == rowTo && collumpos == collumTo)
+                return false;
             return  TryWalkBishop(rowpos, collumpos, rowTo, collumTo) || TryWalkRook(rowpos,collumpos,rowTo,collumTo);
         }
     }

@@ -8,7 +8,7 @@ public class BoardDestroyer : MonoBehaviour
     {
         if (other.gameObject.TryGetComponent<BoardTile>(out var boardTile))
         {
-            Destroy(boardTile.gameObject);
+            boardTile.Delete();
         }
     }
 }
