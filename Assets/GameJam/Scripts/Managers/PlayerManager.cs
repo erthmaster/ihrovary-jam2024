@@ -3,7 +3,14 @@ using System.Collections;
 using GameJam.Behaviours;
 using UnityEngine;
 using Zenject;
-using static UnityEngine.ParticleSystem;
+
+using UnityEngine.UI;
+using TMPro;
+using System.Xml;
+using System.Threading.Tasks;
+using System.Linq;
+using Unity.VisualScripting;
+
 
 namespace GameJam.Managers
 {
@@ -32,7 +39,7 @@ namespace GameJam.Managers
         private int currentMoves;
         
         [SerializeField] private ParticleSystem _paricle;
-
+        public event Action OnWalk;
 
         //перемістив бо є баг якщо тайли не вспівають згенеруватися до поки гравецт чекне
         public void SetInitPosition(){RaycastHit2D hit = Physics2D.Raycast(_player.transform.position, Vector2.zero);
@@ -63,7 +70,7 @@ namespace GameJam.Managers
 
         }
 
-         void GameOver()
+        public void GameOver()
         {
             gameOverObj.SetActive(true);
         }
@@ -124,7 +131,18 @@ namespace GameJam.Managers
                     if (!IsEverMoved)
                     { if (TryWalkPawnInital(Row, Column, tile.Row, tile.Collum)) { MoveTo(tile); } }
                     else
-                    { if (TryWalkPawn(Row, Column, tile.Row, tile.Collum)) { MoveTo(tile); } }
+                    {
+                        if (Physics2D.OverlapPointAll(tile.transform.position).Any(n => n.GetComponent<EnemyAI>() != null))
+                        {
+                            if (TryWalkPawnKillP(Row, Column, tile.Row, tile.Collum)) { MoveTo(tile); }
+
+                        }
+                        else if (TryWalkPawn(Row, Column, tile.Row, tile.Collum)) { MoveTo(tile); }
+                    }
+            
+                        
+                        
+                        
                     break;
                 case ChessPiece.Knight:
                     if (TryWalkKnight(Row, Column, tile.Row, tile.Collum)) MoveTo(tile);
@@ -232,6 +250,21 @@ namespace GameJam.Managers
             {
                 TurnInTo(0);
             }
+
+            OnWalk?.Invoke();
+            foreach (var item in Physics2D.OverlapPointAll(pos))
+            {
+                if (item.TryGetComponent<EnemyAI>(out EnemyAI ai))
+                    ai.Die();
+            }
+        }
+        private void ShowMoves()
+        {
+            //char dot = '.';
+            //if(currentMoves < 0)
+            //    _currentMovesText.text = " ";
+            //else
+            //    _currentMovesText.text = new string(dot, currentMoves);
         }
 
         public static float GptEase(float t)
@@ -263,6 +296,16 @@ namespace GameJam.Managers
             bool IsCloseByY = (rowPos + 1 == rowTo) || (rowTo == rowPos);
 
             return (IsCloseByY&&IsCloseByX);
+        }
+        public static bool TryWalkPawnKillP(int rowPos, int columnPos, int rowTo, int columnTo)
+        {
+
+            if (rowPos == rowTo && columnPos == columnTo)
+                return false;
+            bool IsCloseByX = (columnPos + 1 == columnTo) || (columnPos - 1 == columnTo);
+            bool IsCloseByY = (rowPos + 1 == rowTo) || (rowTo == rowPos);
+
+            return (IsCloseByY && IsCloseByX);
         }
         public static bool TryWalkPawnInital(int rowpos, int collumpos, int rowTo, int collumTo)
         {

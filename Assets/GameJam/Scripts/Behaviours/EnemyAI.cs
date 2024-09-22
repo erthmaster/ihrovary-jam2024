@@ -85,6 +85,8 @@ namespace GameJam.Behaviours
 
         private BoardTile GetDesiredWalkTile()
         {
+            if (transform == null)
+                return null;
             Collider2D[] bts = Physics2D.OverlapCircleAll(transform.position, 25);
 
             BoardTile winner = null;
@@ -132,7 +134,9 @@ namespace GameJam.Behaviours
                 case ChessPiece.Bishop:
                     return TryWalkBishop(Row, Column, tile.Row, tile.Collum);
                 case ChessPiece.Pawn:
-                    return TryWalkPawn(Row, Column, tile.Row, tile.Collum);
+                    if(tile.Collum == pl.Column&&tile.Row == pl.Row)
+                        return TryWalkPawnKill(Row, Column, tile.Row, tile.Collum);
+                    return TryWalkPawn2(Row, Column, tile.Row, tile.Collum);
                 case ChessPiece.Knight:
                     return TryWalkKnight(Row, Column, tile.Row, tile.Collum);
                 default:
@@ -195,9 +199,9 @@ namespace GameJam.Behaviours
                     break;
                 case ChessPiece.Pawn:
                     if (!IsEverMoved)
-                    { if (TryWalkPawnInital(Row, Column, tile.Row, tile.Collum)) { MoveTo(tile); } }
+                    { if (TryWalkPawn2Inital(Row, Column, tile.Row, tile.Collum)) { MoveTo(tile); } }
                     else
-                    { if (TryWalkPawn(Row, Column, tile.Row, tile.Collum)) { MoveTo(tile); } }
+                    { if (TryWalkPawn2(Row, Column, tile.Row, tile.Collum)) { MoveTo(tile); } }
                     break;
                 case ChessPiece.Knight:
                     if (TryWalkKnight(Row, Column, tile.Row, tile.Collum)) MoveTo(tile);
@@ -205,6 +209,42 @@ namespace GameJam.Behaviours
                 default:
                     break;
             }
+        }
+
+        public void Die()
+        {
+            Destroy(gameObject);
+        }
+        public static bool TryWalkPawn2(int rowPos, int columnPos, int rowTo, int columnTo)
+        {
+
+            if (rowPos == rowTo && columnPos == columnTo)
+                return false;
+            bool IsCloseByX = columnPos == columnTo;
+            bool IsCloseByY = (rowPos - 1 == rowTo) || (rowTo == rowPos);
+
+            return (IsCloseByY && IsCloseByX);
+        }
+        public static bool TryWalkPawn2Inital(int rowPos, int columnPos, int rowTo, int columnTo)
+        {
+
+            if (rowPos == rowTo && columnPos == columnTo)
+                return false;
+            bool IsCloseByX = columnPos == columnTo;
+            bool IsCloseByY = (rowPos - 1 == rowTo) || (rowPos - 2 == rowTo) || (rowTo == rowPos);
+
+            return (IsCloseByY && IsCloseByX);
+        }
+
+        public static bool TryWalkPawnKill(int rowPos, int columnPos, int rowTo, int columnTo)
+        {
+
+            if (rowPos == rowTo && columnPos == columnTo)
+                return false;
+            bool IsCloseByX = (columnPos+1 == columnTo) || (columnPos - 1 == columnTo);
+            bool IsCloseByY = (rowPos - 1 == rowTo) || (rowTo == rowPos);
+
+            return (IsCloseByY && IsCloseByX);
         }
         private bool CheckForHoles(BoardTile tile)
         {

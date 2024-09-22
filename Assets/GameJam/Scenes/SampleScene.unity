@@ -1782,9 +1782,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _followSpeed: 3
   _offset: {x: 0, y: 0, z: 0}
-  _shakeDuration: 0
-  _shakeStrength: 0
-  _shakeFactor: 0
+  _shakeDuration: 0.4
+  _shakeStrength: 0.5
+  _shakeFactor: 1
 --- !u!1 &525068312
 GameObject:
   m_ObjectHideFlags: 0
@@ -3209,6 +3209,7 @@ MonoBehaviour:
   TickRate: 40
   MaxTickRate: 100
   TickRate: 30
+  MaxTickRate: 0
   TickStep: 2
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -3259,6 +3260,7 @@ MonoBehaviour:
   - {fileID: 2006837852, guid: 2b11a594b0583f04f961e3ed1e5baf02, type: 3}
   _currentMovesText: {fileID: 989056193}
   _movesCount: 0500000004000000040000000300000002000000
+  _turnIntoAnim: {fileID: 0}
   _paricle: {fileID: 5359015653086182439, guid: 336f9cbdcbe26444da3018a0455d41cc, type: 3}
   gameOverObj: {fileID: 0}
 --- !u!114 &961388542
