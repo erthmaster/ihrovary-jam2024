@@ -44,7 +44,7 @@ namespace GameJam.Behaviours
 
         private void Start()
         {
-            Invoke(nameof(SetInitPosition), 0.3f);
+            Invoke(nameof(SetInitPosition), 0.3f); 
             pl.OnWalk += EnemyWalk;
             TurnInTo(CurrentChessType);
         }
