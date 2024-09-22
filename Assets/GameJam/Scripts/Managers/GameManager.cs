@@ -8,7 +8,6 @@ namespace GameJam.Managers
 {
     public class GameManager : MonoBehaviour
     {
-        [Inject] private PlayerManager _playerManager;
         [Inject] private BoardGenerator _boardGenerator;
         public BoardTile Tile;
         public ObjectPool<BoardTile> TilePool;
@@ -30,7 +29,6 @@ namespace GameJam.Managers
 
 
             BoardTile[,] boardTiles = _boardGenerator.GenerateStartBoard();
-            //_playerManager.MoveTo(boardTiles[3, 1]);
         }
 
     }

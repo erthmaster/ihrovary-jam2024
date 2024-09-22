@@ -22,7 +22,6 @@ namespace GameJam.Board
 
         private void Update()
         {
-
             if (_playerManager.IsEverMoved && _playerManager.PlayerTile.Row > _rows - _maxBoardHeightFromPlayer)
             {
 

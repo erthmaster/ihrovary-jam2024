@@ -1,13 +1,10 @@
-using System;
 using System.Collections;
 using GameJam.Behaviours;
 using UnityEngine;
 using Zenject;
-using UnityEngine.UI;
 using TMPro;
-using System.Xml;
 using System.Threading.Tasks;
-using Unity.VisualScripting;
+using GameJam.UI;
 
 namespace GameJam.Managers
 {
@@ -15,6 +12,7 @@ namespace GameJam.Managers
     {
         [Inject] private Player _player;
         [Inject] private PlayerAudioManager audioManager;
+        [Inject] private PauseManager pauseManager;
         public ChessPiece CurrentChessType = ChessPiece.Pawn;
         public enum ChessPiece
         {
@@ -72,10 +70,15 @@ namespace GameJam.Managers
                     TryMoveTo(boardTileComponent);
                 }
             }
+            if (IsEverMoved && !PlayerTile.isActiveAndEnabled)
+            {
+                GameOver();
+            }
+
 
             MoveCoolDown = Mathf.Clamp(MoveCoolDown + Time.deltaTime, 0, MaxMoveCoolDown);
         }
-
+        
         void GameOver()
         {
             gameOverObj.SetActive(true);
@@ -94,6 +97,8 @@ namespace GameJam.Managers
         }
         async public void TurnInTo(ChessPiece piece)
         {
+            if(pauseManager.IsPaused) return;
+
             Debug.Log($" TurnedInTo: {piece} Was: {CurrentChessType}");
 
             canMove = false;
@@ -136,6 +141,8 @@ namespace GameJam.Managers
 
         public void TryMoveTo(BoardTile tile)
         {
+            if (pauseManager.IsPaused) return;
+
             switch (CurrentChessType)
             {
                 case ChessPiece.King:
@@ -165,6 +172,7 @@ namespace GameJam.Managers
         }
         public void MoveTo(BoardTile tile)
         {
+            if (pauseManager.IsPaused) return;
             if (!canMove) return;
             
             if (!CheckForHoles(tile))

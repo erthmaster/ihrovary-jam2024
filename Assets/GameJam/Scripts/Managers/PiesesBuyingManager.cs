@@ -12,6 +12,7 @@ namespace GameJam
     {
 
         [Inject] private PlayerManager _playerManager;
+        [Inject] private PauseManager _pauseManager;
         [SerializeField] int _queenPrice;
 
         [SerializeField] int _knightPrice;
@@ -31,6 +32,8 @@ namespace GameJam
 
         private void Update()
         {
+            //if (_pauseManager.IsPaused) return;
+
             if (Input.GetKeyDown(KeyCode.Alpha1)) BuyKing();
             if (Input.GetKeyDown(KeyCode.Alpha2)) BuyRook();
             if (Input.GetKeyDown(KeyCode.Alpha3)) BuyBishop();
