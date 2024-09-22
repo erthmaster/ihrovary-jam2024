@@ -57,6 +57,7 @@ MonoBehaviour:
   - {fileID: 3794226, guid: 2b11a594b0583f04f961e3ed1e5baf02, type: 3}
   - {fileID: 948754247, guid: 2b11a594b0583f04f961e3ed1e5baf02, type: 3}
   <IsEverMoved>k__BackingField: 0
+  <BlackBreak>k__BackingField: {fileID: 4724090270498362957, guid: 37e17a01aeedfd646aa8acd24c401cd3, type: 3}
   audioManager: {fileID: 0}
   pl: {fileID: 0}
   _paricle: {fileID: 5359015653086182439, guid: 336f9cbdcbe26444da3018a0455d41cc, type: 3}

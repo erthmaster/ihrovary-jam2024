@@ -17,6 +17,7 @@ namespace GameJam.Behaviours
         [field: SerializeField] public int Column { get; private set; }
         [field: SerializeField] public Sprite[] Skins { get; private set; }
         [field: SerializeField] public bool IsEverMoved { get; private set; }
+        [field: SerializeField] public GameObject BlackBreak { get; private set; }
         public PlayerAudioManager audioManager;
         public  PlayerManager pl;
         [SerializeField] private ParticleSystem _paricle;
@@ -25,6 +26,8 @@ namespace GameJam.Behaviours
         public float DetectDist = 20;
         public void Die()
         {
+            pl.OnWalk -= EnemyWalk;
+            Instantiate(BlackBreak, transform.position, Quaternion.identity);
             Destroy(gameObject);
         }
 
