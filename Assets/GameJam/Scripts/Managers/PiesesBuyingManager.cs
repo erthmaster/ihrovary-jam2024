@@ -39,6 +39,8 @@ namespace GameJam
         }
         private void BuyPiece(int price,PlayerManager.ChessPiece piecetype)
         {
+            if (_playerManager.CurrentChessType == piecetype)
+                return;
             if (_manaManager.mana < price)
             {
                 Debug.Log("Not Enough Mana!");

@@ -19,7 +19,7 @@ namespace GameJam.UI
         private void FixedUpdate()
         {
             if (mana < _maxMana)
-                mana += _speed * Time.deltaTime;
+                mana += _speed;
             if (mana < 0)
                 mana = 0;
             _slider.value = mana;

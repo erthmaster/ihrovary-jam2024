@@ -18,6 +18,7 @@ namespace GameJam.Board
         [SerializeField] private int _maxBoardHeightFromPlayer;
         [SerializeField] private int _rows;
         [SerializeField] private float _holeTileChance;
+        [Inject] GameManager _Manager;
 
         private void Update()
         {
@@ -36,16 +37,18 @@ namespace GameJam.Board
 
         public BoardTile[,] GenerateStartBoard()
         {
+
+
             BoardTile[,] boardTiles = new BoardTile[_boardWidth, _boardStartHeight];
             for (int i = 0; i < _boardStartHeight; i++)
             {
                 for (int x = 0; x < _boardWidth; x++)
                 {
                     Vector3 tileScale = _boardTilePrefab.transform.localScale;
-
-                    GameObject tile = Instantiate(_boardTilePrefab,
-                        new Vector2(x * tileScale.x - ((_boardWidth - 1) * tileScale.x) / 2, _rows * tileScale.y),
-                        Quaternion.identity, _boardTilesParent);
+                    GameObject tile = _Manager.TilePool.Get().gameObject;
+                    tile.transform.SetPositionAndRotation(new Vector2(x * tileScale.x - ((_boardWidth - 1) * tileScale.x) / 2, _rows * tileScale.y),
+                        Quaternion.identity);
+                    tile.transform.SetParent(_boardTilesParent);
                     if (_rows % 2 == 0)
                         tile.GetComponent<BoardTile>().Construct(x % 2 == 0, false);
                     else
@@ -53,6 +56,7 @@ namespace GameJam.Board
                     tile.GetComponent<BoardTile>().Row = _rows;
                     tile.GetComponent<BoardTile>()._spriteRenderer.sortingOrder = -_rows;
                     tile.GetComponent<BoardTile>().Collum = x;
+                    tile.GetComponent<BoardTile>()._Manager=_Manager;
                     boardTiles[x, i] = tile.GetComponent<BoardTile>();
                 }
                 _rows++;
@@ -60,8 +64,11 @@ namespace GameJam.Board
             GenerateNewRow();
             GenerateNewRow();
             GenerateNewRow();
+            _playerManager.Invoke(nameof(_playerManager.SetInitPosition), 0.5f);
+
             return boardTiles;
         }
+
 
 
         void GenerateNewRow()
@@ -70,17 +77,19 @@ namespace GameJam.Board
             {
                 Vector3 tileScale = _boardTilePrefab.transform.localScale;
                 //Debug.Log(x);
-                GameObject tile = Instantiate(_boardTilePrefab,
-                    new Vector2(x * tileScale.x - ((_boardWidth-1) * tileScale.x)/2, _rows * tileScale.y),
-                    Quaternion.identity, _boardTilesParent);
+                GameObject tile = _Manager.TilePool.Get().gameObject;
+                tile.transform.SetPositionAndRotation(new Vector2(x * tileScale.x - ((_boardWidth - 1) * tileScale.x) / 2, _rows * tileScale.y),
+                    Quaternion.identity);
+                tile.transform.SetParent(_boardTilesParent);
+                    
 
-                if(_rows % 2 == 0)
+                if (_rows % 2 == 0)
                     tile.GetComponent<BoardTile>().Construct(x % 2 == 0, Random.value < _holeTileChance);
                 else
                     tile.GetComponent<BoardTile>().Construct(x % 2 != 0, Random.value < _holeTileChance);
 
                 tile.GetComponent<BoardTile>().Collum = x;
-
+                tile.GetComponent<BoardTile>()._Manager = _Manager;
                 tile.GetComponent<BoardTile>().Row = _rows;
                 tile.GetComponent<BoardTile>()._spriteRenderer.sortingOrder = -_rows;
             }

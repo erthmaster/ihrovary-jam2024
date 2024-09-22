@@ -146,7 +146,7 @@ TextureImporter:
         width: 64
         height: 74
       alignment: 9
-      pivot: {x: 0.50013524, y: 0.570421}
+      pivot: {x: 0.5001352, y: 0.570421}
       border: {x: 0, y: 0, z: 0, w: 0}
       customData: 
       outline: []
@@ -203,6 +203,314 @@ TextureImporter:
       indices: 
       edges: []
       weights: []
+    - serializedVersion: 2
+      name: Chess_Board_Tiles_Sprite_Sheet_4
+      rect:
+        serializedVersion: 2
+        x: 372
+        y: 429
+        width: 64
+        height: 71
+      alignment: 9
+      pivot: {x: 0.5, y: 0.570421}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 2d45c06a966ce6c4db23a6023acf0722
+      internalID: -1140423247
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Chess_Board_Tiles_Sprite_Sheet_5
+      rect:
+        serializedVersion: 2
+        x: 436
+        y: 429
+        width: 64
+        height: 71
+      alignment: 9
+      pivot: {x: 0.5, y: 0.570421}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 02621422e46408149b33640c5a82cc3c
+      internalID: -1806616378
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Chess_Board_Tiles_Sprite_Sheet_6
+      rect:
+        serializedVersion: 2
+        x: 372
+        y: 356
+        width: 64
+        height: 71
+      alignment: 9
+      pivot: {x: 0.5, y: 0.570421}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: e033f657a846bac428cfffa6b8897067
+      internalID: 436378045
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Chess_Board_Tiles_Sprite_Sheet_7
+      rect:
+        serializedVersion: 2
+        x: 436
+        y: 356
+        width: 64
+        height: 71
+      alignment: 9
+      pivot: {x: 0.5, y: 0.570421}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 42f67eda9e9dd7042820c4046ca44368
+      internalID: 1759170073
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Chess_Board_Tiles_Sprite_Sheet_8
+      rect:
+        serializedVersion: 2
+        x: 436
+        y: 283
+        width: 64
+        height: 71
+      alignment: 9
+      pivot: {x: 0.5, y: 0.570421}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 110f95f6962ec3f489a1365418644605
+      internalID: 1530884493
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Chess_Board_Tiles_Sprite_Sheet_9
+      rect:
+        serializedVersion: 2
+        x: 372
+        y: 283
+        width: 64
+        height: 71
+      alignment: 9
+      pivot: {x: 0.5, y: 0.570421}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 9b5a535cf2b8a394081d511b42dcc402
+      internalID: -468302338
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Chess_Board_Tiles_Sprite_Sheet_10
+      rect:
+        serializedVersion: 2
+        x: 372
+        y: 212
+        width: 64
+        height: 71
+      alignment: 9
+      pivot: {x: 0.5, y: 0.570421}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: fea923983f7436d4393fc65fe7555f80
+      internalID: 524553817
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Chess_Board_Tiles_Sprite_Sheet_11
+      rect:
+        serializedVersion: 2
+        x: 436
+        y: 210
+        width: 64
+        height: 71
+      alignment: 9
+      pivot: {x: 0.5, y: 0.570421}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: c84185dd3becd2a4cb16c16d5edc8ea7
+      internalID: -2056562378
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Chess_Board_Tiles_Sprite_Sheet_12
+      rect:
+        serializedVersion: 2
+        x: 380
+        y: 251
+        width: 7
+        height: 8
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: bc0851a5fbc4870468e3d18c6c635450
+      internalID: -612183432
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Chess_Board_Tiles_Sprite_Sheet_13
+      rect:
+        serializedVersion: 2
+        x: 376
+        y: 240
+        width: 7
+        height: 7
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: b895f383ec8bd5145bfcde3d14f00dbf
+      internalID: -1083536807
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Chess_Board_Tiles_Sprite_Sheet_14
+      rect:
+        serializedVersion: 2
+        x: 421
+        y: 254
+        width: 5
+        height: 4
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 4b092321d45a4e34b85d408c153e681a
+      internalID: 1162298775
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Chess_Board_Tiles_Sprite_Sheet_15
+      rect:
+        serializedVersion: 2
+        x: 443
+        y: 253
+        width: 7
+        height: 6
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: c63f800fe68694f46bd74a39450b35e9
+      internalID: -780946696
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Chess_Board_Tiles_Sprite_Sheet_16
+      rect:
+        serializedVersion: 2
+        x: 451
+        y: 240
+        width: 6
+        height: 5
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: f6c7e8674a9fc2a48a6bfc1910904bee
+      internalID: -2101589546
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Chess_Board_Tiles_Sprite_Sheet_17
+      rect:
+        serializedVersion: 2
+        x: 480
+        y: 243
+        width: 9
+        height: 8
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 1d6f9b0c1cc831545b47e603316de07f
+      internalID: 1809348182
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
     outline: []
     customData: 
     physicsShape: []
@@ -216,13 +524,29 @@ TextureImporter:
     secondaryTextures:
     - texture: {fileID: 2800000, guid: 1a235813e4fc3ce4b8cdb23e59fe5969, type: 3}
       name: _NormalMap
+    - texture: {fileID: 2800000, guid: 42aebbbbd4b14024d93bf010ca453ae7, type: 3}
+      name: _MaskTex
     spriteCustomMetadata:
       entries: []
     nameFileIdTable:
       Chess_Board_Tiles_Sprite_Sheet_0: -7499487375766681878
       Chess_Board_Tiles_Sprite_Sheet_1: 5516271672008490599
+      Chess_Board_Tiles_Sprite_Sheet_10: 524553817
+      Chess_Board_Tiles_Sprite_Sheet_11: -2056562378
+      Chess_Board_Tiles_Sprite_Sheet_12: -612183432
+      Chess_Board_Tiles_Sprite_Sheet_13: -1083536807
+      Chess_Board_Tiles_Sprite_Sheet_14: 1162298775
+      Chess_Board_Tiles_Sprite_Sheet_15: -780946696
+      Chess_Board_Tiles_Sprite_Sheet_16: -2101589546
+      Chess_Board_Tiles_Sprite_Sheet_17: 1809348182
       Chess_Board_Tiles_Sprite_Sheet_2: 122546171
       Chess_Board_Tiles_Sprite_Sheet_3: -416881835
+      Chess_Board_Tiles_Sprite_Sheet_4: -1140423247
+      Chess_Board_Tiles_Sprite_Sheet_5: -1806616378
+      Chess_Board_Tiles_Sprite_Sheet_6: 436378045
+      Chess_Board_Tiles_Sprite_Sheet_7: 1759170073
+      Chess_Board_Tiles_Sprite_Sheet_8: 1530884493
+      Chess_Board_Tiles_Sprite_Sheet_9: -468302338
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 
