@@ -25,12 +25,14 @@ namespace GameJam.Managers
 
 
 
-        [SerializeField] private ParticleSystem _paricle;
+
         [field:SerializeField] public BoardTile PlayerTile { get; private set; }
         [field:SerializeField] public int Row { get; private set; }
-        [field:SerializeField] public int Collum { get; private set; }
+        [field:SerializeField] public int Column { get; private set; }
         [field:SerializeField] public bool IsEverMoved { get; private set; }
         [field:SerializeField] public Sprite[] Skins { get; private set; }
+        
+        [SerializeField] private ParticleSystem _paricle;
         private void Start()
         {
             RaycastHit2D hit = Physics2D.Raycast(_player.transform.position, Vector2.zero);
@@ -39,7 +41,7 @@ namespace GameJam.Managers
                 if (!IsEverMoved) IsEverMoved = true;
                 PlayerTile = tile;
                 Row = tile.Row;
-                Collum = tile.Collum;
+                Column = tile.Collum;
             }
         }
 
@@ -54,8 +56,18 @@ namespace GameJam.Managers
                     TryMoveTo(boardTileComponent);
                 }
             }
+
+            if (PlayerTile == null)
+            {
+                GameOver();
+            }
         }
 
+        void GameOver()
+        {
+            Debug.Log("Game Over!");
+        }
+        
         public void TurnInTo(ChessPiece piece)
         {
             Debug.Log($" TurnedInTo: {piece} Was: {CurrentChessType}");
@@ -92,22 +104,22 @@ namespace GameJam.Managers
             switch (CurrentChessType)
             {
                 case ChessPiece.King:
-                    if (TryWalkKing(Row, Collum, tile.Row, tile.Collum)) MoveTo(tile);
+                    if (TryWalkKing(Row, Column, tile.Row, tile.Collum)) MoveTo(tile);
                     break;
                 case ChessPiece.Queen:
-                    if (TryWalkQueen(Row, Collum, tile.Row, tile.Collum)) MoveTo(tile);
+                    if (TryWalkQueen(Row, Column, tile.Row, tile.Collum)) MoveTo(tile);
                     break;
                 case ChessPiece.Rook:
-                    if (TryWalkRook(Row, Collum, tile.Row, tile.Collum)) MoveTo(tile);
+                    if (TryWalkRook(Row, Column, tile.Row, tile.Collum)) MoveTo(tile);
                     break;
                 case ChessPiece.Bishop:
-                    if (TryWalkBishop(Row, Collum, tile.Row, tile.Collum)) MoveTo(tile);
+                    if (TryWalkBishop(Row, Column, tile.Row, tile.Collum)) MoveTo(tile);
                     break;
                 case ChessPiece.Pawn:
-                    if (TryWalkPawn(Row, Collum, tile.Row, tile.Collum)) MoveTo(tile);
+                    if (TryWalkPawn(Row, Column, tile.Row, tile.Collum)) MoveTo(tile);
                     break;
                 case ChessPiece.Knight:
-                    if (TryWalkKnight(Row, Collum, tile.Row, tile.Collum)) MoveTo(tile);
+                    if (TryWalkKnight(Row, Column, tile.Row, tile.Collum)) MoveTo(tile);
                     break;
                 default:
                     break;
@@ -123,13 +135,13 @@ namespace GameJam.Managers
                     _player.transform.GetChild(0).GetComponent<Animator>().Play("Player_Walk");
                     break;
                 case ChessPiece.Queen:
-                    _player.transform.GetChild(0).GetComponent<Animator>().Play("Player_Walk");
+                    _player.transform.GetChild(0).GetComponent<Animator>().Play("Player_RookWalk");
                     break;
                 case ChessPiece.Rook:
                     _player.transform.GetChild(0).GetComponent<Animator>().Play("Player_RookWalk");
                     break;
                 case ChessPiece.Bishop:
-                    _player.transform.GetChild(0).GetComponent<Animator>().Play("Player_Walk");
+                    _player.transform.GetChild(0).GetComponent<Animator>().Play("Player_RookWalk");
                     break;
                 case ChessPiece.Pawn:
                     _player.transform.GetChild(0).GetComponent<Animator>().Play("Player_Walk");
@@ -140,12 +152,30 @@ namespace GameJam.Managers
                 default:
                     break;
             }
-            StartCoroutine( Walk(tile.transform.position, 3));
+            StartCoroutine( Walk(tile.transform.position, 5));
 
             if (!IsEverMoved) IsEverMoved = true;
             PlayerTile = tile;
             Row = tile.Row;
-            Collum = tile.Collum;
+            Column = tile.Collum;
+        }
+        
+        private bool CheckForHoles(BoardTile tile)
+        {
+            Vector2 direction = (tile.transform.position - PlayerTile.transform.position).normalized;
+            float distance = Vector2.Distance(PlayerTile.transform.position, tile.transform.position);
+            RaycastHit2D hit = Physics2D.Raycast(tile.transform.position, direction, distance);
+            
+            print(distance + " : " + direction);
+            
+            if (hit.collider //&& hit.collider.transform.position == new Vector3(hit.point.x, hit.point.y, 0)
+                             && hit.collider.gameObject.TryGetComponent<BoardTile>(out var tileComponent) && tileComponent.IsHole)
+            {
+                Debug.Log("Cannot move through the hole!");
+                return false;
+            }
+            Debug.Log("yep");
+            return true;
         }
 
         private IEnumerator Walk(Vector3 pos,float speed)
@@ -162,8 +192,6 @@ namespace GameJam.Managers
             }
             transform.position = pos;
             _player.transform.GetChild(0).GetComponent<Animator>().Play("Player_Idle");
-            Instantiate(_paricle, transform.position, Quaternion.identity);
-            audioManager.Walk();
         }
 
         public static float GptEase(float t)
@@ -177,11 +205,6 @@ namespace GameJam.Managers
         } //coolest one
         public static float InQuint(float t) => t * t * t * t * t;
 
-        private bool CheckForHoles(BoardTile tile)
-        {
-
-            return false;
-        }
 
         public static bool TryWalkKing(int rowpos, int collumpos,int rowTo,int collumTo)
         {
@@ -190,11 +213,11 @@ namespace GameJam.Managers
             bool IsCloseByY = (rowpos - 1 == rowTo) || (rowpos + 1 == rowTo) || (rowTo == rowpos);
             return ( IsCloseByX && IsCloseByY );
         }
-        public static bool TryWalkPawn(int rowpos, int collumpos, int rowTo, int collumTo)
+        public static bool TryWalkPawn(int rowPos, int columnPos, int rowTo, int columnTo)
         {
 
-            bool IsCloseByX = collumpos == collumTo;
-            bool IsCloseByY = (rowpos + 1 == rowTo) || (rowTo == rowpos);
+            bool IsCloseByX = columnPos == columnTo;
+            bool IsCloseByY = (rowPos + 1 == rowTo) || (rowTo == rowPos);
             return (IsCloseByY&&IsCloseByX);
         }
         public static bool TryWalkRook(int rowpos, int collumpos, int rowTo, int collumTo)
