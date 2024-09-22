@@ -9,6 +9,7 @@ using System.Xml;
 using System.Threading.Tasks;
 using Unity.VisualScripting;
 using GameJam.UI;
+using System.Linq;
 
 namespace GameJam.Managers
 {
@@ -136,7 +137,7 @@ namespace GameJam.Managers
             ShowMoves();
         }
 
-        public void TryMoveTo(BoardTile tile)
+        public void TryMoveTo(BoardTile tile)  
         {
             switch (CurrentChessType)
             {
@@ -156,7 +157,19 @@ namespace GameJam.Managers
                     if (!IsEverMoved)
                     { if (TryWalkPawnInital(Row, Column, tile.Row, tile.Collum)) { MoveTo(tile); } }
                     else
-                    { if (TryWalkPawn(Row, Column, tile.Row, tile.Collum)) { MoveTo(tile); } }
+                    {
+                        
+                        if(Physics2D.OverlapPointAll(tile.transform.position).Any(n => n.GetComponent<EnemyAI>() != null))
+                        {
+                            if (TryWalkPawnKILL(Row, Column, tile.Row, tile.Collum)) { MoveTo(tile); }
+                        }
+                        else
+                            if (TryWalkPawn(Row, Column, tile.Row, tile.Collum)) { MoveTo(tile); }
+                    }
+            
+                        
+                        
+                        
                     break;
                 case ChessPiece.Knight:
                     if (TryWalkKnight(Row, Column, tile.Row, tile.Collum)) MoveTo(tile);
@@ -165,6 +178,8 @@ namespace GameJam.Managers
                     break;
             }
         }
+
+
         public void MoveTo(BoardTile tile)
         {
             if (!canMove) return;
@@ -255,7 +270,13 @@ namespace GameJam.Managers
                 TurnInTo(ChessPiece.Pawn);
             }
             OnWalk?.Invoke();
-
+            foreach (var v in Physics2D.OverlapPointAll(transform.position))
+            {
+                if(v.TryGetComponent(out EnemyAI ai))
+                 {
+                    ai.Die();
+                }
+            }
         }
         private void ShowMoves()
         {
@@ -313,6 +334,16 @@ namespace GameJam.Managers
             if (IsSameCollum == true && IsSameRow == true)
                 return false;
             return IsSameCollum || IsSameRow;
+        }
+        public static bool TryWalkPawnKILL(int rowPos, int columnPos, int rowTo, int columnTo)
+        {
+
+            if (rowPos == rowTo && columnPos == columnTo)
+                return false;
+            bool IsCloseByX = (columnPos + 1 == columnTo) && (columnPos + 1 == columnTo);
+            bool IsCloseByY = (rowPos + 1 == rowTo) || (rowTo == rowPos);
+
+            return (IsCloseByY && IsCloseByX);
         }
         public static bool TryWalkBishop(int rowpos, int collumpos, int rowTo, int collumTo)
         {

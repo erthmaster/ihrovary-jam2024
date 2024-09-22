@@ -1,4 +1,6 @@
+using GameJam.Behaviours;
 using System;
+using System.Linq;
 using UnityEngine;
 using Zenject;
 
@@ -7,6 +9,7 @@ namespace GameJam.Managers
     public class BoardDestroyerManager : MonoBehaviour
     {
         [Inject] BoardDestroyer _boardDestroyer;
+        [Inject] PlayerManager player;
         [SerializeField] private float TickRate;
         [SerializeField] private float MaxTickRate;
         [SerializeField] private float TickStep;
@@ -27,6 +30,10 @@ namespace GameJam.Managers
         private void Tick()
         {
             _boardDestroyer.transform.position += _boardDestroyer.transform.up*TickStep;
+            if (Physics2D.OverlapCircleAll(transform.position, 6).Any(n=>n.transform.GetComponent<Player>()!=null))
+            {
+                player.GameOver();
+            }
             if (TickRate < MaxTickRate)
             {
                 UpdateTickRate(TickRate + 1);

@@ -9,8 +9,11 @@ namespace GameJam.UI
         public bool IsPaused { get;  set; }
         [SerializeField] private GameObject _menuObj;
         [SerializeField] private GameObject _settingsObj;
+        public bool isggd;
         private void Update()
         {
+            if (isggd)
+                return;
             if (Input.GetKeyDown(KeyCode.Escape))
             {
                 IsPaused = !IsPaused;
@@ -44,6 +47,12 @@ namespace GameJam.UI
         {
             _settingsObj.SetActive(true);
             _menuObj.SetActive(false);
+        }
+        public void PAUSEONGAMEOVER()
+        {
+            IsPaused = true;
+            isggd = true;
+            Time.timeScale = 0.0f;
         }
         public void Restart()
         {

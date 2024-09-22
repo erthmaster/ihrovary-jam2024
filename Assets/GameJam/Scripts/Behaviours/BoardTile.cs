@@ -1,5 +1,6 @@
 using GameJam.Managers;
 using System;
+using System.Linq;
 using UnityEngine;
 using UnityEngine.Serialization;
 using Zenject;
@@ -52,6 +53,7 @@ namespace GameJam.Behaviours
 
             CancelInvoke();
             Invoke(nameof(Fade), 0.4f);
+
         }
         private void Fade()
         {

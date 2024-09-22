@@ -23,7 +23,10 @@ namespace GameJam.Behaviours
 
         public EnemyState CurrentState;
         public float DetectDist = 20;
-
+        public void Die()
+        {
+            Destroy(gameObject);
+        }
 
         public enum EnemyState
         {
@@ -140,7 +143,26 @@ namespace GameJam.Behaviours
             }
             return false;
         }
+        public static bool TryWalkPawnEnemy(int rowPos, int columnPos, int rowTo, int columnTo)
+        {
 
+            if (rowPos == rowTo && columnPos == columnTo)
+                return false;
+            bool IsCloseByX = columnPos == columnTo;
+            bool IsCloseByY = (rowPos - 1 == rowTo) || (rowTo == rowPos);
+
+            return (IsCloseByY && IsCloseByX);
+        }
+        public static bool TryWalkPawnEnemyKILL(int rowPos, int columnPos, int rowTo, int columnTo)
+        {
+
+            if (rowPos == rowTo && columnPos == columnTo)
+                return false;
+            bool IsCloseByX = (columnPos-1==columnTo)&& (columnPos + 1 == columnTo);
+            bool IsCloseByY = (rowPos - 1 == rowTo) || (rowTo == rowPos);
+
+            return (IsCloseByY && IsCloseByX);
+        }
         public void TurnInTo(ChessPiece piece)
         {
             CurrentChessType = piece;
@@ -197,7 +219,15 @@ namespace GameJam.Behaviours
                     if (!IsEverMoved)
                     { if (TryWalkPawnInital(Row, Column, tile.Row, tile.Collum)) { MoveTo(tile); } }
                     else
-                    { if (TryWalkPawn(Row, Column, tile.Row, tile.Collum)) { MoveTo(tile); } }
+                    { 
+                        if(tile == pl.PlayerTile)
+                        {
+                            if (TryWalkPawnEnemyKILL(Row, Column, tile.Row, tile.Collum)) { MoveTo(tile); }
+                        }
+                        else
+                            if (TryWalkPawn(Row, Column, tile.Row, tile.Collum)) { MoveTo(tile); } 
+                    
+                    }
                     break;
                 case ChessPiece.Knight:
                     if (TryWalkKnight(Row, Column, tile.Row, tile.Collum)) MoveTo(tile);
