@@ -21,7 +21,7 @@ namespace GameJam.Behaviours
         [field:SerializeField] public Sprite WhiteSprite { get; private set; }
         [field:SerializeField] public ParticleSystem WhiteBreak { get; private set; }
         [field:SerializeField] public ParticleSystem BlackBreak { get; private set; }
-        //[Inject] GameManager _Manager чогось ця діч не працює тому я зроблю по конченому;
+        //[Inject] GameManager _Manager пїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅ пїЅпїЅ пїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅ пїЅ пїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ;
         public GameManager _Manager ;
 
 
@@ -52,8 +52,6 @@ namespace GameJam.Behaviours
 
             CancelInvoke();
             Invoke(nameof(Fade), 0.4f);
-
-
         }
         private void Fade()
         {
@@ -67,6 +65,7 @@ namespace GameJam.Behaviours
                 Instantiate(WhiteBreak, transform.position, Quaternion.identity);
             }
 
+            Camera.main.GetComponent<CameraMovement>().Shake();
 
             _Manager.TilePool.Release(this);
         }

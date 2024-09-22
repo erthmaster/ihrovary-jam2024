@@ -6,6 +6,8 @@ using Zenject;
 using UnityEngine.UI;
 using TMPro;
 using System.Xml;
+using System.Threading.Tasks;
+using Unity.VisualScripting;
 
 namespace GameJam.Managers
 {
@@ -32,10 +34,13 @@ namespace GameJam.Managers
         [field: SerializeField] public bool IsEverMoved { get; private set; }
         [field: SerializeField] public Sprite[] Skins { get; private set; }
 
+        private bool canMove = true;
+
         [SerializeField] private TMP_Text _currentMovesText;
         [SerializeField] private int[] _movesCount;
         private int currentMoves;
 
+        [SerializeField] private Animator _turnIntoAnim;
         [SerializeField] private ParticleSystem _paricle;
         public event Action OnWalk;
 
@@ -76,10 +81,28 @@ namespace GameJam.Managers
         {
             gameOverObj.SetActive(true);
         }
-
-        public void TurnInTo(ChessPiece piece)
+        async private Task TurnInAnimation()
+        {
+            _turnIntoAnim.gameObject.SetActive(true);
+            _turnIntoAnim.SetBool("Turn", true);
+            await Task.Delay(1000);
+        }
+        IEnumerator WaitEndOfAnim()
+        {
+            yield return new WaitForSeconds(0.2f);
+            _turnIntoAnim.SetBool("Turn", false);
+            _turnIntoAnim.gameObject.SetActive(false);
+        }
+        async public void TurnInTo(ChessPiece piece)
         {
             Debug.Log($" TurnedInTo: {piece} Was: {CurrentChessType}");
+
+            canMove = false;
+            await TurnInAnimation();
+
+            StartCoroutine(WaitEndOfAnim());
+            canMove = true;
+
             CurrentChessType = piece;
             switch (CurrentChessType)
             {
@@ -143,6 +166,8 @@ namespace GameJam.Managers
         }
         public void MoveTo(BoardTile tile)
         {
+            if (!canMove) return;
+            
             if (!CheckForHoles(tile))
                 return;
             switch (CurrentChessType)
@@ -224,7 +249,7 @@ namespace GameJam.Managers
             audioManager.Walk();
             _player.transform.GetChild(0).GetComponent<Animator>().Play("Player_Idle");
             Instantiate(_paricle, transform.position, Quaternion.identity);
-            if (currentMoves <= 0)
+            if (currentMoves <= 0 && CurrentChessType != ChessPiece.Pawn)
             {
                 TurnInTo(ChessPiece.Pawn);
             }
@@ -234,7 +259,10 @@ namespace GameJam.Managers
         private void ShowMoves()
         {
             char dot = '.';
-            _currentMovesText.text = new string(dot, currentMoves);
+            if(currentMoves < 0)
+                _currentMovesText.text = " ";
+            else
+                _currentMovesText.text = new string(dot, currentMoves);
         }
 
         public static float GptEase(float t)
