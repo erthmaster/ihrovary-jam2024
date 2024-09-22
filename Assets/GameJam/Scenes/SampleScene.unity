@@ -2854,6 +2854,8 @@ MonoBehaviour:
   _maxBoardHeightFromPlayer: 4
   _rows: 0
   _holeTileChance: 0.3
+  _EnemyTileChance: 0.05
+  Enemy: {fileID: 5970731492014770954, guid: d65220918658bce46871441f90d9d8ff, type: 3}
 --- !u!114 &961388541
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2868,7 +2870,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   CurrentChessType: 4
   <MoveCoolDown>k__BackingField: 10
-  <MaxMoveCoolDown>k__BackingField: 3
+  <MaxMoveCoolDown>k__BackingField: 1
   <PlayerTile>k__BackingField: {fileID: 0}
   <Row>k__BackingField: 0
   <Column>k__BackingField: 0

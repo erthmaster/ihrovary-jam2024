@@ -37,6 +37,7 @@ namespace GameJam.Managers
         private int currentMoves;
 
         [SerializeField] private ParticleSystem _paricle;
+        public event Action OnWalk;
 
 
         //��������� �� � ��� ���� ����� �� �������� ������������� �� ���� ������� �����
@@ -71,7 +72,7 @@ namespace GameJam.Managers
             MoveCoolDown = Mathf.Clamp(MoveCoolDown + Time.deltaTime, 0, MaxMoveCoolDown);
         }
 
-        void GameOver()
+        public void GameOver()
         {
             gameOverObj.SetActive(true);
         }
@@ -227,6 +228,8 @@ namespace GameJam.Managers
             {
                 TurnInTo(ChessPiece.Pawn);
             }
+            OnWalk?.Invoke();
+
         }
         private void ShowMoves()
         {
