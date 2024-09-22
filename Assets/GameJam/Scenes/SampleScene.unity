@@ -2465,7 +2465,7 @@ CircleCollider2D:
   m_CompositeOperation: 0
   m_CompositeOrder: 0
   m_Offset: {x: 0, y: 0.2133267}
-  m_Radius: 0.7133267
+  m_Radius: 0.56
 --- !u!1 &814192121
 GameObject:
   m_ObjectHideFlags: 0
@@ -3076,7 +3076,7 @@ MonoBehaviour:
   <MoveCoolDown>k__BackingField: 10
   <MaxMoveCoolDown>k__BackingField: 0.4
   <PlayerTile>k__BackingField: {fileID: 0}
-  <Row>k__BackingField: 0
+  <Row>k__BackingField: -1
   <Column>k__BackingField: 0
   <IsEverMoved>k__BackingField: 0
   <Skins>k__BackingField:
@@ -3090,6 +3090,9 @@ MonoBehaviour:
   _movesCount: 0500000004000000040000000300000002000000
   _turnIntoAnim: {fileID: 1160356261916858924}
   _paricle: {fileID: 5359015653086182439, guid: 336f9cbdcbe26444da3018a0455d41cc, type: 3}
+  Mask:
+    serializedVersion: 2
+    m_Bits: 64
   gameOverObj: {fileID: 1831301619}
 --- !u!114 &961388542
 MonoBehaviour:
@@ -5107,7 +5110,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _menuObj: {fileID: 516199626}
   _settingsObj: {fileID: 577469827}
-  isggd: 0
+  isgameover: 0
 --- !u!1 &1471227190
 GameObject:
   m_ObjectHideFlags: 0
@@ -6613,7 +6616,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: 'Your score:'
+  m_text: 
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: e7c14ef2aceeb7847a2c13dfba6361f3, type: 2}
   m_sharedMaterial: {fileID: 8502160194388128903, guid: e7c14ef2aceeb7847a2c13dfba6361f3, type: 2}

@@ -46,13 +46,13 @@ namespace GameJam.Managers
         [SerializeField] private Animator _turnIntoAnim;
         [SerializeField] private ParticleSystem _paricle;
         public event Action OnWalk;
-
+        public LayerMask Mask;
         public void SetInitPosition()
         {
-            RaycastHit2D hit = Physics2D.Raycast(_player.transform.position, Vector2.zero);
-            if (hit.collider && hit.collider.gameObject.TryGetComponent<BoardTile>(out BoardTile tile) && !tile.IsHole)
-            {
 
+            RaycastHit2D hit = Physics2D.Raycast(_player.transform.position, Vector2.zero,100,Mask);
+            if (hit.collider && hit.collider.gameObject.TryGetComponent<BoardTile>(out BoardTile tile))
+            {
                 PlayerTile = tile;
                 Row = tile.Row;
                 Column = tile.Collum;
@@ -65,6 +65,8 @@ namespace GameJam.Managers
 
         private void Update()
         {
+            if (Row == -1|| Column ==-1)
+                SetInitPosition();
             if (Input.GetMouseButtonDown(0) && MoveCoolDown >= MaxMoveCoolDown)
             {
                 Vector2 mousePosition = Camera.main.ScreenToWorldPoint(Input.mousePosition);
@@ -80,8 +82,11 @@ namespace GameJam.Managers
 
         public void GameOver()
         {
+            _player.transform.GetChild(0).GetComponent<Animator>().Play("Player_Dieing");
+            if(PlayerTile!=null)
+                Instantiate(PlayerTile.WhiteBreak, _player.transform.position, Quaternion.identity);
             gameOverObj.SetActive(true);
-            pauseManager.IsPaused = true;
+            pauseManager.PAUSEONGAMEOVER();
         }
         async private Task TurnInAnimation()
         {
@@ -98,7 +103,8 @@ namespace GameJam.Managers
         async public void TurnInTo(ChessPiece piece)
         {
             Debug.Log($" TurnedInTo: {piece} Was: {CurrentChessType}");
-
+            if (pauseManager.IsPaused)
+                return;
             canMove = false;
             await TurnInAnimation();
 
@@ -159,7 +165,7 @@ namespace GameJam.Managers
                     else
                     {
                         
-                        if(Physics2D.OverlapPointAll(tile.transform.position).Any(n => n.GetComponent<EnemyAI>() != null))
+                        if(Physics2D.OverlapCircleAll(tile.transform.position,1).Any(n => n.GetComponent<EnemyAI>() != null))
                         {
                             if (TryWalkPawnKILL(Row, Column, tile.Row, tile.Collum)) { MoveTo(tile); }
                         }
@@ -182,6 +188,8 @@ namespace GameJam.Managers
 
         public void MoveTo(BoardTile tile)
         {
+            if (pauseManager.IsPaused)
+                return;
             if (!canMove) return;
             
             if (!CheckForHoles(tile))
@@ -246,7 +254,8 @@ namespace GameJam.Managers
         private IEnumerator Walk(Vector3 pos, float speed)
         {
             float time = 0;
-
+            if (pauseManager.IsPaused)
+                yield break;
             if (CurrentChessType != ChessPiece.Pawn)
             {
                 currentMoves--;
@@ -270,7 +279,7 @@ namespace GameJam.Managers
                 TurnInTo(ChessPiece.Pawn);
             }
             OnWalk?.Invoke();
-            foreach (var v in Physics2D.OverlapCircleAll(transform.position,2))
+            foreach (var v in Physics2D.OverlapCircleAll(transform.position,1.2f))
             {
                 if(v.TryGetComponent(out EnemyAI ai))
                 {
@@ -340,8 +349,8 @@ namespace GameJam.Managers
 
             if (rowPos == rowTo && columnPos == columnTo)
                 return false;
-            bool IsCloseByX = (columnPos + 1 == columnTo) && (columnPos + 1 == columnTo);
-            bool IsCloseByY = (rowPos + 1 == rowTo) || (rowTo == rowPos);
+            bool IsCloseByX = (columnPos + 1 == columnTo) || (columnPos - 1 == columnTo);
+            bool IsCloseByY = (rowPos + 1 == rowTo) ;
 
             return (IsCloseByY && IsCloseByX);
         }
