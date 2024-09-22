@@ -18,7 +18,10 @@ namespace GameJam.Board
         [SerializeField] private int _maxBoardHeightFromPlayer;
         [SerializeField] private int _rows;
         [SerializeField] private float _holeTileChance;
+        [SerializeField] private float _EnemyTileChance;
+        [SerializeField] private EnemyAI Enemy;
         [Inject] GameManager _Manager;
+        [Inject] PlayerAudioManager Audiomanager;
 
         private void Update()
         {
@@ -87,6 +90,15 @@ namespace GameJam.Board
                     tile.GetComponent<BoardTile>().Construct(x % 2 == 0, Random.value < _holeTileChance);
                 else
                     tile.GetComponent<BoardTile>().Construct(x % 2 != 0, Random.value < _holeTileChance);
+
+
+                if (Random.value < _EnemyTileChance&&!tile.GetComponent<BoardTile>().IsHole)
+                {
+                    var v = Instantiate(Enemy, tile.transform.position, Quaternion.identity);
+                    v.CurrentChessType = (PlayerManager.ChessPiece)Random.Range(0, 6);
+                    v.pl = _playerManager;
+                    v.audioManager = Audiomanager;
+                }
 
                 tile.GetComponent<BoardTile>().Collum = x;
                 tile.GetComponent<BoardTile>()._Manager = _Manager;

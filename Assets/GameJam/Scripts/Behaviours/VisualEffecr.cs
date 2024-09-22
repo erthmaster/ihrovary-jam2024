@@ -1,16 +1,18 @@
 using UnityEngine;
 
-public class VisualEffecr : MonoBehaviour
+namespace GameJam
 {
-    // Start is called once before the first execution of Update after the MonoBehaviour is created
-    void Start()
+    public class VisualEffecr : MonoBehaviour
     {
-        
-    }
+        [SerializeField] private float lifetime;
 
-    // Update is called once per frame
-    void Update()
-    {
-        
+        private void Start()
+        {
+            Invoke(nameof(Destroy), lifetime);
+        }
+        private void Destroy()
+        {
+            Destroy(gameObject);
+        }
     }
 }

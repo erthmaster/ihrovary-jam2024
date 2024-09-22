@@ -8,6 +8,7 @@ namespace GameJam.Managers
     {
         [Inject] BoardDestroyer _boardDestroyer;
         [SerializeField] private float TickRate;
+        [SerializeField] private float MaxTickRate;
         [SerializeField] private float TickStep;
 
 
@@ -26,6 +27,11 @@ namespace GameJam.Managers
         private void Tick()
         {
             _boardDestroyer.transform.position += _boardDestroyer.transform.up*TickStep;
+            if (TickRate < MaxTickRate)
+            {
+                UpdateTickRate(TickRate + 1);
+            }
+                
         }
     }
 }
