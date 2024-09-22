@@ -22,10 +22,6 @@ namespace GameJam.Managers
             Knight,
 
         }
-
-
-
-
         [field:SerializeField] public BoardTile PlayerTile { get; private set; }
         [field:SerializeField] public int Row { get; private set; }
         [field:SerializeField] public int Column { get; private set; }
@@ -35,19 +31,20 @@ namespace GameJam.Managers
         
         [SerializeField] private ParticleSystem _paricle;
 
-        //перемістив бо є баг якщо тайли не вспівають згенеруватися до поки гравецт чекне
-        public void SetInitPosition()
 
-        {
-            RaycastHit2D hit = Physics2D.Raycast(_player.transform.position, Vector2.zero);
+        //перемістив бо є баг якщо тайли не вспівають згенеруватися до поки гравецт чекне
+        public void SetInitPosition(){RaycastHit2D hit = Physics2D.Raycast(_player.transform.position, Vector2.zero);
             if (hit.collider && hit.collider.gameObject.TryGetComponent<BoardTile>(out BoardTile tile) && !tile.IsHole)
             {
                 
                 PlayerTile = tile;
                 Row = tile.Row;
                 Column = tile.Collum;
-            }
-        }
+            }}
+
+
+        [SerializeField] private GameObject gameOverObj;
+
 
         private void Update()
         {
@@ -66,7 +63,7 @@ namespace GameJam.Managers
 
          void GameOver()
         {
-            Debug.Log("Game Over!");
+            gameOverObj.SetActive(true);
         }
 
         public void TurnInTo(ChessPiece piece)
@@ -131,7 +128,7 @@ namespace GameJam.Managers
         }
         public void MoveTo(BoardTile tile)
         {
-            if (CurrentChessType != ChessPiece.Knight && CheckForHoles(tile))
+            if (!CheckForHoles(tile))
                 return;
             switch (CurrentChessType)
             {
@@ -174,16 +171,25 @@ namespace GameJam.Managers
             Vector2 direction = (target - origin).normalized;
             float distance = Vector2.Distance(origin, target);
 
+
             // Cast the ray from PlayerTile towards the target tile
             RaycastHit2D[] hits = Physics2D.RaycastAll(origin, direction, distance);
 
             //print(origin + " : " + target);
+
+    
+            // Cast the ray from PlayerTile towards the target tile
+            RaycastHit2D[] hits = Physics2D.RaycastAll(origin, direction, distance);
+
+            print(origin + " : " + target);
+
 
             foreach (var hit in hits)
             {
                 if (hit.collider != null && hit.collider.gameObject != tile.gameObject // Ignore the target tile
                                          && hit.collider.gameObject.TryGetComponent<BoardTile>(out var tileComponent) && tileComponent.IsHole)
                 {
+
                     //Debug.Log("Cannot move through the hole!");
                     return true;
                 }
@@ -191,6 +197,9 @@ namespace GameJam.Managers
 
             //Debug.Log("yep");
             return false;
+
+
+
         }
 
         private IEnumerator Walk(Vector3 pos,float speed)
