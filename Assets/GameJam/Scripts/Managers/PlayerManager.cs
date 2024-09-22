@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using GameJam.Behaviours;
 using UnityEngine;
@@ -23,6 +24,8 @@ namespace GameJam.Managers
             Knight,
 
         }
+        [field: SerializeField] public float MoveCoolDown { get; private set; }
+        [field: SerializeField] public float MaxMoveCoolDown { get; private set; }
         [field: SerializeField] public BoardTile PlayerTile { get; private set; }
         [field: SerializeField] public int Row { get; private set; }
         [field: SerializeField] public int Column { get; private set; }
@@ -36,7 +39,7 @@ namespace GameJam.Managers
         [SerializeField] private ParticleSystem _paricle;
 
 
-        //перемістив бо є баг якщо тайли не вспівають згенеруватися до поки гравецт чекне
+        //пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅ пїЅ пїЅпїЅпїЅ пїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅ пїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅ пїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅ
         public void SetInitPosition()
         {
             RaycastHit2D hit = Physics2D.Raycast(_player.transform.position, Vector2.zero);
@@ -55,7 +58,7 @@ namespace GameJam.Managers
 
         private void Update()
         {
-            if (Input.GetMouseButtonDown(0))
+            if (Input.GetMouseButtonDown(0) && MoveCoolDown >= MaxMoveCoolDown)
             {
                 Vector2 mousePosition = Camera.main.ScreenToWorldPoint(Input.mousePosition);
                 RaycastHit2D hit = Physics2D.Raycast(mousePosition, Vector2.zero);
@@ -65,7 +68,7 @@ namespace GameJam.Managers
                 }
             }
 
-
+            MoveCoolDown = Mathf.Clamp(MoveCoolDown + Time.deltaTime, 0, MaxMoveCoolDown);
         }
 
         void GameOver()
@@ -139,7 +142,7 @@ namespace GameJam.Managers
         }
         public void MoveTo(BoardTile tile)
         {
-            if (CheckForHoles(tile) && CurrentChessType != ChessPiece.Knight)
+            if (!CheckForHoles(tile))
                 return;
             switch (CurrentChessType)
             {
@@ -170,6 +173,7 @@ namespace GameJam.Managers
             PlayerTile = tile;
             Row = tile.Row;
             Column = tile.Collum;
+            MoveCoolDown = 0;
         }
 
         private bool CheckForHoles(BoardTile tile)
@@ -181,38 +185,20 @@ namespace GameJam.Managers
             Vector2 target = tile.transform.position;
             Vector2 direction = (target - origin).normalized;
             float distance = Vector2.Distance(origin, target);
-
-
-            // Cast the ray from PlayerTile towards the target tile
-
-            //print(origin + " : " + target);
-
-
-            // Cast the ray from PlayerTile towards the target tile
-
-
-            print(origin + " : " + target);
-
-
+            
             RaycastHit2D[] hits = Physics2D.RaycastAll(origin, direction, distance);
-
-            print(origin + " : " + target);
 
             foreach (var hit in hits)
             {
-                if (hit.collider != null && hit.collider.gameObject != tile.gameObject // Ignore the target tile
+                if (hit.collider != null && hit.collider.gameObject != tile.gameObject
                                          && hit.collider.gameObject.TryGetComponent<BoardTile>(out var tileComponent) && tileComponent.IsHole)
                 {
                     Debug.Log("Cannot move through the hole!");
-                    return true;
+                    return false;
                 }
             }
 
-            //Debug.Log("yep");
-            return false;
-
-
-
+            return true;
         }
 
         private IEnumerator Walk(Vector3 pos, float speed)

@@ -1,4 +1,5 @@
 using GameJam.Behaviours;
+using PrimeTween;
 using UnityEngine;
 using Zenject;
 
@@ -9,6 +10,10 @@ namespace GameJam.Behaviours
         [Inject] private Player _player;
         [SerializeField] private float _followSpeed;
         [SerializeField] private Vector3 _offset;
+        
+        [SerializeField] private float _shakeDuration;
+        [SerializeField] private float _shakeStrength;
+        [SerializeField] private float _shakeFactor;
 
         void LateUpdate()
         {
@@ -16,6 +21,16 @@ namespace GameJam.Behaviours
             Vector2 move = Vector2.Lerp(transform.position, targetPosition, _followSpeed * Time.deltaTime);
             float clampedY = Mathf.Clamp(move.y, 5.5f, float.MaxValue);
             transform.position = new(0, clampedY, -10);
+        }
+
+        void Shake()
+        {
+            Vector3 originalPosition = transform.localPosition;
+
+            // Tween.ShakeCamera(
+            //     GetComponent<Camera>(),
+            //     
+            // );
         }
     }
 }

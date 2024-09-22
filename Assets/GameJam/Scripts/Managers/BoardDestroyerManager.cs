@@ -25,7 +25,7 @@ namespace GameJam.Managers
         }
         private void Tick()
         {
-            _boardDestroyer.transform.position += _boardDestroyer.transform.up*TickStep; 
+            _boardDestroyer.transform.position += _boardDestroyer.transform.up*TickStep;
         }
     }
 }

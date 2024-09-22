@@ -212,3 +212,4 @@ MonoBehaviour:
   <WhiteSprite>k__BackingField: {fileID: 5516271672008490599, guid: 75fad4d1fa05cf54cb006539cfec3910, type: 3}
   <WhiteBreak>k__BackingField: {fileID: 440204240109907678, guid: eb1e16ac69ccf334daf8f31a191fa809, type: 3}
   <BlackBreak>k__BackingField: {fileID: 8543356592239555695, guid: 37e17a01aeedfd646aa8acd24c401cd3, type: 3}
+  _Manager: {fileID: 0}
