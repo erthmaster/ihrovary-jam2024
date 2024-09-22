@@ -1556,9 +1556,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _followSpeed: 3
   _offset: {x: 0, y: 0, z: 0}
-  _shakeDuration: 0
-  _shakeStrength: 0
-  _shakeFactor: 0
+  _shakeDuration: 0.3
+  _shakeStrength: 100
+  _shakeFactor: 10
 --- !u!1 &525068312
 GameObject:
   m_ObjectHideFlags: 0
@@ -2833,7 +2833,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 36cb4859d097d1165b269d0ebca00f8f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  TickRate: 30
+  TickRate: 60
   TickStep: 2
 --- !u!114 &961388540
 MonoBehaviour:
@@ -2867,8 +2867,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   CurrentChessType: 4
-  <MoveCoolDown>k__BackingField: 10
-  <MaxMoveCoolDown>k__BackingField: 3
+  <MoveCoolDown>k__BackingField: 0
+  <MaxMoveCoolDown>k__BackingField: 0.5
   <PlayerTile>k__BackingField: {fileID: 0}
   <Row>k__BackingField: 0
   <Column>k__BackingField: 0
@@ -2883,7 +2883,7 @@ MonoBehaviour:
   _currentMovesText: {fileID: 989056193}
   _movesCount: 0500000004000000040000000300000002000000
   _paricle: {fileID: 5359015653086182439, guid: 336f9cbdcbe26444da3018a0455d41cc, type: 3}
-  gameOverObj: {fileID: 0}
+  gameOverObj: {fileID: 1831301619}
 --- !u!114 &961388542
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2898,7 +2898,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _maxMana: 10
   mana: 0
-  _speed: 1
+  _speed: 0.2
   _slider: {fileID: 915443139}
 --- !u!114 &961388543
 MonoBehaviour:

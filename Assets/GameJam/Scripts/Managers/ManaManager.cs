@@ -14,7 +14,7 @@ namespace GameJam.UI
         [SerializeField] private Slider _slider;
         private void Start()
         {
-            mana = _maxMana;
+            mana = 0;
         }
         private void FixedUpdate()
         {
