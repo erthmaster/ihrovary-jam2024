@@ -128,7 +128,7 @@ namespace GameJam.Managers
         }
         public void MoveTo(BoardTile tile)
         {
-            if (!CheckForHoles(tile))
+            if (CheckForHoles(tile)&& CurrentChessType!= ChessPiece.Knight)
                 return;
             switch (CurrentChessType)
             {
@@ -173,24 +173,26 @@ namespace GameJam.Managers
 
 
             // Cast the ray from PlayerTile towards the target tile
-            RaycastHit2D[] hits = Physics2D.RaycastAll(origin, direction, distance);
 
             //print(origin + " : " + target);
 
     
             // Cast the ray from PlayerTile towards the target tile
-            RaycastHit2D[] hits = Physics2D.RaycastAll(origin, direction, distance);
+
 
             print(origin + " : " + target);
 
+
+            RaycastHit2D[] hits = Physics2D.RaycastAll(origin, direction, distance);
+
+            print(origin + " : " + target);
 
             foreach (var hit in hits)
             {
                 if (hit.collider != null && hit.collider.gameObject != tile.gameObject // Ignore the target tile
                                          && hit.collider.gameObject.TryGetComponent<BoardTile>(out var tileComponent) && tileComponent.IsHole)
                 {
-
-                    //Debug.Log("Cannot move through the hole!");
+                    Debug.Log("Cannot move through the hole!");
                     return true;
                 }
             }
