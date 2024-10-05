@@ -10,6 +10,7 @@ using System.Threading.Tasks;
 using Unity.VisualScripting;
 using GameJam.UI;
 using System.Linq;
+using GameJam.Board;
 
 namespace GameJam.Managers
 {
@@ -18,6 +19,7 @@ namespace GameJam.Managers
         [Inject] private Player _player;
         [Inject] private PlayerAudioManager audioManager;
         [Inject] private PauseManager pauseManager;
+        [Inject] private BoardGenerator _gen;
         public ChessPiece CurrentChessType = ChessPiece.Pawn;
         public enum ChessPiece
         {
@@ -46,7 +48,63 @@ namespace GameJam.Managers
         [SerializeField] private Animator _turnIntoAnim;
         [SerializeField] private ParticleSystem _paricle;
         public event Action OnWalk;
+        
         public LayerMask Mask;
+
+
+        public void Deselect()
+        {
+            foreach (var tile in _gen.tiles)
+            { tile.DeSelect(); }
+        }
+        public void ShowSelect()
+        {
+            foreach( var tile in _gen.tiles)
+            {
+                switch (CurrentChessType)
+                {
+                    case ChessPiece.King:
+                        if (TryWalkKing(Row, Column,tile.Row, tile.Collum))
+                        {
+                            tile.Select();
+                        }
+                        break;
+                    case ChessPiece.Queen:
+                        if (TryWalkQueen(Row, Column, tile.Row, tile.Collum))
+                        {
+                            tile.Select();
+                        }
+                        break;
+                    case ChessPiece.Rook:
+                        if (TryWalkRook(Row, Column, tile.Row, tile.Collum))
+                        {
+                            tile.Select();
+                        }
+                        break;
+                    case ChessPiece.Bishop:
+                        if (TryWalkBishop(Row, Column, tile.Row, tile.Collum))
+                        {
+                            tile.Select();
+                        }
+                        break;
+                    case ChessPiece.Pawn:
+                        if (TryWalkPawn(Row, Column, tile.Row, tile.Collum))
+                        {
+                            tile.Select();
+                        }
+                        break;
+                    case ChessPiece.Knight:
+                        if (TryWalkKnight(Row, Column, tile.Row, tile.Collum))
+                        {
+                            tile.Select();
+                        }
+                        break;
+                    default:
+                        break;
+                }
+            }
+        }
+
         public void SetInitPosition()
         {
 
@@ -141,6 +199,7 @@ namespace GameJam.Managers
                     break;
             }
             ShowMoves();
+            ShowSelect();
         }
 
         public void TryMoveTo(BoardTile tile)  
@@ -253,6 +312,7 @@ namespace GameJam.Managers
 
         private IEnumerator Walk(Vector3 pos, float speed)
         {
+            Deselect();
             float time = 0;
             if (pauseManager.IsPaused)
                 yield break;
@@ -286,6 +346,7 @@ namespace GameJam.Managers
                     ai.Die();
                 }
             }
+            ShowSelect();
         }
         private void ShowMoves()
         {

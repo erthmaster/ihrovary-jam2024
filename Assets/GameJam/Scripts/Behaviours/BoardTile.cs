@@ -1,3 +1,4 @@
+using GameJam.Board;
 using GameJam.Managers;
 using System;
 using System.Linq;
@@ -20,10 +21,12 @@ namespace GameJam.Behaviours
         
         [field:SerializeField] public Sprite BlackSprite { get; private set; }
         [field:SerializeField] public Sprite WhiteSprite { get; private set; }
+        [field:SerializeField] public Sprite SelectSprite { get; private set; }
         [field:SerializeField] public ParticleSystem WhiteBreak { get; private set; }
         [field:SerializeField] public ParticleSystem BlackBreak { get; private set; }
         //[Inject] GameManager _Manager ������ �� �� �� ������ ���� � ������ �� ���������;
         public GameManager _Manager ;
+        public BoardGenerator gen ;
 
 
 
@@ -68,12 +71,24 @@ namespace GameJam.Behaviours
             }
 
             Camera.main.GetComponent<CameraMovement>().Shake();
-
+            gen.tiles.Remove(this);
             _Manager.TilePool.Release(this);
         }
+        public void Select()
+        {
+            if(!IsBlack)
+                An.Play("TileSelect");
+            else
+                An.Play("TileSelectBlack");
+        }
 
-
-
+        public void DeSelect()
+        {
+            string animname = IsHole ?
+                "TileIdleHole" :
+                IsBlack ? "TileIdleBlack" : "TileIdle";
+            An.Play(animname);
+        }
 
     }
 }
