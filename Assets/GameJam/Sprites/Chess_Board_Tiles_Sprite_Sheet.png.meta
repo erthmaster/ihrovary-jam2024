@@ -511,6 +511,28 @@ TextureImporter:
       indices: 
       edges: []
       weights: []
+    - serializedVersion: 2
+      name: Chess_Board_Tiles_Sprite_Sheet_18
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 260
+        width: 64
+        height: 64
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: a853e3c5cafd6694ab8db00c682577d4
+      internalID: -1578618118
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
     outline: []
     customData: 
     physicsShape: []
@@ -539,6 +561,7 @@ TextureImporter:
       Chess_Board_Tiles_Sprite_Sheet_15: -780946696
       Chess_Board_Tiles_Sprite_Sheet_16: -2101589546
       Chess_Board_Tiles_Sprite_Sheet_17: 1809348182
+      Chess_Board_Tiles_Sprite_Sheet_18: -1578618118
       Chess_Board_Tiles_Sprite_Sheet_2: 122546171
       Chess_Board_Tiles_Sprite_Sheet_3: -416881835
       Chess_Board_Tiles_Sprite_Sheet_4: -1140423247

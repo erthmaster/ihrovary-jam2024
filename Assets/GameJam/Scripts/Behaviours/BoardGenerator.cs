@@ -1,4 +1,5 @@
 using System;
+using System.Collections.Generic;
 using GameJam.Behaviours;
 using GameJam.Managers;
 using UnityEngine;
@@ -22,7 +23,7 @@ namespace GameJam.Board
         [SerializeField] private EnemyAI Enemy;
         [Inject] GameManager _Manager;
         [Inject] PlayerAudioManager Audiomanager;
-
+        public List<BoardTile> tiles = new List<BoardTile>();
         private void Update()
         {
 
@@ -48,19 +49,22 @@ namespace GameJam.Board
                 for (int x = 0; x < _boardWidth; x++)
                 {
                     Vector3 tileScale = _boardTilePrefab.transform.localScale;
-                    GameObject tile = _Manager.TilePool.Get().gameObject;
+                    BoardTile tile = _Manager.TilePool.Get();
                     tile.transform.SetPositionAndRotation(new Vector2(x * tileScale.x - ((_boardWidth - 1) * tileScale.x) / 2, _rows * tileScale.y),
                         Quaternion.identity);
                     tile.transform.SetParent(_boardTilesParent);
+                    
                     if (_rows % 2 == 0)
-                        tile.GetComponent<BoardTile>().Construct(x % 2 == 0, false);
+                        tile.Construct(x % 2 == 0, false);
                     else
-                        tile.GetComponent<BoardTile>().Construct(x % 2 != 0, false);
-                    tile.GetComponent<BoardTile>().Row = _rows;
-                    tile.GetComponent<BoardTile>()._spriteRenderer.sortingOrder = -_rows;
-                    tile.GetComponent<BoardTile>().Collum = x;
-                    tile.GetComponent<BoardTile>()._Manager=_Manager;
-                    boardTiles[x, i] = tile.GetComponent<BoardTile>();
+                        tile.Construct(x % 2 != 0, false);
+                    tile.Row = _rows;
+                    tile._spriteRenderer.sortingOrder = -_rows;
+                    tile.Collum = x;
+                    tile._Manager=_Manager;
+                    tile.gen=this;
+                    boardTiles[x, i] = tile;
+                    tiles.Add(tile);
                 }
                 _rows++;
             }
@@ -80,19 +84,19 @@ namespace GameJam.Board
             {
                 Vector3 tileScale = _boardTilePrefab.transform.localScale;
                 //Debug.Log(x);
-                GameObject tile = _Manager.TilePool.Get().gameObject;
+                BoardTile tile = _Manager.TilePool.Get();
                 tile.transform.SetPositionAndRotation(new Vector2(x * tileScale.x - ((_boardWidth - 1) * tileScale.x) / 2, _rows * tileScale.y),
                     Quaternion.identity);
                 tile.transform.SetParent(_boardTilesParent);
                     
 
                 if (_rows % 2 == 0)
-                    tile.GetComponent<BoardTile>().Construct(x % 2 == 0, Random.value < _holeTileChance);
+                    tile.Construct(x % 2 == 0, Random.value < _holeTileChance);
                 else
-                    tile.GetComponent<BoardTile>().Construct(x % 2 != 0, Random.value < _holeTileChance);
+                    tile.Construct(x % 2 != 0, Random.value < _holeTileChance);
 
 
-                if (Random.value < _EnemyTileChance&&!tile.GetComponent<BoardTile>().IsHole)
+                if (Random.value < _EnemyTileChance&&!tile.IsHole)
                 {
                     var v = Instantiate(Enemy, tile.transform.position, Quaternion.identity);
                     v.CurrentChessType = (PlayerManager.ChessPiece)Random.Range(0, 6);
@@ -100,10 +104,12 @@ namespace GameJam.Board
                     v.audioManager = Audiomanager;
                 }
 
-                tile.GetComponent<BoardTile>().Collum = x;
-                tile.GetComponent<BoardTile>()._Manager = _Manager;
-                tile.GetComponent<BoardTile>().Row = _rows;
-                tile.GetComponent<BoardTile>()._spriteRenderer.sortingOrder = -_rows;
+                tile.Collum = x;
+                tile._Manager = _Manager;
+                tile.Row = _rows;
+                tile.gen = this;
+                tile._spriteRenderer.sortingOrder = -_rows;
+                tiles.Add(tile);
             }
             _rows++;
         }
