@@ -13,10 +13,6 @@ namespace GameJam.UI
         {
             if (isgameover)
                 return;
-            if (Input.GetKeyDown(KeyCode.Escape))
-            {
-                IsPaused = !IsPaused;
-            }
             if (IsPaused)
             {
                 Time.timeScale = 0.0f;
@@ -28,8 +24,13 @@ namespace GameJam.UI
                 DisPause();
             }
         }
+        public void Pause()
+        { 
+            IsPaused = true;
+        }
         public void DisPause()
         {
+            IsPaused = false;
             if (_settingsObj.activeInHierarchy)
             {
                 _settingsObj.SetActive(false);
@@ -46,6 +47,11 @@ namespace GameJam.UI
         {
             _settingsObj.SetActive(true);
             _menuObj.SetActive(false);
+        }
+        public void GoPause()
+        {
+            _settingsObj.SetActive(false);
+            _menuObj.SetActive(true);
         }
         public void PAUSEONGAMEOVER()
         {
