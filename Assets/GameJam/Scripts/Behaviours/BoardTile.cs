@@ -28,10 +28,6 @@ namespace GameJam.Behaviours
         public GameManager _Manager ;
         public BoardGenerator gen ;
 
-
-
-
-
         public void Construct(bool isBlack, bool isHole)
         {
             IsBlack = isBlack;
@@ -76,6 +72,7 @@ namespace GameJam.Behaviours
         }
         public void Select()
         {
+            if (IsHole) return;
             if(!IsBlack)
                 An.Play("TileSelect");
             else

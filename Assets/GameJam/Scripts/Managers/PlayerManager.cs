@@ -59,38 +59,55 @@ namespace GameJam.Managers
         }
         public void ShowSelect()
         {
+            bool holeFound = false;
             foreach( var tile in _gen.tiles)
             {
+                if (holeFound) continue;
                 switch (CurrentChessType)
                 {
                     case ChessPiece.King:
                         if (TryWalkKing(Row, Column,tile.Row, tile.Collum))
                         {
-                            tile.Select();
+                            if (SelectCheckHoleAndStop(tile) == true)
+                                tile.Select();
+                            else
+                                holeFound = true;
                         }
                         break;
                     case ChessPiece.Queen:
                         if (TryWalkQueen(Row, Column, tile.Row, tile.Collum))
                         {
-                            tile.Select();
+                            if (SelectCheckHoleAndStop(tile) == true)
+                                tile.Select();
+                            else
+                                holeFound = true;
                         }
                         break;
                     case ChessPiece.Rook:
                         if (TryWalkRook(Row, Column, tile.Row, tile.Collum))
                         {
-                            tile.Select();
+                            if (SelectCheckHoleAndStop(tile) == true)
+                                tile.Select();
+                            else
+                                holeFound = true;
                         }
                         break;
                     case ChessPiece.Bishop:
                         if (TryWalkBishop(Row, Column, tile.Row, tile.Collum))
                         {
-                            tile.Select();
+                            if (SelectCheckHoleAndStop(tile) == true)
+                                tile.Select();
+                            else
+                                holeFound = true;
                         }
                         break;
                     case ChessPiece.Pawn:
                         if (TryWalkPawn(Row, Column, tile.Row, tile.Collum))
                         {
-                            tile.Select();
+                            if (SelectCheckHoleAndStop(tile) == true)
+                                tile.Select();
+                            else
+                                holeFound = true;//оце я понадодавав, якось модерніхуй
                         }
                         break;
                     case ChessPiece.Knight:
@@ -103,6 +120,14 @@ namespace GameJam.Managers
                         break;
                 }
             }
+        }
+        private bool SelectCheckHoleAndStop(BoardTile tile)//хуйня не працює
+        {
+            if (tile.IsHole)
+            {
+                return false;
+            }
+            return true;
         }
 
         public void SetInitPosition()
@@ -190,6 +215,7 @@ namespace GameJam.Managers
                     break;
                 case ChessPiece.Pawn:
                     _player.transform.GetChild(0).GetComponent<SpriteRenderer>().sprite = Skins[0];
+                    currentMoves = 0;
                     break;
                 case ChessPiece.Knight:
                     _player.transform.GetChild(0).GetComponent<SpriteRenderer>().sprite = Skins[4];
@@ -351,7 +377,7 @@ namespace GameJam.Managers
         private void ShowMoves()
         {
             char dot = '.';
-            if(currentMoves < 0)
+            if(currentMoves <= 0)
                 _currentMovesText.text = " ";
             else
                 _currentMovesText.text = new string(dot, currentMoves);
