@@ -20,6 +20,7 @@ namespace GameJam.Managers
         [Inject] private PlayerAudioManager audioManager;
         [Inject] private PauseManager pauseManager;
         [Inject] private BoardGenerator _gen;
+        [Inject] private GameManager ___;
         public ChessPiece CurrentChessType = ChessPiece.Pawn;
         public enum ChessPiece
         {
@@ -54,66 +55,87 @@ namespace GameJam.Managers
 
         public void Deselect()
         {
+
             foreach (var tile in _gen.tiles)
             { tile.DeSelect(); }
         }
         public void ShowSelect()
         {
-            bool holeFound = false;
+            Debug.Log("SHOWSELECT");
+            Deselect();
             foreach( var tile in _gen.tiles)
             {
-                if (holeFound) continue;
+                if (!SelectCheckHoleAndStop(tile))
+                    continue;
+
                 switch (CurrentChessType)
                 {
                     case ChessPiece.King:
-                        if (TryWalkKing(Row, Column,tile.Row, tile.Collum))
+                        if (TryWalkKing(Row, Column, tile.Row, tile.Collum))
                         {
-                            if (SelectCheckHoleAndStop(tile) == true)
+                            if (!CheckForHoles(tile))
+                                continue;
+                            if (SelectCheckHoleAndStop(tile))
                                 tile.Select();
-                            else
-                                holeFound = true;
+
                         }
                         break;
                     case ChessPiece.Queen:
                         if (TryWalkQueen(Row, Column, tile.Row, tile.Collum))
                         {
-                            if (SelectCheckHoleAndStop(tile) == true)
+                            if (!CheckForHoles(tile))
+                                continue;
+                            if (SelectCheckHoleAndStop(tile))
                                 tile.Select();
-                            else
-                                holeFound = true;
+
                         }
                         break;
                     case ChessPiece.Rook:
                         if (TryWalkRook(Row, Column, tile.Row, tile.Collum))
                         {
-                            if (SelectCheckHoleAndStop(tile) == true)
+                            if (!CheckForHoles(tile))
+                                continue;
+                            if (SelectCheckHoleAndStop(tile))
                                 tile.Select();
-                            else
-                                holeFound = true;
+
                         }
                         break;
                     case ChessPiece.Bishop:
                         if (TryWalkBishop(Row, Column, tile.Row, tile.Collum))
                         {
-                            if (SelectCheckHoleAndStop(tile) == true)
+                            if (!CheckForHoles(tile))
+                                continue;
+                            if (SelectCheckHoleAndStop(tile))
                                 tile.Select();
-                            else
-                                holeFound = true;
+
                         }
                         break;
                     case ChessPiece.Pawn:
-                        if (TryWalkPawn(Row, Column, tile.Row, tile.Collum))
+
+                        if (!IsEverMoved && TryWalkPawnInital(Row, Column, tile.Row, tile.Collum))
                         {
-                            if (SelectCheckHoleAndStop(tile) == true)
+                            if (!CheckForHoles(tile))
+                                continue;
+                            if (SelectCheckHoleAndStop(tile))
                                 tile.Select();
-                            else
-                                holeFound = true;//оце я понадодавав, якось модерніхуй
+                        }
+                        else if (TryWalkPawn(Row, Column, tile.Row, tile.Collum))
+                        {
+                            if (!CheckForHoles(tile))
+                                continue;
+                            if (SelectCheckHoleAndStop(tile))
+                                tile.Select();
+                        }
+                        else if (Physics2D.OverlapCircleAll(tile.transform.position, 1).Any(n => n.GetComponent<EnemyAI>() != null))
+                        {
+                            if (TryWalkPawnKILL(Row, Column, tile.Row, tile.Collum)) { if (SelectCheckHoleAndStop(tile)) tile.Select(); }
                         }
                         break;
                     case ChessPiece.Knight:
                         if (TryWalkKnight(Row, Column, tile.Row, tile.Collum))
                         {
-                            tile.Select();
+                            if (SelectCheckHoleAndStop(tile))
+                                tile.Select();
                         }
                         break;
                     default:
@@ -121,13 +143,9 @@ namespace GameJam.Managers
                 }
             }
         }
-        private bool SelectCheckHoleAndStop(BoardTile tile)//хуйня не працює
+        private bool SelectCheckHoleAndStop(BoardTile tile)//хуйня  працює)
         {
-            if (tile.IsHole)
-            {
-                return false;
-            }
-            return true;
+            return !tile.IsHole;
         }
 
         public void SetInitPosition()
@@ -140,6 +158,7 @@ namespace GameJam.Managers
                 Row = tile.Row;
                 Column = tile.Collum;
             }
+            ShowSelect();
         }
 
 
@@ -165,26 +184,34 @@ namespace GameJam.Managers
 
         public void GameOver()
         {
+            Debug.Log("GameOver");
+            Deselect();
             _player.transform.GetChild(0).GetComponent<Animator>().Play("Player_Dieing");
             if(PlayerTile!=null)
                 Instantiate(PlayerTile.WhiteBreak, _player.transform.position, Quaternion.identity);
             gameOverObj.SetActive(true);
             pauseManager.PAUSEONGAMEOVER();
+            ___.CurrentGameState = GameManager.GameState.GameOver;
         }
         async private Task TurnInAnimation()
         {
+            Debug.Log("TurnInAnimation");
+            Deselect();
             _turnIntoAnim.gameObject.SetActive(true);
             _turnIntoAnim.SetBool("Turn", true);
             await Task.Delay(1000);
         }
         IEnumerator WaitEndOfAnim()
         {
+            Debug.Log("waitforofAnim");
+            Deselect();
             yield return new WaitForSeconds(0.2f);
             _turnIntoAnim.SetBool("Turn", false);
             _turnIntoAnim.gameObject.SetActive(false);
         }
         async public void TurnInTo(ChessPiece piece)
         {
+
             Debug.Log($" TurnedInTo: {piece} Was: {CurrentChessType}");
             if (pauseManager.IsPaused)
                 return;
@@ -224,12 +251,20 @@ namespace GameJam.Managers
                 default:
                     break;
             }
-            ShowMoves();
-            ShowSelect();
+            if (CurrentChessType == ChessPiece.Pawn)
+                IsEverMoved = false;
+            if (___.CurrentGameState != GameManager.GameState.GameOver)
+            {
+                ShowMoves();
+                ShowSelect();
+            }
+            
         }
 
         public void TryMoveTo(BoardTile tile)  
         {
+            Debug.Log("TryMoveTo");
+            Deselect();
             switch (CurrentChessType)
             {
                 case ChessPiece.King:
@@ -315,7 +350,8 @@ namespace GameJam.Managers
         {
             if (CurrentChessType == ChessPiece.Knight)
                 return true;
-
+            if (PlayerTile == null)
+                return false;
             Vector2 origin = PlayerTile.transform.position;
             Vector2 target = tile.transform.position;
             Vector2 direction = (target - origin).normalized;
@@ -338,6 +374,7 @@ namespace GameJam.Managers
 
         private IEnumerator Walk(Vector3 pos, float speed)
         {
+            Debug.Log("WALK");
             Deselect();
             float time = 0;
             if (pauseManager.IsPaused)
