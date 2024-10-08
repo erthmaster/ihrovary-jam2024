@@ -71,7 +71,7 @@ namespace GameJam.Board
             GenerateNewRow();
             GenerateNewRow();
             GenerateNewRow();
-            _playerManager.Invoke(nameof(_playerManager.SetInitPosition), 1f);
+            //_playerManager.Invoke(nameof(_playerManager.SetInitPosition), 1f);
 
             return boardTiles;
         }

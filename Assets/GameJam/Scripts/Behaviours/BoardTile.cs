@@ -72,6 +72,8 @@ namespace GameJam.Behaviours
         }
         public void Select()
         {
+            if (!An)
+                return;
             if (IsHole) return;
             if(!IsBlack)
                 An.Play("TileSelect");
@@ -81,6 +83,8 @@ namespace GameJam.Behaviours
 
         public void DeSelect()
         {
+            if (!An)
+                return;
             string animname = IsHole ?
                 "TileIdleHole" :
                 IsBlack ? "TileIdleBlack" : "TileIdle";
