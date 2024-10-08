@@ -37,6 +37,7 @@ namespace GameJam.Managers
         [field: SerializeField] public bool IsEverMoved { get; private set; }
         [field: SerializeField] public Sprite[] Skins { get; private set; }
 
+        public bool Moving = false;
         private bool canMove = true;
 
         [SerializeField] private TMP_Text _currentMovesText;
@@ -329,6 +330,8 @@ namespace GameJam.Managers
                 default:
                     break;
             }
+
+            Moving = true;
             StartCoroutine(Walk(tile.transform.position, 3));
 
             if (!IsEverMoved) IsEverMoved = true;
@@ -385,6 +388,8 @@ namespace GameJam.Managers
                 yield return null;
             }
             transform.position = pos;
+
+            Moving = false;
 
             audioManager.Walk();
             _player.transform.GetChild(0).GetComponent<Animator>().Play("Player_Idle");

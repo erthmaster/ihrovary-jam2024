@@ -4,17 +4,45 @@ using Zenject;
 
 namespace GameJam.Behaviours
 {
-    public abstract class Item : MonoBehaviour
+    public class Item : MonoBehaviour
     {
         [Inject] PlayerManager playerManager;
+        [Inject] private ItemsEffects _itemsEffects;
 
-        private void OnCollisionStay(Collision collision)
+        public string Name;
+
+        private void OnTriggerStay2D(Collider2D collider)
         {
-            if(collision.gameObject.GetComponent<Player>() && !playerManager.isMoving)
+            Debug.Log("1");
+            if (collider.GetComponent<Player>() && !playerManager.Moving)
             {
-                PickUp();
+                Debug.Log("1");
+                CheckName(Name);
             }
         }
-        public abstract void PickUp();
+        private void CheckName(string name)
+        {
+            if (name == "FreezeEnemies")
+            {
+                FreezeEnemies();
+            }
+            else if(name == "DoubleCoins")
+            {
+                DoubleCoins();
+            }
+        }
+
+        private void FreezeEnemies()
+        {
+            _itemsEffects.IsFreezed = true;
+            Invoke(nameof(_itemsEffects.FreezedDelay), _itemsEffects.CDFreezed);
+            Destroy(gameObject);
+        }
+        private void DoubleCoins()
+        {
+            _itemsEffects.IsDoubleGold = true;
+            Invoke(nameof(_itemsEffects.DoubleGoldDelay), _itemsEffects.CDDoubleGold);
+            Destroy(gameObject);
+        }
     }
 }
