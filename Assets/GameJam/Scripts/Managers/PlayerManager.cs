@@ -3,11 +3,8 @@ using System.Collections;
 using GameJam.Behaviours;
 using UnityEngine;
 using Zenject;
-using UnityEngine.UI;
 using TMPro;
-using System.Xml;
 using System.Threading.Tasks;
-using Unity.VisualScripting;
 using GameJam.UI;
 using System.Linq;
 using GameJam.Board;
@@ -50,7 +47,6 @@ namespace GameJam.Managers
         public event Action OnWalk;
         
         public LayerMask Mask;
-
 
         public void Deselect()
         {
@@ -256,11 +252,7 @@ namespace GameJam.Managers
                         }
                         else
                             if (TryWalkPawn(Row, Column, tile.Row, tile.Collum)) { MoveTo(tile); }
-                    }
-            
-                        
-                        
-                        
+                    } 
                     break;
                 case ChessPiece.Knight:
                     if (TryWalkKnight(Row, Column, tile.Row, tile.Collum)) MoveTo(tile);
