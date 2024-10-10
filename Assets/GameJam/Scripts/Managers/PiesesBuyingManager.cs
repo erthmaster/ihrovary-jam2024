@@ -65,8 +65,6 @@ namespace GameJam
             _manaManager.mana -= price;
 
             _playerManager.TurnInTo(piecetype);
-            _manaManager.mana -= price;
-
         }
     }
 }

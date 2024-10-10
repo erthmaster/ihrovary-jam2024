@@ -1,3 +1,4 @@
+using TMPro;
 using UnityEngine;
 using UnityEngine.UI;
 
@@ -10,8 +11,8 @@ namespace GameJam.UI
         public float mana;
         [SerializeField] private float _speed;
 
-
         [SerializeField] private Slider _slider;
+        [SerializeField] private TMP_Text _manaText;
         private void Start()
         {
             mana = 0;
@@ -23,6 +24,7 @@ namespace GameJam.UI
             if (mana < 0)
                 mana = 0;
             _slider.value = mana;
+            _manaText.text = Mathf.Floor(mana).ToString();
         }
     }
 }
