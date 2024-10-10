@@ -3608,6 +3608,7 @@ MonoBehaviour:
   _EnemyTileChance: 0.04
   Enemy: {fileID: 5970731492014770954, guid: d65220918658bce46871441f90d9d8ff, type: 3}
   tiles: []
+  items: []
 --- !u!114 &961388541
 MonoBehaviour:
   m_ObjectHideFlags: 0

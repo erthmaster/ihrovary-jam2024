@@ -7,9 +7,9 @@ namespace GameJam.Behaviours
 {
     public class Item : MonoBehaviour
     {
-        [Inject] PlayerManager playerManager;
-        [Inject] private ItemsEffects _itemsEffects;
-
+        public PlayerManager playerManager;
+        public Items _itemsEffects;
+        [SerializeField] float spawnChance;
         public string Name;
 
         private void OnTriggerStay2D(Collider2D collider)
@@ -42,6 +42,10 @@ namespace GameJam.Behaviours
             
 
             Destroy(gameObject);
+        }
+        public bool TrySpawn()
+        {
+            return Random.value > (1 -spawnChance/100);
         }
     }
 }

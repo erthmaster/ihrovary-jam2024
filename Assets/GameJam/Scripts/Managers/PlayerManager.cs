@@ -58,7 +58,6 @@ namespace GameJam.Managers
         }
         public void ShowSelect()
         {
-            Debug.Log("SHOWSELECT");
             Deselect();
             foreach( var tile in _gen.tiles)
             {
@@ -261,7 +260,7 @@ namespace GameJam.Managers
         public void TryMoveTo(BoardTile tile)  
         {
             Debug.Log("TryMoveTo");
-            Deselect();
+
             switch (CurrentChessType)
             {
                 case ChessPiece.King:
@@ -307,6 +306,7 @@ namespace GameJam.Managers
             
             if (!CheckForHoles(tile))
                 return;
+            Deselect();
             switch (CurrentChessType)
             {
                 case ChessPiece.King:

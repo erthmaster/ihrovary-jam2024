@@ -5,7 +5,7 @@ using Zenject;
 
 namespace GameJam.Managers
 {
-    public class ItemsEffects : MonoBehaviour
+    public class Items : MonoBehaviour
     {
         [Inject] ManaManager manaManager;
         [SerializeField] private int _coinsInMoment;

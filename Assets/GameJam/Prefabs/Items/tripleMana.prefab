@@ -101,6 +101,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4dc6e8df4980e7442a5f6234809ea1ea, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  spawnChance: 1
   Name: Mana3
 --- !u!61 &1451155202552174524
 BoxCollider2D:

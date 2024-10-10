@@ -23,7 +23,10 @@ namespace GameJam.Board
         [SerializeField] private EnemyAI Enemy;
         [Inject] GameManager _Manager;
         [Inject] PlayerAudioManager Audiomanager;
+        [Inject] PlayerManager playerManager;
+        [Inject] private Items _itemsEffects;
         public List<BoardTile> tiles = new List<BoardTile>();
+        public Item[] items;
         private void Update()
         {
 
@@ -103,7 +106,17 @@ namespace GameJam.Board
                     v.pl = _playerManager;
                     v.audioManager = Audiomanager;
                 }
-
+                foreach (var item in items)
+                {
+                    if (tile.IsHole)
+                        break;
+                    if (item.TrySpawn()){
+                        Instantiate(item, tile.transform.position, Quaternion.identity);
+                        break;
+                    }
+                    item._itemsEffects = _itemsEffects;
+                    item.playerManager = playerManager;
+                }
                 tile.Collum = x;
                 tile._Manager = _Manager;
                 tile.Row = _rows;
