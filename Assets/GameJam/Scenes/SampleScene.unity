@@ -1322,7 +1322,7 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 1758345367831038859, guid: fb3ead21a784b9448802a186d7e96786, type: 3}
       propertyPath: m_ApplyToSortingLayers.Array.size
-      value: 7
+      value: 8
       objectReference: {fileID: 0}
     - target: {fileID: 1758345367831038859, guid: fb3ead21a784b9448802a186d7e96786, type: 3}
       propertyPath: 'm_ApplyToSortingLayers.Array.data[2]'
@@ -1343,6 +1343,10 @@ PrefabInstance:
     - target: {fileID: 1758345367831038859, guid: fb3ead21a784b9448802a186d7e96786, type: 3}
       propertyPath: 'm_ApplyToSortingLayers.Array.data[6]'
       value: -845740267
+      objectReference: {fileID: 0}
+    - target: {fileID: 1758345367831038859, guid: fb3ead21a784b9448802a186d7e96786, type: 3}
+      propertyPath: 'm_ApplyToSortingLayers.Array.data[7]'
+      value: 1082105537
       objectReference: {fileID: 0}
     - target: {fileID: 1818618427425385382, guid: fb3ead21a784b9448802a186d7e96786, type: 3}
       propertyPath: ShapeModule.m_Scale.x
@@ -1412,6 +1416,14 @@ PrefabInstance:
       propertyPath: m_PointLightOuterRadius
       value: 10.557522
       objectReference: {fileID: 0}
+    - target: {fileID: 6801603323732564801, guid: fb3ead21a784b9448802a186d7e96786, type: 3}
+      propertyPath: m_ApplyToSortingLayers.Array.size
+      value: 5
+      objectReference: {fileID: 0}
+    - target: {fileID: 6801603323732564801, guid: fb3ead21a784b9448802a186d7e96786, type: 3}
+      propertyPath: 'm_ApplyToSortingLayers.Array.data[5]'
+      value: 1082105537
+      objectReference: {fileID: 0}
     - target: {fileID: 7882126207657610527, guid: fb3ead21a784b9448802a186d7e96786, type: 3}
       propertyPath: prewarm
       value: 1
@@ -1426,7 +1438,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 8333202376507622515, guid: fb3ead21a784b9448802a186d7e96786, type: 3}
       propertyPath: m_ApplyToSortingLayers.Array.size
-      value: 7
+      value: 8
       objectReference: {fileID: 0}
     - target: {fileID: 8333202376507622515, guid: fb3ead21a784b9448802a186d7e96786, type: 3}
       propertyPath: 'm_ApplyToSortingLayers.Array.data[5]'
@@ -1435,6 +1447,10 @@ PrefabInstance:
     - target: {fileID: 8333202376507622515, guid: fb3ead21a784b9448802a186d7e96786, type: 3}
       propertyPath: 'm_ApplyToSortingLayers.Array.data[6]'
       value: -845740267
+      objectReference: {fileID: 0}
+    - target: {fileID: 8333202376507622515, guid: fb3ead21a784b9448802a186d7e96786, type: 3}
+      propertyPath: 'm_ApplyToSortingLayers.Array.data[7]'
+      value: 1082105537
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -2773,7 +2789,7 @@ MonoBehaviour:
   m_Intensity: 0.56
   m_LightVolumeIntensity: 1
   m_LightVolumeEnabled: 0
-  m_ApplyToSortingLayers: 6708bdcd0b066743150797cd
+  m_ApplyToSortingLayers: 6708bdcd0b066743150797cdc19e7f40
   m_LightCookieSprite: {fileID: 0}
   m_DeprecatedPointLightCookieSprite: {fileID: 0}
   m_LightOrder: 6
@@ -2782,7 +2798,7 @@ MonoBehaviour:
   m_NormalMapDistance: 9.04
   m_NormalMapQuality: 2
   m_UseNormalMap: 0
-  m_ShadowsEnabled: 0
+  m_ShadowsEnabled: 1
   m_ShadowIntensity: 0.75
   m_ShadowSoftness: 0.3
   m_ShadowSoftnessFalloffIntensity: 0.5
@@ -3514,7 +3530,16 @@ MonoBehaviour:
   _EnemyTileChance: 0.04
   Enemy: {fileID: 5970731492014770954, guid: d65220918658bce46871441f90d9d8ff, type: 3}
   tiles: []
-  items: []
+  items:
+  - {fileID: -825730190542419945, guid: fd3bfcc9ec78c764ab6da61ac35b8b3c, type: 3}
+  - {fileID: 1075609377188656925, guid: 5c1968e023e3432409a559e9d305e96f, type: 3}
+  - {fileID: 1339393187433529704, guid: 360653794b02bd84298d735d70ee559b, type: 3}
+  - {fileID: 3443863921720494284, guid: 8ffd7fa5817967741a37a1e43e712d01, type: 3}
+  - {fileID: 8034909809359968015, guid: 910c7bb3b34312a4d8157d4e88e659ac, type: 3}
+  - {fileID: 5102759816437651603, guid: 3db0984ee5d0ef64dbada866d0faa100, type: 3}
+  - {fileID: -6059924872671544164, guid: 7892bd45e7faf00488837836bd927015, type: 3}
+  - {fileID: -8994409672291793803, guid: dfe3e230d7d5da24bb6e201211f82361, type: 3}
+  - {fileID: 6740901284414256222, guid: 29cfe88b75cd45840a70b2d0eb7f9504, type: 3}
 --- !u!114 &961388541
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -8036,7 +8061,7 @@ ParticleSystemRenderer:
   m_AutoUVMaxAngle: 89
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 1928771645
-  m_SortingLayer: 6
+  m_SortingLayer: 7
   m_SortingOrder: 5
   m_RenderMode: 0
   m_MeshDistribution: 0

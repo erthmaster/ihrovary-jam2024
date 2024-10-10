@@ -115,7 +115,7 @@ namespace GameJam.Managers
                             if (SelectCheckHoleAndStop(tile))
                                 tile.Select();
                         }
-                        else if (TryWalkPawn(Row, Column, tile.Row, tile.Collum))
+                        if (TryWalkPawn(Row, Column, tile.Row, tile.Collum))
                         {
                             if (!CheckForHoles(tile))
                                 continue;
@@ -168,7 +168,9 @@ namespace GameJam.Managers
             if (Input.GetMouseButtonDown(0) && MoveCoolDown >= MaxMoveCoolDown)
             {
                 Vector2 mousePosition = Camera.main.ScreenToWorldPoint(Input.mousePosition);
-                RaycastHit2D hit = Physics2D.Raycast(mousePosition, Vector2.zero);
+                RaycastHit2D[] hits = Physics2D.RaycastAll(mousePosition, Vector2.zero);
+                RaycastHit2D hit = default;
+                hit = hits.FirstOrDefault((h) => { return h.collider.GetComponent<BoardTile>(); });
                 if (hit.collider && hit.collider.gameObject.TryGetComponent<BoardTile>(out BoardTile boardTileComponent) && !boardTileComponent.IsHole)
                 {
                     TryMoveTo(boardTileComponent);
