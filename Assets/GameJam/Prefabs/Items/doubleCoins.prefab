@@ -46,6 +46,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4dc6e8df4980e7442a5f6234809ea1ea, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  spawnChance: 1
   Name: DoubleCoins
 --- !u!212 &6144526684355143020
 SpriteRenderer:
