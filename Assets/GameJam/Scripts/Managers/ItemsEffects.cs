@@ -1,30 +1,60 @@
+using GameJam.UI;
 using System.Collections;
 using UnityEngine;
+using Zenject;
 
 namespace GameJam.Managers
 {
     public class ItemsEffects : MonoBehaviour
     {
-        public bool IsFreezed;
-        public bool IsDoubleGold;
-        public bool IsIncrManaSpeed;
+        [Inject] ManaManager manaManager;
+        [SerializeField] private int _coinsInMoment;
 
-        public float CDFreezed;
-        public float CDDoubleGold;
-        public float CDIncrManaSpeed;
+        [SerializeField] private bool _isFreezed;
+        [SerializeField] private bool _isDoubleGold;
+        [SerializeField] private bool _isIncrManaSpeed;
 
-        public void FreezedDelay()
+        [SerializeField] private float _CDFreezed;
+        [SerializeField] private float _CDDoubleGold;
+        [SerializeField] private float _CDIncrManaSpeed;
+        public void _StartCoroutine(string name)
         {
-            IsFreezed = false;
+            StartCoroutine(name);
         }
-        public void DoubleGoldDelay()
+        private IEnumerator FreezedDelay()//for all visual effects on camera and animations
         {
-            IsDoubleGold = false;
+            _isFreezed = true;
+            yield return new WaitForSeconds(_CDFreezed);
+            _isFreezed = false;
         }
-        public void IncrManaDelay()
+        private IEnumerator DoubleGoldDelay()
         {
-            IsIncrManaSpeed = false;
+            _isDoubleGold = true;
+            yield return new WaitForSeconds(_CDDoubleGold);
+            _isDoubleGold = false;
+        }
+        private IEnumerator IncrManaDelay()
+        {
+            yield return new WaitForSeconds(_CDIncrManaSpeed);
+            _isIncrManaSpeed = false;
+        }
+        public void RandomFigure()
+        {
+            //+sound +animation
+        }
+        public void RandomEffect()
+        {
+            //+sound +animation
+        }
+        public void AddMana(int count)
+        {
+            manaManager.mana += count;
+            //+sound +animation
+        }
+        public void AddCoin()
+        {
+            //use _coinsInMoment
+            //addCoin
         }
     }
 }
-

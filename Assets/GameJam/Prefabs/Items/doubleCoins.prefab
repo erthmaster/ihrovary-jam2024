@@ -9,8 +9,8 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 1983812650075252380}
+  - component: {fileID: 8034909809359968015}
   - component: {fileID: 6144526684355143020}
-  - component: {fileID: -3363062360786945713}
   - component: {fileID: 9081680080081555835}
   m_Layer: 0
   m_Name: doubleCoins
@@ -34,6 +34,19 @@ Transform:
   m_Children: []
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &8034909809359968015
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4617371784904466827}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4dc6e8df4980e7442a5f6234809ea1ea, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  Name: DoubleCoins
 --- !u!212 &6144526684355143020
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -89,18 +102,6 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
---- !u!114 &-3363062360786945713
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 4617371784904466827}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 627a729d57dbe824fb0b1db382515912, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!61 &9081680080081555835
 BoxCollider2D:
   m_ObjectHideFlags: 0

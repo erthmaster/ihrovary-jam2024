@@ -9,8 +9,8 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 3205002639303658154}
+  - component: {fileID: 5102759816437651603}
   - component: {fileID: 3865965979715822275}
-  - component: {fileID: -5368260631821987884}
   - component: {fileID: 3599530686854986494}
   m_Layer: 0
   m_Name: FreezeEnemies
@@ -34,6 +34,19 @@ Transform:
   m_Children: []
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &5102759816437651603
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2697496420683243242}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4dc6e8df4980e7442a5f6234809ea1ea, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  Name: FreezeEnemies
 --- !u!212 &3865965979715822275
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -89,18 +102,6 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
---- !u!114 &-5368260631821987884
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2697496420683243242}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: eb54a8548d3d55d4aa538a631df5718c, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!61 &3599530686854986494
 BoxCollider2D:
   m_ObjectHideFlags: 0
