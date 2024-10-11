@@ -50,6 +50,8 @@ namespace GameJam.Managers
         
         public LayerMask Mask;
 
+        [SerializeField] private Animator _animCards;
+        
         public void Deselect()
         {
 
@@ -207,6 +209,17 @@ namespace GameJam.Managers
             _turnIntoAnim.SetBool("Turn", false);
             _turnIntoAnim.gameObject.SetActive(false);
         }
+        private void ChangeAnim(string nameActiveAnim)//cards anim
+        {
+            _animCards.SetBool("Pawn", false);
+            _animCards.SetBool("King", false);
+            _animCards.SetBool("Rook", false);
+            _animCards.SetBool("Bishop", false);
+            _animCards.SetBool("Knight", false);
+            _animCards.SetBool("Queen", false);
+
+            _animCards.SetBool(nameActiveAnim, true);
+        }
         async public void TurnInTo(ChessPiece piece)
         {
 
@@ -214,12 +227,37 @@ namespace GameJam.Managers
             if (pauseManager.IsPaused)
                 return;
             canMove = false;
+
+            CurrentChessType = piece;
+            switch (CurrentChessType)
+            {
+                case ChessPiece.King:
+                    ChangeAnim("King");
+                    break;
+                case ChessPiece.Queen:
+                    ChangeAnim("Queen");
+                    break;
+                case ChessPiece.Rook:
+                    ChangeAnim("Rook");
+                    break;
+                case ChessPiece.Bishop:
+                    ChangeAnim("Bishop");
+                    break;
+                case ChessPiece.Pawn:
+                    ChangeAnim("Pawn");
+                    break;
+                case ChessPiece.Knight:
+                    ChangeAnim("Knight");
+                    break;
+                default:
+                    break;
+            }
             await TurnInAnimation();
 
             StartCoroutine(WaitEndOfAnim());
             canMove = true;
 
-            CurrentChessType = piece;
+            
             switch (CurrentChessType)
             {
                 case ChessPiece.King:
