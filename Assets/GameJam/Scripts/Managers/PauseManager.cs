@@ -5,19 +5,21 @@ namespace GameJam.UI
 {
     public class PauseManager : MonoBehaviour
     {
-        public bool IsPaused { get;  set; }
+        public bool IsPaused { get; set; } = true;
         [SerializeField] private GameObject _menuObj;
         [SerializeField] private GameObject _settingsObj;
         public bool isgameover = false;
+
+        [SerializeField] private GameObject Menu;
         private void Update()
         {
             if (isgameover)
                 return;
             if (IsPaused)
             {
-                Time.timeScale = 0.0f;
-                if(!_settingsObj.activeInHierarchy)
-                    _menuObj.SetActive(true);
+                //Time.timeScale = 0.0f;
+                //if(!_settingsObj.activeInHierarchy)
+                //    _menuObj.SetActive(true);
             }
             else
             {
@@ -41,7 +43,7 @@ namespace GameJam.UI
         public void GoMenu()
         {
             IsPaused = false;
-            SceneManager.LoadScene(0);
+            Menu.SetActive(true);
         }
         public void GoSettings()
         {
