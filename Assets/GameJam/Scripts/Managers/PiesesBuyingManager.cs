@@ -45,8 +45,7 @@ namespace GameJam
             _buyBishopButton.Button.onClick.AddListener(() => BuyBishop());
             _buyKnightButton.Button.onClick.AddListener(() => BuyKnight());
             _buyQueenButton.Button.onClick.AddListener(() => BuyQueen());
-
-            _buyPawnButton.CostText.text = _pawnPrice.ToString();
+             // _buyPawnButton.CostText.text = _pawnPrice.ToString();
             _buyKingButton.CostText.text = _kingPrice.ToString();
             _buyRookButton.CostText.text = _rookPrice.ToString();
             _buyBishopButton.CostText.text = _bishopPrice.ToString();
