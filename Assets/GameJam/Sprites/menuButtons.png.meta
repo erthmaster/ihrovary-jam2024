@@ -164,10 +164,10 @@ TextureImporter:
       customData: 
       outline: []
       physicsShape: []
-      tessellationDetail: -1
+      tessellationDetail: 0
       bones: []
-      spriteID: 7d561bfbb581c47e0800000000000000
-      internalID: -1780020970381023785
+      spriteID: cbf47b3c168500d489dfa94483e2acd4
+      internalID: -1579053979
       vertices: []
       indices: 
       edges: []
@@ -186,10 +186,10 @@ TextureImporter:
       customData: 
       outline: []
       physicsShape: []
-      tessellationDetail: -1
+      tessellationDetail: 0
       bones: []
-      spriteID: cb753e254a73b5f80800000000000000
-      internalID: -8116832724500392004
+      spriteID: 20853cdfd26959a4a9313aae83719966
+      internalID: 197147173
       vertices: []
       indices: 
       edges: []
@@ -208,10 +208,10 @@ TextureImporter:
       customData: 
       outline: []
       physicsShape: []
-      tessellationDetail: -1
+      tessellationDetail: 0
       bones: []
-      spriteID: e3ad202f20b9d26f0800000000000000
-      internalID: -707739129474786754
+      spriteID: 8e8bcf20b559d2340af157e2fb631e95
+      internalID: -581833132
       vertices: []
       indices: 
       edges: []
@@ -230,10 +230,10 @@ TextureImporter:
       customData: 
       outline: []
       physicsShape: []
-      tessellationDetail: -1
+      tessellationDetail: 0
       bones: []
-      spriteID: 0daf750ef3dba0560800000000000000
-      internalID: 7280839829642279632
+      spriteID: d3b8983a17300694b82814ea6f545918
+      internalID: -843342063
       vertices: []
       indices: 
       edges: []
@@ -242,7 +242,7 @@ TextureImporter:
     customData: 
     physicsShape: []
     bones: []
-    spriteID: 2724fb4f7e5bc094a91bddfcf3a0fff1
+    spriteID: b433657b6f8aa0e4b839eacc2db85359
     internalID: 0
     vertices: []
     indices: 
@@ -252,10 +252,10 @@ TextureImporter:
     spriteCustomMetadata:
       entries: []
     nameFileIdTable:
-      menuButtons_0: -1780020970381023785
-      menuButtons_1: -8116832724500392004
-      menuButtons_2: -707739129474786754
-      menuButtons_3: 7280839829642279632
+      menuButtons_0: -1579053979
+      menuButtons_1: 197147173
+      menuButtons_2: -581833132
+      menuButtons_3: -843342063
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 

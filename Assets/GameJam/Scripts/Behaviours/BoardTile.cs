@@ -54,7 +54,7 @@ namespace GameJam.Behaviours
             Invoke(nameof(Fade), 0.4f);
 
         }
-        private void Fade()
+        public void Fade()
         {
 
             if (IsBlack)

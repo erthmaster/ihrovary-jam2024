@@ -1,4 +1,5 @@
 using System;
+using System.Collections;
 using System.Collections.Generic;
 using GameJam.Behaviours;
 using GameJam.Managers;
@@ -37,15 +38,21 @@ namespace GameJam.Board
                 for (int i = 0; i < needToAdd; i++)
                 {
                     GenerateNewRow();
-
                 }
             }
+        }
+        public IEnumerator ResetAllBoard()
+        {
+            for (int i = 0; i < tiles.Count; i++)
+            {
+                tiles[i].Fade();
+            }
+            yield return new WaitForSeconds(1f);
+            GenerateStartBoard();
         }
 
         public BoardTile[,] GenerateStartBoard()
         {
-
-
             BoardTile[,] boardTiles = new BoardTile[_boardWidth, _boardStartHeight];
             for (int i = 0; i < _boardStartHeight; i++)
             {

@@ -19,7 +19,8 @@ namespace GameJam
             Container.Bind<PauseManager>().FromComponentInHierarchy().AsSingle();
             Container.Bind<PlayerAudioManager>().FromComponentInHierarchy().AsSingle();
             Container.Bind<Items>().FromComponentInHierarchy().AsSingle();
-            
+            Container.Bind<ScoreManager>().FromComponentInHierarchy().AsSingle();
+
 
             // Tags
             Container.Bind<Player>().FromComponentInHierarchy().AsSingle();

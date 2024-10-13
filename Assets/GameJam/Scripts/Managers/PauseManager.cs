@@ -1,5 +1,6 @@
+using GameJam.Board;
 using UnityEngine;
-using UnityEngine.SceneManagement;
+using Zenject;
 
 namespace GameJam.UI
 {
@@ -11,6 +12,10 @@ namespace GameJam.UI
         public bool isgameover = false;
 
         [SerializeField] private GameObject Menu;
+
+        [SerializeField] private GameObject _player;
+
+        [Inject] BoardGenerator generator;
         private void Update()
         {
             if (isgameover)
@@ -63,7 +68,8 @@ namespace GameJam.UI
         }
         public void Restart()
         {
-            SceneManager.LoadScene(1);
+            Instantiate(_player, Vector3.zero, Quaternion.identity);
+            StartCoroutine(generator.ResetAllBoard());
         }
     }
 }
