@@ -47,7 +47,7 @@ namespace GameJam.Board
             {
                 tiles[i].Fade();
             }
-            yield return new WaitForSeconds(1f);
+            yield return null;
             GenerateStartBoard();
         }
 
