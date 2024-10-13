@@ -57,7 +57,7 @@ namespace GameJam.Managers
         {
 
             foreach (var tile in _gen.tiles)
-            { tile.DeSelect(); }
+            { if(tile!=null) tile.DeSelect(); }
         }
         public IEnumerator ShowSelect()
         {
@@ -105,22 +105,34 @@ namespace GameJam.Managers
                         }
                         break;
                     case ChessPiece.Pawn:
+                        if (Physics2D.OverlapCircleAll(tile.transform.position, 0.5f).Any(n => n.GetComponent<EnemyAI>() != null))
+                        {
+                            
+                            if (TryWalkPawnKILL(Row, Column, tile.Row, tile.Collum)) { if (SelectCheckHoleAndStop(tile)) tile.Select(); }
+                        }
                         if (!IsEverMoved && TryWalkPawnInital(Row, Column, tile.Row, tile.Collum))
                         {
+                            var tile2 = _gen.tiles.FirstOrDefault((n) => n.Row == tile.Row - 1 && n.Collum == n.Collum);
+                            if (tile2 != null)
+                            {
+                                if (Physics2D.OverlapCircleAll(tile2.transform.position, 1).Any(n => n.GetComponent<EnemyAI>() != null))
+                                {
+                                    Debug.Log("FDSF");
+                                    yield break;
+                                }
+                            }
 
-                            if (SelectCheckHoleAndStop(tile) && CheckForHoles(tile) && (Physics2D.OverlapCircleAll(tile.transform.position, 1).Any(n => n.GetComponent<EnemyAI>() == null)))
+
+                            if (SelectCheckHoleAndStop(tile) && CheckForHoles(tile) && (Physics2D.OverlapCircleAll(tile.transform.position, 1).All(n => n.GetComponent<EnemyAI>() == null)))
                                 tile.Select();
                         }
                         if (TryWalkPawn(Row, Column, tile.Row, tile.Collum))
                         {
 
-                            if (SelectCheckHoleAndStop(tile) && CheckForHoles(tile) && (Physics2D.OverlapCircleAll(tile.transform.position, 1).Any(n => n.GetComponent<EnemyAI>() == null)))
+                            if (SelectCheckHoleAndStop(tile) && CheckForHoles(tile) && (Physics2D.OverlapCircleAll(tile.transform.position, 1).All(n => n.GetComponent<EnemyAI>() == null)))
                                 tile.Select();
                         }
-                        if (Physics2D.OverlapCircleAll(tile.transform.position, 1).Any(n => n.GetComponent<EnemyAI>() != null))
-                        {
-                            if (TryWalkPawnKILL(Row, Column, tile.Row, tile.Collum)) { if (SelectCheckHoleAndStop(tile)) tile.Select(); }
-                        }
+                        
                         break;
                     case ChessPiece.Knight:
                         if (TryWalkKnight(Row, Column, tile.Row, tile.Collum))
@@ -310,12 +322,30 @@ namespace GameJam.Managers
                     if (TryWalkBishop(Row, Column, tile.Row, tile.Collum)) MoveTo(tile);
                     break;
                 case ChessPiece.Pawn:
-                    if (!IsEverMoved && Physics2D.OverlapCircleAll(tile.transform.position, 1).Any(n => n.GetComponent<EnemyAI>() == null) && TryWalkPawnInital(Row, Column, tile.Row, tile.Collum)) { MoveTo(tile); }
                     if (Physics2D.OverlapCircleAll(tile.transform.position, 1).Any(n => n.GetComponent<EnemyAI>() != null))
                     {
                         if (TryWalkPawnKILL(Row, Column, tile.Row, tile.Collum)) { MoveTo(tile); }
                     }
-                    if (TryWalkPawn(Row, Column, tile.Row, tile.Collum) && Physics2D.OverlapCircleAll(tile.transform.position, 1).Any(n => n.GetComponent<EnemyAI>() == null)) { MoveTo(tile); }
+                    if (!IsEverMoved && Physics2D.OverlapCircleAll(tile.transform.position, 1).All((n)=>n.GetComponent<EnemyAI>() == null) && TryWalkPawnInital(Row, Column, tile.Row, tile.Collum)) 
+                    {
+
+                        var tile2 = _gen.tiles.FirstOrDefault((n)=>n.Row== tile.Row -1&& n.Collum == n.Collum);
+                        if(tile2 != null)
+                        {
+
+                            if (Physics2D.OverlapCircleAll(tile2.transform.position, 1).Any(n => n.GetComponent<EnemyAI>() != null))
+                            {
+                                Debug.Log("FDSF");
+                                return;
+                            }
+
+                        }
+
+
+                        MoveTo(tile); 
+                    }
+                    
+                    if (TryWalkPawn(Row, Column, tile.Row, tile.Collum) && Physics2D.OverlapCircleAll(tile.transform.position, 1).All((n) => n.GetComponent<EnemyAI>() == null)) { MoveTo(tile); }
                     break;
                 case ChessPiece.Knight:
                     if (TryWalkKnight(Row, Column, tile.Row, tile.Collum)) MoveTo(tile);

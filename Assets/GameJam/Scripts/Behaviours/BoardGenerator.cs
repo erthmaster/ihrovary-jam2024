@@ -106,24 +106,31 @@ namespace GameJam.Board
                     tile.Construct(x % 2 != 0, Random.value < _holeTileChance);
 
 
-                if (Random.value < _EnemyTileChance&&!tile.IsHole)
-                {
-                    var v = Instantiate(Enemy, tile.transform.position, Quaternion.identity);
-                    v.CurrentChessType = (PlayerManager.ChessPiece)Random.Range(0, 6);
-                    v.pl = _playerManager;
-                    v.audioManager = Audiomanager;
-                }
+                bool spawed = default;
                 foreach (var item in items)
                 {
                     if (tile.IsHole)
                         break;
                     if (item.TrySpawn()){
+                        spawed = true;
                         Instantiate(item, tile.transform.position, Quaternion.identity);
                         break;
                     }
                     item._itemsEffects = _itemsEffects;
                     item.playerManager = playerManager;
                 }
+                if (!spawed)
+                {
+                    if (Random.value < _EnemyTileChance && !tile.IsHole)
+                    {
+                        var v = Instantiate(Enemy, tile.transform.position, Quaternion.identity);
+                        v.CurrentChessType = (PlayerManager.ChessPiece)Random.Range(0, 6);
+                        v.pl = _playerManager;
+                        v.audioManager = Audiomanager;
+                    }
+                }
+
+
                 tile.Collum = x;
                 tile._Manager = _Manager;
                 tile.Row = _rows;

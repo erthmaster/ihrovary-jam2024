@@ -136,11 +136,12 @@ namespace GameJam.Behaviours
                     return TryWalkQueen(Row, Column, tile.Row, tile.Collum);
                 case ChessPiece.Rook:
                     return TryWalkRook(Row, Column, tile.Row, tile.Collum);
-
                 case ChessPiece.Bishop:
                     return TryWalkBishop(Row, Column, tile.Row, tile.Collum);
                 case ChessPiece.Pawn:
-                    return TryWalkPawn(Row, Column, tile.Row, tile.Collum);
+                    if(tile.gameObject == pl.PlayerTile.gameObject)
+                        return TryWalkPawnEnemyKILL(Row, Column, tile.Row, tile.Collum);
+                    return TryWalkPawnEnemy(Row, Column, tile.Row, tile.Collum);
                 case ChessPiece.Knight:
                     return TryWalkKnight(Row, Column, tile.Row, tile.Collum);
                 default:
@@ -150,7 +151,6 @@ namespace GameJam.Behaviours
         }
         public static bool TryWalkPawnEnemy(int rowPos, int columnPos, int rowTo, int columnTo)
         {
-
             if (rowPos == rowTo && columnPos == columnTo)
                 return false;
             bool IsCloseByX = columnPos == columnTo;
@@ -164,7 +164,7 @@ namespace GameJam.Behaviours
             if (rowPos == rowTo && columnPos == columnTo)
                 return false;
             bool IsCloseByX = (columnPos-1==columnTo)&& (columnPos + 1 == columnTo);
-            bool IsCloseByY = (rowPos - 1 == rowTo) || (rowTo == rowPos);
+            bool IsCloseByY = (rowPos - 1 == rowTo);
 
             return (IsCloseByY && IsCloseByX);
         }
@@ -204,43 +204,7 @@ namespace GameJam.Behaviours
 
 
 
-        public void TryMoveTo(BoardTile tile)
-        {
-            switch (CurrentChessType)
-            {
-                case ChessPiece.King:
-                    if (TryWalkKing(Row, Column, tile.Row, tile.Collum)) MoveTo(tile);
-                    break;
-                case ChessPiece.Queen:
-                    if (TryWalkQueen(Row, Column, tile.Row, tile.Collum)) MoveTo(tile);
-                    break;
-                case ChessPiece.Rook:
-                    if (TryWalkRook(Row, Column, tile.Row, tile.Collum)) MoveTo(tile);
-                    break;
-                case ChessPiece.Bishop:
-                    if (TryWalkBishop(Row, Column, tile.Row, tile.Collum)) MoveTo(tile);
-                    break;
-                case ChessPiece.Pawn:
-                    if (!IsEverMoved)
-                    { if (TryWalkPawnInital(Row, Column, tile.Row, tile.Collum)) { MoveTo(tile); } }
-                    else
-                    { 
-                        if(tile == pl.PlayerTile)
-                        {
-                            if (TryWalkPawnEnemyKILL(Row, Column, tile.Row, tile.Collum)) { MoveTo(tile); }
-                        }
-                        else
-                            if (TryWalkPawn(Row, Column, tile.Row, tile.Collum)) { MoveTo(tile); } 
-                    
-                    }
-                    break;
-                case ChessPiece.Knight:
-                    if (TryWalkKnight(Row, Column, tile.Row, tile.Collum)) MoveTo(tile);
-                    break;
-                default:
-                    break;
-            }
-        }
+
         private bool CheckForHoles(BoardTile tile)
         {
             if (CurrentChessType == ChessPiece.Knight)
@@ -323,6 +287,7 @@ namespace GameJam.Behaviours
             {
                 pl.GameOver();
             }
+            pl.ShowSelect();
         }
 
 
