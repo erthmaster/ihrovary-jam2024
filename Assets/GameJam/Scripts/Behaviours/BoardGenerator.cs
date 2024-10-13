@@ -44,13 +44,14 @@ namespace GameJam.Board
         }
         public IEnumerator ResetAllBoard()
         {
-            for (int i = 0; i < tiles.Count; i++)
+            foreach (var item in tiles)
             {
-                yield return null;
-                tiles[i].Fade2();
+                item.Fade2();
             }
             _rows = 0;
             _playerManager.IsEverMoved = false;
+            _Manager.TilePool.Clear();
+            tiles.Clear();
             yield return null;
             _playerManager.UnGameOver();
             _playerManager.TurnInTo(PlayerManager.ChessPiece.Pawn);

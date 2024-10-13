@@ -51,7 +51,7 @@ namespace GameJam.Behaviours
         }
         public void Fade()
         {
-
+            TileDeleteObjects();
             if (IsBlack)
             {
                 Instantiate(BlackBreak, transform.position, Quaternion.identity);
@@ -67,7 +67,29 @@ namespace GameJam.Behaviours
 
         public void Fade2()
         {
+            TileDeleteObjects();
+
+
+
             _Manager.TilePool.Release(this);
+
+
+
+        }
+        public void TileDeleteObjects()
+        {
+            foreach (var s in Physics2D.OverlapCircleAll(transform.position,1))
+            {
+                if (s.TryGetComponent(out Item item))
+                {
+                    item.Fade();
+                }
+                if (s.TryGetComponent(out EnemyAI ai))
+                {
+                    ai.Die();
+                }
+                
+            }
         }
         public void Select()
         {

@@ -45,6 +45,11 @@ namespace GameJam.Behaviours
 
             Destroy(gameObject);
         }
+        //ÑÞÄÈ ÉÄÅ ÀÍ²ÌÀÖ²ß ²ËÞØÓØÓØÓÑÜÊÀ
+        public void Fade()
+        {
+            Destroy(gameObject);
+        }
         public bool TrySpawn()
         {
             return Random.value > (1 -spawnChance/100);

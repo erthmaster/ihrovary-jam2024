@@ -25,7 +25,7 @@ namespace GameJam.Managers
         void Awake()
         {
             TilePool = new ObjectPool<BoardTile>(() => { return Instantiate(Tile); },
-            _Tile => { if (_Tile == null) return; _Tile.gameObject.SetActive(true); }, _tile => { if (_tile == null) return; _tile.gameObject.SetActive(false); }, _tile => { Destroy(_tile.gameObject); }, false, 50, 110);
+            _Tile => { if (_Tile == null) return; _Tile.gameObject.SetActive(true); }, _tile => { if (_tile == null) return; _tile.gameObject.SetActive(false); }, _tile => { if (_tile == null) return; Destroy(_tile.gameObject); }, false, 50, 110);
 
 
 
