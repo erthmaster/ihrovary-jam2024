@@ -22,12 +22,42 @@ namespace GameJam.Behaviours
         public  PlayerManager pl;
         [SerializeField] private ParticleSystem _paricle;
 
+        public ScoreManager scoreManager;
+
+        [SerializeField]private int[] enemyCost;//8 10 10 10 4 7
+
         public EnemyState CurrentState;
         public float DetectDist = 20;
         public void Die()
         {
             pl.OnWalk -= EnemyWalk;
             Instantiate(BlackBreak, transform.position, Quaternion.identity);
+
+            switch (CurrentChessType)
+            {
+                case ChessPiece.King:
+                    scoreManager.AddScore(enemyCost[0]);
+                    break;
+                case ChessPiece.Queen:
+                    scoreManager.AddScore(enemyCost[1]);
+                    break;
+                case ChessPiece.Rook:
+                    scoreManager.AddScore(enemyCost[2]);
+                    break;
+                case ChessPiece.Bishop:
+                    scoreManager.AddScore(enemyCost[3]);
+                    break;
+                case ChessPiece.Pawn:
+                    scoreManager.AddScore(enemyCost[4]);
+                    break;
+                case ChessPiece.Knight:
+                    scoreManager.AddScore(enemyCost[5]);
+                    break;
+                default:
+                    break;
+            }
+
+
             Destroy(gameObject);
         }
 

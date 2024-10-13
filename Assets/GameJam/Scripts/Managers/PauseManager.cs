@@ -13,9 +13,8 @@ namespace GameJam.Managers
 
         [SerializeField] private GameObject Menu;
 
-        [SerializeField] private GameObject _player;
-
         [Inject] BoardGenerator generator;
+        [Inject] ScoreManager scoreManager;
         private void Update()
         {
             if (isgameover)
@@ -75,6 +74,7 @@ namespace GameJam.Managers
         public void Restart()
         {
             StartCoroutine(generator.ResetAllBoard());
+            scoreManager.SetZeroScore();
         }
     }
 }

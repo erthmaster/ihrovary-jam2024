@@ -61,6 +61,8 @@ MonoBehaviour:
   audioManager: {fileID: 0}
   pl: {fileID: 0}
   _paricle: {fileID: 5359015653086182439, guid: 336f9cbdcbe26444da3018a0455d41cc, type: 3}
+  scoreManager: {fileID: 0}
+  enemyCost: 080000000f0000000a0000000a0000000400000007000000
   CurrentState: 0
   DetectDist: 10
 --- !u!58 &3667318821874042239

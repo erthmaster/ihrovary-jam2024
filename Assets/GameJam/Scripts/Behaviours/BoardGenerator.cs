@@ -29,6 +29,7 @@ namespace GameJam.Board
         [Inject] private Items _itemsEffects;
         public List<BoardTile> tiles = new List<BoardTile>();
         public Item[] items;
+        [Inject] ScoreManager scoreManager;
         private void Update()
         {
 
@@ -136,6 +137,7 @@ namespace GameJam.Board
                         var v = Instantiate(Enemy, tile.transform.position, Quaternion.identity);
                         v.CurrentChessType = (PlayerManager.ChessPiece)Random.Range(0, 6);
                         v.pl = _playerManager;
+                        v.scoreManager = scoreManager;
                         v.audioManager = Audiomanager;
                     }
                 }
