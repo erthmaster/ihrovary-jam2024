@@ -14,6 +14,8 @@ namespace GameJam.Behaviours
 
         private void OnTriggerStay2D(Collider2D collider)
         {
+            if (playerManager == null)
+                return;
             if (collider.GetComponent<Player>() && !playerManager.Moving)
             {
                 CheckName(Name);

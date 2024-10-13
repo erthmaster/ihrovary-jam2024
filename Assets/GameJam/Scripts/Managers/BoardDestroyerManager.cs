@@ -1,4 +1,5 @@
 using GameJam.Behaviours;
+using GameJam.UI;
 using System;
 using System.Collections;
 using System.Linq;
@@ -11,43 +12,55 @@ namespace GameJam.Managers
     {
         [Inject] BoardDestroyer _boardDestroyer;
         [Inject] PlayerManager player;
+        [Inject] PauseManager pauseManager;
         [SerializeField] private float TickRate;
         [SerializeField] private float MaxTickRate;
         [SerializeField] private float TickStep;
-
+        public float speed;
 
         private void Start()
         {
-            InvokeRepeating(nameof(Tick), 2, 60 / TickRate);
+            StartCoroutine(Tick());
         }
 
         public void UpdateTickRate(float NewTickRate)
         {
-            CancelInvoke();
             TickRate = NewTickRate;
-            InvokeRepeating(nameof(Tick), 2, 60 / TickRate);
 
         }
-        private void Tick()
+        private IEnumerator Tick()
         {
-            _boardDestroyer.transform.position += _boardDestroyer.transform.up*TickStep;
-            Collider2D[] ccs = Physics2D.OverlapCircleAll(_boardDestroyer.transform.position, 4);
-            if (ccs.Any(n=>n.transform.GetComponent<Player>()!=null))
+            while (true)
             {
-                player.GameOver();
-            }
-            foreach (var item in ccs)
-            {
-                if(item.TryGetComponent<EnemyAI>(out EnemyAI ai))
+
+                if (!pauseManager.IsPaused)
                 {
-                    ai.Die();
+
+
+                    _boardDestroyer.transform.position += _boardDestroyer.transform.up * TickStep;
+                    Collider2D[] ccs = Physics2D.OverlapCircleAll(_boardDestroyer.transform.position, 4);
+                    if (ccs.Any(n => n.transform.GetComponent<Player>() != null))
+                    {
+                        player.GameOver();
+                    }
+                    foreach (var item in ccs)
+                    {
+                        if (item.TryGetComponent<EnemyAI>(out EnemyAI ai))
+                        {
+                            ai.Die();
+                        }
+                    }
+                    if (TickRate < MaxTickRate)
+                    {
+                        UpdateTickRate(TickRate + speed);
+                    }
+
+
+
                 }
+                yield return new WaitForSeconds(60 / TickRate);
+
             }
-            if (TickRate < MaxTickRate)
-            {
-                UpdateTickRate(TickRate + 1);
-            }
-                
         }
     }
 }

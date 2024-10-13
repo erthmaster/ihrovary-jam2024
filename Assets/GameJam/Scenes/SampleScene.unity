@@ -4074,7 +4074,6 @@ GameObject:
   - component: {fileID: 961388542}
   - component: {fileID: 961388543}
   - component: {fileID: 961388546}
-  - component: {fileID: 961388547}
   - component: {fileID: 961388545}
   - component: {fileID: 961388544}
   m_Layer: 0
@@ -4128,6 +4127,7 @@ MonoBehaviour:
   TickRate: 30
   MaxTickRate: 100
   TickStep: 2
+  speed: 0
 --- !u!114 &961388540
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -4298,19 +4298,6 @@ MonoBehaviour:
   _CDFreezed: 0
   _CDDoubleGold: 0
   _CDIncrManaSpeed: 0
---- !u!114 &961388547
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 961388534}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 9a25b0641411a654385145ee0b0b65b2, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  animator: {fileID: 0}
 --- !u!1 &976547511
 GameObject:
   m_ObjectHideFlags: 0

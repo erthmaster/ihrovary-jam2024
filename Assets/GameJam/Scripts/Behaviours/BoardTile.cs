@@ -67,12 +67,11 @@ namespace GameJam.Behaviours
             }
 
             Camera.main.GetComponent<CameraMovement>().Shake();
-            gen.tiles.Remove(this);
             _Manager.TilePool.Release(this);
         }
         public void Select()
         {
-            if (!An)
+            if (!gameObject.activeSelf)
                 return;
             if (IsHole) return;
             if(!IsBlack)
@@ -83,7 +82,7 @@ namespace GameJam.Behaviours
 
         public void DeSelect()
         {
-            if (!An)
+            if (!gameObject.activeSelf)
                 return;
             string animname = IsHole ?
                 "TileIdleHole" :

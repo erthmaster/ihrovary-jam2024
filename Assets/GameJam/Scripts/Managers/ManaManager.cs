@@ -1,13 +1,14 @@
 using TMPro;
 using UnityEngine;
 using UnityEngine.UI;
+using Zenject;
 
 namespace GameJam.UI
 {
     public class ManaManager : MonoBehaviour
     {
         [SerializeField]private int _maxMana;
-
+        [Inject] PauseManager PauseManager;
         public float mana;
         [SerializeField] private float _speed;
 
@@ -19,6 +20,8 @@ namespace GameJam.UI
         }
         private void FixedUpdate()
         {
+            if (PauseManager.IsPaused)
+                return;
             if (mana < _maxMana)
                 mana += _speed * Time.deltaTime;
             if (mana < 0)
