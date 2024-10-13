@@ -139,9 +139,12 @@ namespace GameJam.Behaviours
                 case ChessPiece.Bishop:
                     return TryWalkBishop(Row, Column, tile.Row, tile.Collum);
                 case ChessPiece.Pawn:
-                    if(tile.gameObject == pl.PlayerTile.gameObject)
+                    if (tile.gameObject == pl.PlayerTile.gameObject)
+                    {
                         return TryWalkPawnEnemyKILL(Row, Column, tile.Row, tile.Collum);
-                    return TryWalkPawnEnemy(Row, Column, tile.Row, tile.Collum);
+                    }
+                    else
+                        return TryWalkPawnEnemy(Row, Column, tile.Row, tile.Collum);
                 case ChessPiece.Knight:
                     return TryWalkKnight(Row, Column, tile.Row, tile.Collum);
                 default:
@@ -163,7 +166,7 @@ namespace GameJam.Behaviours
 
             if (rowPos == rowTo && columnPos == columnTo)
                 return false;
-            bool IsCloseByX = (columnPos-1==columnTo)&& (columnPos + 1 == columnTo);
+            bool IsCloseByX = (columnPos + 1 == columnTo) || (columnPos - 1 == columnTo);
             bool IsCloseByY = (rowPos - 1 == rowTo);
 
             return (IsCloseByY && IsCloseByX);

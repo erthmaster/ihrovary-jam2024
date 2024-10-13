@@ -2,7 +2,7 @@ using GameJam.Board;
 using UnityEngine;
 using Zenject;
 
-namespace GameJam.UI
+namespace GameJam.Managers
 {
     public class PauseManager : MonoBehaviour
     {
@@ -66,9 +66,14 @@ namespace GameJam.UI
             isgameover = true;
             _menuObj.SetActive(false);
         }
+        public void UNPAUSEONGAMEOVER()
+        {
+            IsPaused = false;
+            isgameover = false;
+            _menuObj.SetActive(true);
+        }
         public void Restart()
         {
-            Instantiate(_player, Vector3.zero, Quaternion.identity);
             StartCoroutine(generator.ResetAllBoard());
         }
     }

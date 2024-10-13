@@ -28,6 +28,12 @@ namespace GameJam.Managers
             TickRate = NewTickRate;
 
         }
+        public void ResetDestroyer()
+        {
+            _boardDestroyer.transform.position = new Vector3(-0.235400006f, -5.65969992f, 0);
+            TickRate = 30;
+
+        }
         private IEnumerator Tick()
         {
             while (true)

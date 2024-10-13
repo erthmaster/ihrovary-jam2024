@@ -25,6 +25,7 @@ namespace GameJam.Board
         [Inject] GameManager _Manager;
         [Inject] PlayerAudioManager Audiomanager;
         [Inject] PlayerManager playerManager;
+        [Inject] BoardDestroyerManager _boardDestroyer;
         [Inject] private Items _itemsEffects;
         public List<BoardTile> tiles = new List<BoardTile>();
         public Item[] items;
@@ -45,10 +46,18 @@ namespace GameJam.Board
         {
             for (int i = 0; i < tiles.Count; i++)
             {
-                tiles[i].Fade();
+                yield return null;
+                tiles[i].Fade2();
             }
+            _rows = 0;
+            _playerManager.IsEverMoved = false;
             yield return null;
+            _playerManager.UnGameOver();
+            _playerManager.TurnInTo(PlayerManager.ChessPiece.Pawn);
+            _playerManager.IsEverMoved = false;
+            _boardDestroyer.ResetDestroyer();
             GenerateStartBoard();
+            _playerManager.Invoke(nameof(_playerManager.SetInitPosition), 0.4f);
         }
 
         public BoardTile[,] GenerateStartBoard()

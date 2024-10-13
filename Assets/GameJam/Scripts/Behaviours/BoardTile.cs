@@ -40,11 +40,6 @@ namespace GameJam.Behaviours
         }
         public void Delete()
         {
-            if (IsHole)
-            {
-                Destroy(gameObject);
-                return;
-            }
             if (IsBlack)
                An.Play("TileDestroy_Black");
             else
@@ -67,6 +62,11 @@ namespace GameJam.Behaviours
             }
 
             Camera.main.GetComponent<CameraMovement>().Shake();
+            _Manager.TilePool.Release(this);
+        }
+
+        public void Fade2()
+        {
             _Manager.TilePool.Release(this);
         }
         public void Select()

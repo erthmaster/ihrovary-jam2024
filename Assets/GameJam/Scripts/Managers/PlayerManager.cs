@@ -35,7 +35,7 @@ namespace GameJam.Managers
         [field: SerializeField] public BoardTile PlayerTile { get; private set; }
         [field: SerializeField] public int Row { get; private set; }
         [field: SerializeField] public int Column { get; private set; }
-        [field: SerializeField] public bool IsEverMoved { get; private set; }
+        [field: SerializeField] public bool IsEverMoved { get;set; }
         [field: SerializeField] public Sprite[] Skins { get; private set; }
 
         public bool Moving = false;
@@ -187,7 +187,18 @@ namespace GameJam.Managers
 
             MoveCoolDown = Mathf.Clamp(MoveCoolDown + Time.deltaTime, 0, MaxMoveCoolDown);
         }
-
+        public void UnGameOver()
+        {
+            Debug.Log("asSssssssassdgdsgsdf");
+            Deselect();
+            _player.transform.GetChild(0).GetComponent<Animator>().Play("Player_Idle");
+            if (PlayerTile != null)
+                Instantiate(PlayerTile.WhiteBreak, _player.transform.position, Quaternion.identity);
+            gameOverObj.SetActive(false);
+            pauseManager.UNPAUSEONGAMEOVER();
+            ___.CurrentGameState = GameManager.GameState.Playing;
+            _player.transform.position = new Vector3(0, 6, 0);
+        }
         public void GameOver()
         {
             Debug.Log("GameOver");
@@ -305,7 +316,6 @@ namespace GameJam.Managers
 
         public void TryMoveTo(BoardTile tile)  
         {
-            Debug.Log("TryMoveTo");
 
             switch (CurrentChessType)
             {
