@@ -1,0 +1,1 @@
+D:\git\ihrovary-jam2024\Library\Bee\Android\Prj\IL2CPP\Gradle\unityLibrary\build\intermediates\cxx\Debug\2w5v21s4\obj\arm64-v8a

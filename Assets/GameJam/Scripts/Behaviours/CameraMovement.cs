@@ -34,5 +34,16 @@ namespace GameJam.Behaviours
                 _shakeStrength
             );
         }
+        public void SmallShake()
+        {
+            Vector3 originalPosition = transform.localPosition;
+
+            Tween.ShakeCamera(
+                GetComponent<Camera>(),
+                _shakeFactor / 2,
+                _shakeDuration,
+                _shakeStrength / 2
+            );
+        }
     }
 }

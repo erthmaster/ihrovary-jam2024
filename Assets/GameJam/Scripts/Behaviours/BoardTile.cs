@@ -52,16 +52,16 @@ namespace GameJam.Behaviours
         public void Fade()
         {
             TileDeleteObjects();
-            if (IsBlack)
+            /*if (IsBlack)
             {
                 Instantiate(BlackBreak, transform.position, Quaternion.identity);
             }
             else
             {
                 Instantiate(WhiteBreak, transform.position, Quaternion.identity);
-            }
+            }*/ //now in BoardDestroyer
 
-            Camera.main.GetComponent<CameraMovement>().Shake();
+            //Camera.main.GetComponent<CameraMovement>().Shake();
             _Manager.TilePool.Release(this);
         }
 

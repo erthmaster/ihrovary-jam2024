@@ -1,7 +1,5 @@
 using GameJam.Managers;
 using UnityEngine;
-using Zenject;
-using static UnityEditor.Progress;
 
 namespace GameJam.Behaviours
 {

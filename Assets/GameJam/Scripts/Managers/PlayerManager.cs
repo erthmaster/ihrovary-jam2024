@@ -371,7 +371,6 @@ namespace GameJam.Managers
             }
             if (Row > temp_row)
                 scoreManager.AddScore(Row - temp_row);
-            Debug.Log($"{Row} - {temp_row}");
         }
 
 

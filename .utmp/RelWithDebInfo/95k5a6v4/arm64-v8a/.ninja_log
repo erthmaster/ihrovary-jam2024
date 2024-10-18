@@ -1,0 +1,23 @@
+# ninja log v5
+5953	6763	7505567989302722	D:/git/ihrovary-jam2024/Library/Bee/Android/Prj/IL2CPP/Gradle/unityLibrary/build/intermediates/cxx/RelWithDebInfo/95k5a6v4/obj/arm64-v8a/libgame.so	b4c9a0cc8f76989
+183	5504	7505567975916360	GameActivity/CMakeFiles/game.dir/UGAInputKeyEvent.cpp.o	a6d657d70c8e0196
+328	5592	7505567975916360	GameActivity/CMakeFiles/game.dir/UGAEntry.cpp.o	89ce6b09da8dd9e9
+620	5634	7505567977969756	GameActivity/CMakeFiles/game.dir/UGASoftKeyboard.cpp.o	59690346c1b8069b
+1	5593	7505567976836610	GameActivity/CMakeFiles/game.dir/UGAConfiguration.cpp.o	854e14ffbc2281d3
+36	5647	7505567978089343	GameActivity/CMakeFiles/game.dir/UGADebug.cpp.o	9475d4401dfbc5a7
+420	5594	7505567976856559	GameActivity/CMakeFiles/game.dir/UGAInputMotionEvent.cpp.o	94376d5c52db5a0
+255	5861	7505567979930789	GameActivity/CMakeFiles/game.dir/UGAInput.cpp.o	4dd901dc802e103e
+5520	6950	7505567991101653	FramePacing/CMakeFiles/swappywrapper.dir/UnitySwappyWrapper.cpp.o	15f81a0fedcde04a
+109	5944	7505567981110762	GameActivity/CMakeFiles/game.dir/UGAApplication.cpp.o	5caff3147b53ba0f
+6950	7203	7505567993760488	D:/git/ihrovary-jam2024/Library/Bee/Android/Prj/IL2CPP/Gradle/unityLibrary/build/intermediates/cxx/RelWithDebInfo/95k5a6v4/obj/arm64-v8a/libswappywrapper.so	eb23bae9c2993306
+54	1386	7509631491759653	GameActivity/CMakeFiles/game.dir/UGAEntry.cpp.o	89ce6b09da8dd9e9
+114	1429	7509631492108722	GameActivity/CMakeFiles/game.dir/UGAInputMotionEvent.cpp.o	94376d5c52db5a0
+12	1430	7509631492258321	GameActivity/CMakeFiles/game.dir/UGAConfiguration.cpp.o	854e14ffbc2281d3
+129	1498	7509631492946476	GameActivity/CMakeFiles/game.dir/UGASoftKeyboard.cpp.o	59690346c1b8069b
+85	1536	7509631493609814	GameActivity/CMakeFiles/game.dir/UGAInputKeyEvent.cpp.o	a6d657d70c8e0196
+72	1562	7509631493918978	GameActivity/CMakeFiles/game.dir/UGADebug.cpp.o	9475d4401dfbc5a7
+1387	1599	7509631494367774	FramePacing/CMakeFiles/swappywrapper.dir/UnitySwappyWrapper.cpp.o	15f81a0fedcde04a
+98	1744	7509631495774606	GameActivity/CMakeFiles/game.dir/UGAInput.cpp.o	4dd901dc802e103e
+1599	1797	7509631496337692	D:/git/ihrovary-jam2024/Library/Bee/Android/Prj/IL2CPP/Gradle/unityLibrary/build/intermediates/cxx/RelWithDebInfo/95k5a6v4/obj/arm64-v8a/libswappywrapper.so	eb23bae9c2993306
+41	1908	7509631497418906	GameActivity/CMakeFiles/game.dir/UGAApplication.cpp.o	5caff3147b53ba0f
+1909	2054	7509631498885914	D:/git/ihrovary-jam2024/Library/Bee/Android/Prj/IL2CPP/Gradle/unityLibrary/build/intermediates/cxx/RelWithDebInfo/95k5a6v4/obj/arm64-v8a/libgame.so	b4c9a0cc8f76989
