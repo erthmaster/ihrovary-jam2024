@@ -8,6 +8,8 @@ namespace GameJam.Managers
     public class Items : MonoBehaviour
     {
         [Inject] ManaManager manaManager;
+        [Inject] ScoreManager scoreManager;
+
         [SerializeField] private int _coinsInMoment;
 
         [SerializeField] private bool _isFreezed;
@@ -53,6 +55,7 @@ namespace GameJam.Managers
         }
         public void AddCoin()
         {
+            scoreManager.textMoney();
             //use _coinsInMoment
             //addCoin
         }
