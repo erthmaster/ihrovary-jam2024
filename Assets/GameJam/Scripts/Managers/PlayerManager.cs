@@ -70,13 +70,24 @@ namespace GameJam.Managers
                 if (!SelectCheckHoleAndStop(tile))
                     continue;
 
+                if(CurrentChessType == ChessPiece.Knight)
+                {
+                    if (TryWalkKnight(Row, Column, tile.Row, tile.Collum))
+                    {
+                        if (SelectCheckHoleAndStop(tile))
+                            tile.Select();
+                    }
+                }
+
                 switch (CurrentChessType)
                 {
+
+
                     case ChessPiece.King:
                         if (TryWalkKing(Row, Column, tile.Row, tile.Collum))
                         {
 
-                            if (SelectCheckHoleAndStop(tile) && CheckForHoles(tile))
+                            if (SelectCheckHoleAndStop(tile) )
                                 tile.Select();
 
                         }
@@ -101,7 +112,7 @@ namespace GameJam.Managers
                     case ChessPiece.Bishop:
                         if (TryWalkBishop(Row, Column, tile.Row, tile.Collum))
                         {
-                            if (SelectCheckHoleAndStop(tile) && CheckForHoles(tile))
+                            if (SelectCheckHoleAndStop(tile) && CheckForHoles(tile) )
                                 tile.Select();
 
                         }
@@ -136,13 +147,7 @@ namespace GameJam.Managers
                         }
 
                         break;
-                    case ChessPiece.Knight:
-                        if (TryWalkKnight(Row, Column, tile.Row, tile.Collum))
-                        {
-                            if (SelectCheckHoleAndStop(tile))
-                                tile.Select();
-                        }
-                        break;
+
                     default:
                         break;
                 }

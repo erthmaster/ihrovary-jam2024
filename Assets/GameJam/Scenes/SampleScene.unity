@@ -1979,7 +1979,7 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 519420028}
-  m_Enabled: 0
+  m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 172515602e62fb746b5d573b38a5fe58, type: 3}
   m_Name: 
@@ -3954,7 +3954,7 @@ MonoBehaviour:
   _boardTilesParent: {fileID: 2136870174}
   _boardWidth: 5
   _boardStartHeight: 9
-  _maxBoardHeightFromPlayer: 6
+  _maxBoardHeightFromPlayer: 7
   _rows: 0
   _holeTileChance: 0.3
   _EnemyTileChance: 0.04

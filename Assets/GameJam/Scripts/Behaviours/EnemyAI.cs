@@ -13,15 +13,15 @@ namespace GameJam.Behaviours
     {
         public PlayerManager.ChessPiece CurrentChessType = PlayerManager.ChessPiece.Pawn;
 
-        [field: SerializeField] public int Row { get; private set; }
-        [field: SerializeField] public int Column { get; private set; }
+        [field: SerializeField] public int Row { get; set; }
+        [field: SerializeField] public int Column { get;  set; }
         [field: SerializeField] public Sprite[] Skins { get; private set; }
         [field: SerializeField] public bool IsEverMoved { get; private set; }
         [field: SerializeField] public GameObject BlackBreak { get; private set; }
         public PlayerAudioManager audioManager;
         public  PlayerManager pl;
         [SerializeField] private ParticleSystem _paricle;
-
+        public Animator An; 
         public ScoreManager scoreManager;
 
         [SerializeField]private int[] enemyCost;//8 10 10 10 4 7
@@ -31,8 +31,7 @@ namespace GameJam.Behaviours
         public void Die()
         {
             pl.OnWalk -= EnemyWalk;
-            Instantiate(BlackBreak, transform.position, Quaternion.identity);
-
+            CurrentState = EnemyState.FUCKINGDEAD;
             switch (CurrentChessType)
             {
                 case ChessPiece.King:
@@ -56,16 +55,17 @@ namespace GameJam.Behaviours
                 default:
                     break;
             }
+            An.Play("PieceDie");
 
-
-            Destroy(gameObject);
+            Destroy(gameObject,2);
         }
 
         public enum EnemyState
         {
             Idle,
             AttackingPlayer,
-            RandomMove
+            RandomMove,
+            FUCKINGDEAD
         }
 
         public void SetInitPosition()
@@ -80,9 +80,10 @@ namespace GameJam.Behaviours
 
         private void Start()
         {
-            Invoke(nameof(SetInitPosition), 0.3f); 
+            //Invoke(nameof(SetInitPosition), 1f); 
             pl.OnWalk += EnemyWalk;
             TurnInTo(CurrentChessType);
+            An = transform.GetChild(0).GetComponent<Animator>();
         }
 
         public void ChangeState(EnemyState a)
@@ -266,25 +267,27 @@ namespace GameJam.Behaviours
         {
             if (!CheckForHoles(tile))
                 return;
+            if (CurrentState == EnemyState.FUCKINGDEAD)
+                return;
             switch (CurrentChessType)
             {
                 case ChessPiece.King:
-                    transform.GetChild(0).GetComponent<Animator>().Play("Player_Walk");
+                    An.Play("Player_Walk");
                     break;
                 case ChessPiece.Queen:
-                    transform.GetChild(0).GetComponent<Animator>().Play("Player_Walk");
+                    An.Play("Player_Walk");
                     break;
                 case ChessPiece.Rook:
-                    transform.GetChild(0).GetComponent<Animator>().Play("Player_RookWalk");
+                    An.Play("Player_RookWalk");
                     break;
                 case ChessPiece.Bishop:
-                    transform.GetChild(0).GetComponent<Animator>().Play("Player_Walk");
+                    An.Play("Player_Walk");
                     break;
                 case ChessPiece.Pawn:
-                    transform.GetChild(0).GetComponent<Animator>().Play("Player_Walk");
+                    An.Play("Player_Walk");
                     break;
                 case ChessPiece.Knight:
-                    transform.GetChild(0).GetComponent<Animator>().Play("Player_KnightWalk");
+                    An.Play("Player_KnightWalk");
                     break;
                 default:
                     break;
@@ -306,10 +309,13 @@ namespace GameJam.Behaviours
 
             while (time < 1)
             {
+
                 float t = InOutQuint(time);
                 transform.position = Vector3.Lerp(transform.position, pos, t);
                 time += Time.deltaTime * speed;
                 yield return null;
+                if (CurrentState == EnemyState.FUCKINGDEAD)
+                    yield break;
             }
             transform.position = pos;
 

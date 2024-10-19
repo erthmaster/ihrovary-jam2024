@@ -80,7 +80,7 @@ namespace GameJam.Board
                     else
                         tile.Construct(x % 2 != 0, false);
                     tile.Row = _rows;
-                    tile._spriteRenderer.sortingOrder = -_rows;
+                    tile.SetSpriteOrder(-_rows);
                     tile.Collum = x;
                     tile._Manager=_Manager;
                     tile.gen=this;
@@ -118,11 +118,23 @@ namespace GameJam.Board
 
 
                 bool spawed = default;
+
+
+
+                tile.Collum = x;
+                tile._Manager = _Manager;
+                tile.Row = _rows;
+                tile.gen = this;
+                tile.SetSpriteOrder(-_rows);
+                tiles.Add(tile);
+
+
                 foreach (var item in items)
                 {
                     if (tile.IsHole)
                         break;
-                    if (item.TrySpawn()){
+                    if (item.TrySpawn())
+                    {
                         spawed = true;
                         Instantiate(item, tile.transform.position, Quaternion.identity);
                         break;
@@ -139,16 +151,10 @@ namespace GameJam.Board
                         v.pl = _playerManager;
                         v.scoreManager = scoreManager;
                         v.audioManager = Audiomanager;
+                        v.Row = tile.Row;
+                        v.Column = tile.Collum;
                     }
                 }
-
-
-                tile.Collum = x;
-                tile._Manager = _Manager;
-                tile.Row = _rows;
-                tile.gen = this;
-                tile._spriteRenderer.sortingOrder = -_rows;
-                tiles.Add(tile);
             }
             _rows++;
         }

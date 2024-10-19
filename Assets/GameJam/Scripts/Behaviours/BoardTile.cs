@@ -3,6 +3,7 @@ using GameJam.Managers;
 using System;
 using System.Linq;
 using UnityEngine;
+using UnityEngine.Rendering.Universal;
 using UnityEngine.Serialization;
 using Zenject;
 
@@ -21,7 +22,7 @@ namespace GameJam.Behaviours
         
         [field:SerializeField] public Sprite BlackSprite { get; private set; }
         [field:SerializeField] public Sprite WhiteSprite { get; private set; }
-        [field:SerializeField] public Sprite SelectSprite { get; private set; }
+        [field:SerializeField] public SpriteRenderer SelectSprite { get; private set; }
         [field:SerializeField] public ParticleSystem WhiteBreak { get; private set; }
         [field:SerializeField] public ParticleSystem BlackBreak { get; private set; }
         //[Inject] GameManager _Manager ������ �� �� �� ������ ���� � ������ �� ���������;
@@ -30,20 +31,27 @@ namespace GameJam.Behaviours
 
         public void Construct(bool isBlack, bool isHole)
         {
+            An.enabled = false;
             IsBlack = isBlack;
             IsHole = isHole;
 
-            string animname = isHole ?
-                "TileIdleHole" :
-                isBlack ? "TileIdleBlack" : "TileIdle";
-            An.Play(animname);
+            _spriteRenderer.sprite = isHole ?
+                null :
+                isBlack ? BlackSprite : WhiteSprite;
+            SelectSprite.enabled = false;
         }
         public void Delete()
         {
-            if (IsBlack)
-               An.Play("TileDestroy_Black");
-            else
-                An.Play("TileDestroy");
+            SelectSprite.enabled = false;
+            if (IsHole)
+            {
+                An.enabled = true;
+                if (IsBlack)
+                    An.Play("TileDestroy_Black");
+                else
+                    An.Play("TileDestroy");
+            }
+
 
             CancelInvoke();
             Invoke(nameof(Fade), 0.4f);
@@ -96,20 +104,22 @@ namespace GameJam.Behaviours
             if (!gameObject.activeSelf)
                 return;
             if (IsHole) return;
-            if(!IsBlack)
-                An.Play("TileSelect");
-            else
-                An.Play("TileSelectBlack");
-        }
+            SelectSprite.enabled = true;
 
+
+        }
+        public void SetSpriteOrder(int order) 
+        {
+            _spriteRenderer.sortingOrder = order;
+            SelectSprite.sortingOrder = order+1;
+
+        }
         public void DeSelect()
         {
             if (!gameObject.activeSelf)
                 return;
-            string animname = IsHole ?
-                "TileIdleHole" :
-                IsBlack ? "TileIdleBlack" : "TileIdle";
-            An.Play(animname);
+            SelectSprite.enabled = false;
+
         }
 
     }
