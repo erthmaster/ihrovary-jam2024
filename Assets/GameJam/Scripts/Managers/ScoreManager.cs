@@ -8,10 +8,16 @@ namespace GameJam.Managers
         public int score;
         private int visScore = 0;
 
+        public int money;
+
         [SerializeField] private float _speed;
 
         [SerializeField] private TMP_Text _scoreText;
         [SerializeField] private TMP_Text _scoreTextOnGameOver;
+
+        [SerializeField] private ParticleSystem _moneyParticle;
+        [SerializeField] private TMP_Text _moneyText;
+        [SerializeField] private TMP_Text _moneyMenuText;
 
         private void Start()
         {
@@ -37,6 +43,13 @@ namespace GameJam.Managers
         {
             if(visScore != score)
                 StartCoroutine(textAnim());
+
+        }
+        public void textMoney()
+        {
+            money++;
+            _moneyText.text = money.ToString();
+            _moneyParticle.Play();
         }
         IEnumerator textAnim()
         {
@@ -46,12 +59,12 @@ namespace GameJam.Managers
                 visScore--;
             else
             {
-                _scoreText.text = "Score: " + visScore.ToString();
+                _scoreText.text = visScore.ToString();
 
                 yield break;
             }
 
-            _scoreText.text = "Score: " + visScore.ToString();
+            _scoreText.text = visScore.ToString();
             yield return new WaitForSeconds(_speed);
             StartCoroutine(textAnim());
         }

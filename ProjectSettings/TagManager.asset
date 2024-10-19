@@ -50,11 +50,11 @@ TagManager:
   - name: board pidsvit
     uniqueID: 3449227029
     locked: 0
-  - name: player
-    uniqueID: 1130825227
-    locked: 0
   - name: Item
     uniqueID: 1082105537
+    locked: 0
+  - name: player
+    uniqueID: 1130825227
     locked: 0
   - name: FX
     uniqueID: 48416683
