@@ -93,7 +93,7 @@ LightmapSettings:
     m_TrainingDataDestination: TrainingData
     m_LightProbeSampleCountMultiplier: 4
   m_LightingDataAsset: {fileID: 0}
-  m_LightingSettings: {fileID: 0}
+  m_LightingSettings: {fileID: 4890085278179872738, guid: c7973aefdd3a0b7479119c6fa01befb0, type: 2}
 --- !u!196 &4
 NavMeshSettings:
   serializedVersion: 2
@@ -1623,6 +1623,10 @@ PrefabInstance:
       value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 6801603323732564801, guid: fb3ead21a784b9448802a186d7e96786, type: 3}
+      propertyPath: m_NormalMapQuality
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 6801603323732564801, guid: fb3ead21a784b9448802a186d7e96786, type: 3}
       propertyPath: m_PointLightOuterRadius
       value: 10.557522
       objectReference: {fileID: 0}
@@ -1645,6 +1649,14 @@ PrefabInstance:
     - target: {fileID: 8057820513910897428, guid: fb3ead21a784b9448802a186d7e96786, type: 3}
       propertyPath: m_IsActive
       value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 8333202376507622515, guid: fb3ead21a784b9448802a186d7e96786, type: 3}
+      propertyPath: m_Enabled
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8333202376507622515, guid: fb3ead21a784b9448802a186d7e96786, type: 3}
+      propertyPath: m_NormalMapQuality
+      value: 2
       objectReference: {fileID: 0}
     - target: {fileID: 8333202376507622515, guid: fb3ead21a784b9448802a186d7e96786, type: 3}
       propertyPath: m_ApplyToSortingLayers.Array.size
@@ -2115,7 +2127,7 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 519420028}
-  m_Enabled: 1
+  m_Enabled: 0
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 172515602e62fb746b5d573b38a5fe58, type: 3}
   m_Name: 
@@ -9791,7 +9803,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 554, y: -26}
+  m_AnchoredPosition: {x: 464, y: -26.995}
   m_SizeDelta: {x: 1051.7, y: 312.8}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1869559376
