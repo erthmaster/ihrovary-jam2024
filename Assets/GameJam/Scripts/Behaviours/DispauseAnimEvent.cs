@@ -1,4 +1,5 @@
 using GameJam.Managers;
+using UnityEditor;
 using UnityEngine;
 using Zenject;
 
@@ -15,7 +16,7 @@ namespace GameJam.UI
         }
         public void StartPlayAnim()
         {
-            anim.SetTrigger("StartGame");
+            anim.SetBool("IsGame", true);
         }
     }
 }

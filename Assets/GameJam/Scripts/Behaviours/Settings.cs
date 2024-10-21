@@ -8,20 +8,23 @@ namespace GameJam.UI
     public class Settings : MonoBehaviour
     {
         [SerializeField] private AudioMixerGroup _mixer;
-        [SerializeField] private Slider _globalSlider;
-        [SerializeField] private Slider _musicSlider;
-        [SerializeField] private Slider _effectsSlider;
-        public void ChangeGlobalVolume()
+        [SerializeField] private Toggle _musicToggle;
+        [SerializeField] private Toggle _effectsToggle;
+        public void ToggleMusic()
         {
-            _mixer.audioMixer.SetFloat("GlobalVolume", _globalSlider.value);
+            _musicToggle.animator.SetBool("On",_musicToggle.isOn);
+            if (_musicToggle.isOn)
+                _mixer.audioMixer.SetFloat("MusicVolume", 0);
+            else
+                _mixer.audioMixer.SetFloat("MusicVolume", -80);
         }
-        public void ChangeMusicVolume()
+        public void ToggleEffects()
         {
-            _mixer.audioMixer.SetFloat("MusicVolume", _musicSlider.value);
-        }
-        public void ChangeEffectsVolume()
-        {
-            _mixer.audioMixer.SetFloat("EffectsVolume", _effectsSlider.value);
+            _effectsToggle.animator.SetBool("On", _effectsToggle.isOn);
+            if (_effectsToggle.isOn)
+                _mixer.audioMixer.SetFloat("EffectsVolume", 0);
+            else
+                _mixer.audioMixer.SetFloat("EffectsVolume", -80);
         }
     }
 }
