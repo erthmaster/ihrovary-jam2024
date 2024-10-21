@@ -8,6 +8,7 @@ namespace GameJam.Behaviours
         public PlayerManager playerManager;
         public Items _itemsEffects;
         [SerializeField] float spawnChance;
+        public string AnimationOnPickUp = "itemDestroy";
         public string Name;
 
         private bool isUsed = false;
@@ -48,7 +49,7 @@ namespace GameJam.Behaviours
                     _itemsEffects.AddMana(3);
 
 
-                _anim.SetTrigger("Dead");
+                _anim.Play(AnimationOnPickUp,-1,0);
             }
         }
         //—ﬁƒ» …ƒ≈ ¿Õ≤Ã¿÷≤ﬂ ≤Àﬁÿ”ÿ”ÿ”—‹ ¿

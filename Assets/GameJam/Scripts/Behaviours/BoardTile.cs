@@ -39,6 +39,7 @@ namespace GameJam.Behaviours
                 null :
                 isBlack ? BlackSprite : WhiteSprite;
             SelectSprite.enabled = false;
+            gen.TryRegesterTile(this);
         }
         public void Delete()
         {
@@ -108,6 +109,7 @@ namespace GameJam.Behaviours
 
 
         }
+
         public void SetSpriteOrder(int order) 
         {
             _spriteRenderer.sortingOrder = order;

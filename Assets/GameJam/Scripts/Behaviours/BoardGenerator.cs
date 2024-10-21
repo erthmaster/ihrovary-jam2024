@@ -74,18 +74,18 @@ namespace GameJam.Board
                     tile.transform.SetPositionAndRotation(new Vector2(x * tileScale.x - ((_boardWidth - 1) * tileScale.x) / 2, _rows * tileScale.y),
                         Quaternion.identity);
                     tile.transform.SetParent(_boardTilesParent);
-                    
+                    tile.Row = _rows;
+                    tile.SetSpriteOrder(-_rows);
+                    tile.Collum = x;
+                    tile._Manager = _Manager;
+                    tile.gen = this;
+                    boardTiles[x, i] = tile;
                     if (_rows % 2 == 0)
                         tile.Construct(x % 2 == 0, false);
                     else
                         tile.Construct(x % 2 != 0, false);
-                    tile.Row = _rows;
-                    tile.SetSpriteOrder(-_rows);
-                    tile.Collum = x;
-                    tile._Manager=_Manager;
-                    tile.gen=this;
-                    boardTiles[x, i] = tile;
-                    tiles.Add(tile);
+
+
                 }
                 _rows++;
             }
@@ -97,7 +97,13 @@ namespace GameJam.Board
             return boardTiles;
         }
 
-
+        public void TryRegesterTile(BoardTile tile)
+        {
+            if (!tiles.Contains(tile))
+            {
+                tiles.Add(tile);
+            }
+        }
 
         void GenerateNewRow()
         {
@@ -109,7 +115,11 @@ namespace GameJam.Board
                 tile.transform.SetPositionAndRotation(new Vector2(x * tileScale.x - ((_boardWidth - 1) * tileScale.x) / 2, _rows * tileScale.y),
                     Quaternion.identity);
                 tile.transform.SetParent(_boardTilesParent);
-                    
+                tile.Collum = x;
+                tile._Manager = _Manager;
+                tile.Row = _rows;
+                tile.gen = this;
+                tile.SetSpriteOrder(-_rows);
 
                 if (_rows % 2 == 0)
                     tile.Construct(x % 2 == 0, Random.value < _holeTileChance);
@@ -121,12 +131,7 @@ namespace GameJam.Board
 
 
 
-                tile.Collum = x;
-                tile._Manager = _Manager;
-                tile.Row = _rows;
-                tile.gen = this;
-                tile.SetSpriteOrder(-_rows);
-                tiles.Add(tile);
+
 
 
                 foreach (var item in items)

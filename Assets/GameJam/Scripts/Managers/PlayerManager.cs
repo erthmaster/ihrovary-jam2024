@@ -61,10 +61,10 @@ namespace GameJam.Managers
             foreach (var tile in _gen.tiles)
             { if (tile != null) tile.DeSelect(); }
         }
-        public IEnumerator ShowSelect()
+        public void ShowSelect()
         {
-            Deselect();
-            yield return null;
+            //Deselect();
+
             foreach (var tile in _gen.tiles)
             {
                 if (!SelectCheckHoleAndStop(tile))
@@ -74,9 +74,13 @@ namespace GameJam.Managers
                 {
                     if (TryWalkKnight(Row, Column, tile.Row, tile.Collum))
                     {
-                        if (SelectCheckHoleAndStop(tile))
                             tile.Select();
                     }
+                }
+
+                if (!CheckForHoles(tile))
+                {
+                    continue;
                 }
 
                 switch (CurrentChessType)
@@ -86,42 +90,32 @@ namespace GameJam.Managers
                     case ChessPiece.King:
                         if (TryWalkKing(Row, Column, tile.Row, tile.Collum))
                         {
-
-                            if (SelectCheckHoleAndStop(tile) )
-                                tile.Select();
-
+                            tile.Select();
                         }
                         break;
                     case ChessPiece.Queen:
                         if (TryWalkQueen(Row, Column, tile.Row, tile.Collum))
                         {
-                            if (SelectCheckHoleAndStop(tile) && CheckForHoles(tile))
-                                tile.Select();
-
+                            tile.Select();
                         }
                         break;
                     case ChessPiece.Rook:
                         if (TryWalkRook(Row, Column, tile.Row, tile.Collum))
                         {
-
-                            if (SelectCheckHoleAndStop(tile) && CheckForHoles(tile))
-                                tile.Select();
-
+                            tile.Select();
                         }
                         break;
                     case ChessPiece.Bishop:
                         if (TryWalkBishop(Row, Column, tile.Row, tile.Collum))
                         {
-                            if (SelectCheckHoleAndStop(tile) && CheckForHoles(tile) )
-                                tile.Select();
-
+                            tile.Select();
                         }
                         break;
                     case ChessPiece.Pawn:
                         if (Physics2D.OverlapCircleAll(tile.transform.position, 0.5f).Any(n => n.GetComponent<EnemyAI>() != null))
                         {
 
-                            if (TryWalkPawnKILL(Row, Column, tile.Row, tile.Collum)) { if (SelectCheckHoleAndStop(tile)) tile.Select(); }
+                            if (TryWalkPawnKILL(Row, Column, tile.Row, tile.Collum)) {tile.Select(); }
                         }
                         if (!IsEverMoved && TryWalkPawnInital(Row, Column, tile.Row, tile.Collum))
                         {
@@ -130,19 +124,18 @@ namespace GameJam.Managers
                             {
                                 if (Physics2D.OverlapCircleAll(tile2.transform.position, 1).Any(n => n.GetComponent<EnemyAI>() != null))
                                 {
-                                    Debug.Log("FDSF");
-                                    yield break;
+                                    return;
                                 }
                             }
 
 
-                            if (SelectCheckHoleAndStop(tile) && CheckForHoles(tile) && (Physics2D.OverlapCircleAll(tile.transform.position, 1).All(n => n.GetComponent<EnemyAI>() == null)))
+                            if ((Physics2D.OverlapCircleAll(tile.transform.position, 1).All(n => n.GetComponent<EnemyAI>() == null)))
                                 tile.Select();
                         }
                         if (TryWalkPawn(Row, Column, tile.Row, tile.Collum))
                         {
 
-                            if (SelectCheckHoleAndStop(tile) && CheckForHoles(tile) && (Physics2D.OverlapCircleAll(tile.transform.position, 1).All(n => n.GetComponent<EnemyAI>() == null)))
+                            if ((Physics2D.OverlapCircleAll(tile.transform.position, 1).All(n => n.GetComponent<EnemyAI>() == null)))
                                 tile.Select();
                         }
 
@@ -169,7 +162,7 @@ namespace GameJam.Managers
                 Column = tile.Collum;
             }
 
-            StartCoroutine(ShowSelect());
+            ShowSelect();
         }
 
 
@@ -193,10 +186,10 @@ namespace GameJam.Managers
             }
 
             MoveCoolDown = Mathf.Clamp(MoveCoolDown + Time.deltaTime, 0, MaxMoveCoolDown);
+
         }
         public void UnGameOver()
         {
-            Debug.Log("asSssssssassdgdsgsdf");
             Deselect();
             _player.transform.GetChild(0).GetComponent<Animator>().Play("Player_Idle");
             if (PlayerTile != null)
@@ -208,9 +201,9 @@ namespace GameJam.Managers
         }
         public void GameOver()
         {
-            Debug.Log("GameOver");
+
             Deselect();
-            _player.transform.GetChild(0).GetComponent<Animator>().Play("Player_Dieing");
+            _player.transform.GetChild(0).GetComponent<Animator>().Play("PieceDie");
             if (PlayerTile != null)
                 Instantiate(PlayerTile.WhiteBreak, _player.transform.position, Quaternion.identity);
 
@@ -318,7 +311,7 @@ namespace GameJam.Managers
             if (___.CurrentGameState != GameManager.GameState.GameOver)
             {
                 ShowMoves();
-                StartCoroutine(ShowSelect());
+                ShowSelect();
             }
 
         }
@@ -491,7 +484,7 @@ namespace GameJam.Managers
                 }
             }
 
-            StartCoroutine(ShowSelect());
+            ShowSelect();
         }
         private void ShowMoves()
         {

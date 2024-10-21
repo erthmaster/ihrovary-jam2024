@@ -9,6 +9,14 @@ namespace GameJam.Behaviours
         public void AnimEnd()
         {
             _item.Fade();
+
+        }
+        public void SpawnParticles()
+        {
+            if (TryGetComponent(out ParticleSystem s))
+            {
+                s.Play();
+            }
         }
     }
 }
