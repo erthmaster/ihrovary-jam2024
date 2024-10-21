@@ -13,6 +13,7 @@ namespace GameJam.Behaviours
     {
         [field:SerializeField] public bool IsBlack { get; private set; }
         [field:SerializeField] public bool IsHole {get; private set;}
+
         [field:SerializeField] public int Row { get; set; }
 
         [field:SerializeField] public Animator An;
@@ -34,7 +35,6 @@ namespace GameJam.Behaviours
             An.enabled = false;
             IsBlack = isBlack;
             IsHole = isHole;
-
             _spriteRenderer.sprite = isHole ?
                 null :
                 isBlack ? BlackSprite : WhiteSprite;
@@ -58,6 +58,9 @@ namespace GameJam.Behaviours
             Invoke(nameof(Fade), 0.4f);
 
         }
+
+
+
         public void Fade()
         {
             TileDeleteObjects();
