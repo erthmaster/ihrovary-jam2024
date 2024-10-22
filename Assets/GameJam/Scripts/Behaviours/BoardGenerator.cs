@@ -30,7 +30,14 @@ namespace GameJam.Board
         public List<BoardTile> tiles = new List<BoardTile>();
         public Item[] items;
         [Inject] ScoreManager scoreManager;
-        private void Update()
+
+        private void Start()
+        {
+            playerManager.OnWalk += UpdateRows;
+        }
+
+
+        public void UpdateRows()
         {
 
             if (_playerManager.IsEverMoved && _playerManager.PlayerTile.Row > _rows - _maxBoardHeightFromPlayer)

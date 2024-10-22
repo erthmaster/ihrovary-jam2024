@@ -26,6 +26,19 @@ namespace GameJam.Behaviours
 
         [SerializeField]private int[] enemyCost;//8 10 10 10 4 7
 
+
+
+        //--ANimations
+        private int IdleAnimation = Animator.StringToHash("Player_Idle");
+        private int DieAnimation = Animator.StringToHash("PieceDie");
+        private int WalkAnimation = Animator.StringToHash("Player_Walk");
+        private int RookWalkAnimation = Animator.StringToHash("Player_RookWalk");
+        private int KnightWalkAnimation = Animator.StringToHash("Player_KnightWalk");
+        //--ANimations
+
+
+
+
         public EnemyState CurrentState;
         public float DetectDist = 20;
         public void Die()
@@ -55,7 +68,7 @@ namespace GameJam.Behaviours
                 default:
                     break;
             }
-            An.Play("PieceDie");
+            An.Play(DieAnimation);
 
             Destroy(gameObject,2);
         }
@@ -272,22 +285,22 @@ namespace GameJam.Behaviours
             switch (CurrentChessType)
             {
                 case ChessPiece.King:
-                    An.Play("Player_Walk");
+                    An.Play(WalkAnimation);
                     break;
                 case ChessPiece.Queen:
-                    An.Play("Player_Walk");
+                    An.Play(WalkAnimation);
                     break;
                 case ChessPiece.Rook:
-                    An.Play("Player_RookWalk");
+                    An.Play(RookWalkAnimation);
                     break;
                 case ChessPiece.Bishop:
-                    An.Play("Player_Walk");
+                    An.Play(WalkAnimation);
                     break;
                 case ChessPiece.Pawn:
-                    An.Play("Player_Walk");
+                    An.Play(WalkAnimation);
                     break;
                 case ChessPiece.Knight:
-                    An.Play("Player_KnightWalk");
+                    An.Play(KnightWalkAnimation);
                     break;
                 default:
                     break;
@@ -320,7 +333,7 @@ namespace GameJam.Behaviours
             transform.position = pos;
 
             audioManager.Walk();
-            transform.GetChild(0).GetComponent<Animator>().Play("Player_Idle");
+            transform.GetChild(0).GetComponent<Animator>().Play(IdleAnimation);
             Instantiate(_paricle, transform.position, Quaternion.identity);
             if(Column== pl.Column && Row == pl.Row)
             {

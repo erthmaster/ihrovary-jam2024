@@ -1180,7 +1180,7 @@ SpriteRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100000, guid: a97c105638bdf8b4a8650670310a4cd3, type: 2}
+  - {fileID: 10754, guid: 0000000000000000f000000000000000, type: 0}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -1413,6 +1413,10 @@ PrefabInstance:
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 1758345367831038859, guid: fb3ead21a784b9448802a186d7e96786, type: 3}
+      propertyPath: m_Enabled
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1758345367831038859, guid: fb3ead21a784b9448802a186d7e96786, type: 3}
       propertyPath: m_NormalMapQuality
       value: 0
       objectReference: {fileID: 0}
@@ -1582,6 +1586,10 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 5416086068204367907, guid: fb3ead21a784b9448802a186d7e96786, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6801603323732564801, guid: fb3ead21a784b9448802a186d7e96786, type: 3}
+      propertyPath: m_Enabled
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 6801603323732564801, guid: fb3ead21a784b9448802a186d7e96786, type: 3}
@@ -1965,7 +1973,7 @@ Camera:
   m_Enabled: 1
   serializedVersion: 2
   m_ClearFlags: 2
-  m_BackGroundColor: {r: 0.08235294, g: 0.078431375, b: 0.10196079, a: 0}
+  m_BackGroundColor: {r: 0.08235294, g: 0.078431375, b: 0.10196079, a: 1}
   m_projectionMatrixMode: 1
   m_GateFitMode: 2
   m_FOVAxisMode: 0
@@ -2051,7 +2059,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 21e505693694e8e4aab72e9c43dcce29, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _followSpeed: 3
+  _followSpeed: 1
   _offset: {x: 0, y: 2, z: 0}
   _shakeDuration: 0.3
   _shakeStrength: 50
@@ -3050,7 +3058,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: 0}
+  m_Sprite: {fileID: 1193091047, guid: 44fe0e0485df0a14fb9a0846cfd84962, type: 3}
   m_Type: 0
   m_PreserveAspect: 0
   m_FillCenter: 1
@@ -3184,7 +3192,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: 0}
+  m_Sprite: {fileID: 1193091047, guid: 44fe0e0485df0a14fb9a0846cfd84962, type: 3}
   m_Type: 0
   m_PreserveAspect: 0
   m_FillCenter: 1
@@ -3318,7 +3326,7 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 777228385}
-  m_Enabled: 1
+  m_Enabled: 0
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 073797afb82c5a1438f328866b10b3f0, type: 3}
   m_Name: 
@@ -3597,7 +3605,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: 10913, guid: 0000000000000000f000000000000000, type: 0}
+  m_Sprite: {fileID: -2102684663, guid: 44fe0e0485df0a14fb9a0846cfd84962, type: 3}
   m_Type: 0
   m_PreserveAspect: 0
   m_FillCenter: 1
@@ -3902,7 +3910,7 @@ MonoBehaviour:
   _boardTilesParent: {fileID: 2136870174}
   _boardWidth: 5
   _boardStartHeight: 9
-  _maxBoardHeightFromPlayer: 7
+  _maxBoardHeightFromPlayer: 8
   _rows: 0
   _holeTileChance: 0.3
   _EnemyTileChance: 0.04
@@ -6245,7 +6253,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: 1302071416, guid: 2b11a594b0583f04f961e3ed1e5baf02, type: 3}
+  m_Sprite: {fileID: 1219047385, guid: 44fe0e0485df0a14fb9a0846cfd84962, type: 3}
   m_Type: 0
   m_PreserveAspect: 0
   m_FillCenter: 1
@@ -9493,7 +9501,7 @@ GameObject:
   - component: {fileID: 1925952792}
   - component: {fileID: 1925952791}
   m_Layer: 5
-  m_Name: Particle System
+  m_Name: MANA Particles
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -9542,7 +9550,7 @@ ParticleSystemRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100000, guid: a97c105638bdf8b4a8650670310a4cd3, type: 2}
+  - {fileID: 10754, guid: 0000000000000000f000000000000000, type: 0}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -15240,8 +15248,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0.25}
   m_AnchorMax: {x: 1, y: 0.75}
-  m_AnchoredPosition: {x: 0, y: 0}
-  m_SizeDelta: {x: 2.673, y: 2.199}
+  m_AnchoredPosition: {x: -1.7600021, y: 0}
+  m_SizeDelta: {x: -0.85, y: 2.2}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1994108972
 MonoBehaviour:
@@ -15263,8 +15271,8 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: 10907, guid: 0000000000000000f000000000000000, type: 0}
-  m_Type: 1
+  m_Sprite: {fileID: 1193091047, guid: 44fe0e0485df0a14fb9a0846cfd84962, type: 3}
+  m_Type: 0
   m_PreserveAspect: 0
   m_FillCenter: 1
   m_FillMethod: 4
@@ -16119,7 +16127,7 @@ ParticleSystemRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100000, guid: a97c105638bdf8b4a8650670310a4cd3, type: 2}
+  - {fileID: 10754, guid: 0000000000000000f000000000000000, type: 0}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -16201,7 +16209,7 @@ ParticleSystemRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100000, guid: a97c105638bdf8b4a8650670310a4cd3, type: 2}
+  - {fileID: 10754, guid: 0000000000000000f000000000000000, type: 0}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -16313,6 +16321,10 @@ PrefabInstance:
     - target: {fileID: 6677486334066789807, guid: a55aa98bc4fa8d04b934840dc3d60c53, type: 3}
       propertyPath: m_Color.a
       value: 0.18431373
+      objectReference: {fileID: 0}
+    - target: {fileID: 6677486334066789807, guid: a55aa98bc4fa8d04b934840dc3d60c53, type: 3}
+      propertyPath: m_Enabled
+      value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -22657,9 +22669,9 @@ ParticleSystem:
     uvChannelMask: -1
     rowMode: 1
     sprites:
-    - sprite: {fileID: 1809348182, guid: 75fad4d1fa05cf54cb006539cfec3910, type: 3}
-    - sprite: {fileID: -780946696, guid: 75fad4d1fa05cf54cb006539cfec3910, type: 3}
-    - sprite: {fileID: -2101589546, guid: 75fad4d1fa05cf54cb006539cfec3910, type: 3}
+    - sprite: {fileID: 7554501444541054744, guid: f32dd40bc1c176349973d2730c2f2bb2, type: 3}
+    - sprite: {fileID: 7763895340098710309, guid: f32dd40bc1c176349973d2730c2f2bb2, type: 3}
+    - sprite: {fileID: -6713978827741563430, guid: f32dd40bc1c176349973d2730c2f2bb2, type: 3}
     flipU: 0
     flipV: 0
   VelocityModule:
@@ -25952,7 +25964,7 @@ ParticleSystemRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100000, guid: a97c105638bdf8b4a8650670310a4cd3, type: 2}
+  - {fileID: 10754, guid: 0000000000000000f000000000000000, type: 0}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -26017,7 +26029,7 @@ GameObject:
   - component: {fileID: 5246524875292851200}
   - component: {fileID: 411656045068476749}
   m_Layer: 0
-  m_Name: Particle System
+  m_Name: MONEY particles
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -27571,9 +27583,9 @@ ParticleSystem:
     uvChannelMask: -1
     rowMode: 1
     sprites:
-    - sprite: {fileID: -612183432, guid: 75fad4d1fa05cf54cb006539cfec3910, type: 3}
-    - sprite: {fileID: -1083536807, guid: 75fad4d1fa05cf54cb006539cfec3910, type: 3}
-    - sprite: {fileID: 1162298775, guid: 75fad4d1fa05cf54cb006539cfec3910, type: 3}
+    - sprite: {fileID: 2290148084484375474, guid: f32dd40bc1c176349973d2730c2f2bb2, type: 3}
+    - sprite: {fileID: -4557500087423650588, guid: f32dd40bc1c176349973d2730c2f2bb2, type: 3}
+    - sprite: {fileID: -4923234248858934291, guid: f32dd40bc1c176349973d2730c2f2bb2, type: 3}
     flipU: 0
     flipV: 0
   VelocityModule:

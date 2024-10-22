@@ -158,7 +158,7 @@ SpriteRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100000, guid: a97c105638bdf8b4a8650670310a4cd3, type: 2}
+  - {fileID: 10754, guid: 0000000000000000f000000000000000, type: 0}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -1814,9 +1814,9 @@ ParticleSystem:
     uvChannelMask: -1
     rowMode: 1
     sprites:
-    - sprite: {fileID: -873786693, guid: 75fad4d1fa05cf54cb006539cfec3910, type: 3}
-    - sprite: {fileID: -378861124, guid: 75fad4d1fa05cf54cb006539cfec3910, type: 3}
-    - sprite: {fileID: 968825620, guid: 75fad4d1fa05cf54cb006539cfec3910, type: 3}
+    - sprite: {fileID: -5412173409755011690, guid: f32dd40bc1c176349973d2730c2f2bb2, type: 3}
+    - sprite: {fileID: 2510811265253437611, guid: f32dd40bc1c176349973d2730c2f2bb2, type: 3}
+    - sprite: {fileID: 2086939324, guid: f32dd40bc1c176349973d2730c2f2bb2, type: 3}
     flipU: 0
     flipV: 0
   VelocityModule:
@@ -5140,7 +5140,7 @@ SpriteRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100000, guid: a97c105638bdf8b4a8650670310a4cd3, type: 2}
+  - {fileID: 10754, guid: 0000000000000000f000000000000000, type: 0}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0

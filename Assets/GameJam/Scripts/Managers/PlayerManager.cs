@@ -55,6 +55,19 @@ namespace GameJam.Managers
 
         [Inject] ScoreManager scoreManager;
 
+
+
+
+        //--ANimations
+        private int IdleAnimation = Animator.StringToHash("Player_Idle");
+        private int DieAnimation = Animator.StringToHash("PieceDie");
+        private int WalkAnimation = Animator.StringToHash("Player_Walk");
+        private int RookWalkAnimation = Animator.StringToHash("Player_RookWalk");
+        private int KnightWalkAnimation = Animator.StringToHash("Player_KnightWalk");
+        //--ANimations
+
+
+
         public void Deselect()
         {
 
@@ -191,7 +204,7 @@ namespace GameJam.Managers
         public void UnGameOver()
         {
             Deselect();
-            _player.transform.GetChild(0).GetComponent<Animator>().Play("Player_Idle");
+            _player.transform.GetChild(0).GetComponent<Animator>().Play(IdleAnimation);
             if (PlayerTile != null)
                 Instantiate(PlayerTile.WhiteBreak, _player.transform.position, Quaternion.identity);
             gameOverObj.SetActive(false);
@@ -203,7 +216,7 @@ namespace GameJam.Managers
         {
 
             Deselect();
-            _player.transform.GetChild(0).GetComponent<Animator>().Play("PieceDie");
+            _player.transform.GetChild(0).GetComponent<Animator>().Play(DieAnimation);
             if (PlayerTile != null)
                 Instantiate(PlayerTile.WhiteBreak, _player.transform.position, Quaternion.identity);
 
@@ -384,22 +397,22 @@ namespace GameJam.Managers
             switch (CurrentChessType)
             {
                 case ChessPiece.King:
-                    _player.transform.GetChild(0).GetComponent<Animator>().Play("Player_Walk");
+                    _player.transform.GetChild(0).GetComponent<Animator>().Play(WalkAnimation);
                     break;
                 case ChessPiece.Queen:
-                    _player.transform.GetChild(0).GetComponent<Animator>().Play("Player_Walk");
+                    _player.transform.GetChild(0).GetComponent<Animator>().Play(WalkAnimation);
                     break;
                 case ChessPiece.Rook:
-                    _player.transform.GetChild(0).GetComponent<Animator>().Play("Player_RookWalk");
+                    _player.transform.GetChild(0).GetComponent<Animator>().Play(RookWalkAnimation);
                     break;
                 case ChessPiece.Bishop:
-                    _player.transform.GetChild(0).GetComponent<Animator>().Play("Player_Walk");
+                    _player.transform.GetChild(0).GetComponent<Animator>().Play(WalkAnimation);
                     break;
                 case ChessPiece.Pawn:
-                    _player.transform.GetChild(0).GetComponent<Animator>().Play("Player_Walk");
+                    _player.transform.GetChild(0).GetComponent<Animator>().Play(WalkAnimation);
                     break;
                 case ChessPiece.Knight:
-                    _player.transform.GetChild(0).GetComponent<Animator>().Play("Player_KnightWalk");
+                    _player.transform.GetChild(0).GetComponent<Animator>().Play(KnightWalkAnimation);
                     break;
                 default:
                     break;

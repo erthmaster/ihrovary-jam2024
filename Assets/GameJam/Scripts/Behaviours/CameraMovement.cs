@@ -15,7 +15,7 @@ namespace GameJam.Behaviours
         [SerializeField] private float _shakeStrength;
         [SerializeField] private float _shakeFactor;
 
-        void LateUpdate()
+        void FixedUpdate()
         {
             Vector3 targetPosition = _player.gameObject.transform.position + _offset;
             Vector2 move = Vector2.Lerp(transform.position, targetPosition, _followSpeed * Time.deltaTime);
