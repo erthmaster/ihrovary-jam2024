@@ -27,6 +27,7 @@ namespace GameJam.Board
         [Inject] PlayerManager playerManager;
         [Inject] BoardDestroyerManager _boardDestroyer;
         [Inject] private Items _itemsEffects;
+        [Inject] Items _items;
         public List<BoardTile> tiles = new List<BoardTile>();
         public Item[] items;
         [Inject] ScoreManager scoreManager;
@@ -159,6 +160,7 @@ namespace GameJam.Board
                     if (Random.value < _EnemyTileChance && !tile.IsHole)
                     {
                         var v = Instantiate(Enemy, tile.transform.position, Quaternion.identity);
+                        v.items = _items;
                         v.CurrentChessType = (PlayerManager.ChessPiece)Random.Range(0, 6);
                         v.pl = _playerManager;
                         v.scoreManager = scoreManager;

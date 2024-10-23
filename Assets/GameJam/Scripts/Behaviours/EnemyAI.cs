@@ -1,10 +1,6 @@
-using GameJam.Behaviours;
 using GameJam.Managers;
-using System;
 using System.Collections;
-using System.Linq;
 using UnityEngine;
-using Zenject;
 using static GameJam.Managers.PlayerManager;
 
 namespace GameJam.Behaviours
@@ -26,7 +22,7 @@ namespace GameJam.Behaviours
 
         [SerializeField]private int[] enemyCost;//8 10 10 10 4 7
 
-
+        public Items items;
 
         //--ANimations
         private int IdleAnimation = Animator.StringToHash("Player_Idle");
@@ -106,6 +102,7 @@ namespace GameJam.Behaviours
         public void EnemyWalk()
         {
 
+            if (items._isFreezed) return;
 
             switch (CurrentState)
             {
@@ -316,6 +313,8 @@ namespace GameJam.Behaviours
 
         private IEnumerator Walk(Vector3 pos, float speed)
         {
+            if (items._isFreezed) yield break;
+
             float time = 0;
 
 

@@ -27,8 +27,6 @@ namespace GameJam.Managers
             Bishop,
             Pawn,
             Knight,
-
-
         }
         [field: SerializeField] public float MoveCoolDown { get; private set; }
         [field: SerializeField] public float MaxMoveCoolDown { get; private set; }
@@ -208,7 +206,6 @@ namespace GameJam.Managers
             if (PlayerTile != null)
                 Instantiate(PlayerTile.WhiteBreak, _player.transform.position, Quaternion.identity);
             gameOverObj.SetActive(false);
-            pauseManager.UNPAUSEONGAMEOVER();
             ___.CurrentGameState = GameManager.GameState.Playing;
             _player.transform.position = new Vector3(0, 6, 0);
         }
@@ -251,6 +248,15 @@ namespace GameJam.Managers
             _animCards.SetBool("Queen", false);
 
             _animCards.SetBool(nameActiveAnim, true);
+        }
+        
+        public void TurnInToRandomFigure()
+        {
+            ChessPiece piece = (ChessPiece)UnityEngine.Random.Range(0, 5);
+            if (piece != CurrentChessType)
+                TurnInTo(piece);
+            else
+                TurnInToRandomFigure();
         }
         async public void TurnInTo(ChessPiece piece)
         {

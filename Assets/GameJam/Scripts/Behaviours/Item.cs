@@ -32,11 +32,11 @@ namespace GameJam.Behaviours
                 if (name == "Coin")
                     _itemsEffects.AddCoin();
                 else if (name == "FreezeEnemies")
-                    _itemsEffects._StartCoroutine("FreezedDelay");
+                    _itemsEffects.FreezedDelay();
                 else if (name == "DoubleCoins")
-                    _itemsEffects._StartCoroutine("DoubleGoldDelay");
+                    _itemsEffects.DoubleGoldDelay();
                 else if (name == "ManaRecov")
-                    _itemsEffects._StartCoroutine("IncrManaDelay");
+                    _itemsEffects.IncrManaDelay();
                 else if (name == "RandomSpell")
                     _itemsEffects.RandomEffect();
                 else if (name == "RandomFigure")

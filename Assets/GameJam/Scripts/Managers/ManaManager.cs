@@ -15,6 +15,8 @@ namespace GameJam.UI
 
         [SerializeField] private Slider _slider;
         [SerializeField] private TMP_Text _manaText;
+
+        [Inject] Items items;
         private void Start()
         {
             mana = 0;
@@ -23,7 +25,9 @@ namespace GameJam.UI
         {
             if (PauseManager.IsPaused)
                 return;
-            if (mana < _maxMana)
+            if(items._isIncrManaSpeed && mana < _maxMana)
+                mana += _speed * 2f * Time.deltaTime;
+            else if (mana < _maxMana)
                 mana += _speed * Time.deltaTime;
             if (mana < 0)
                 mana = 0;

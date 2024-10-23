@@ -1,4 +1,5 @@
 using GameJam.Board;
+using GameJam.UI;
 using UnityEngine;
 using Zenject;
 
@@ -14,6 +15,8 @@ namespace GameJam.Managers
 
         [Inject] BoardGenerator generator;
         [Inject] ScoreManager scoreManager;
+        [Inject] Items items;
+        [Inject] ManaManager manamanager;
         public void Pause()
         { 
             IsPaused = true;
@@ -26,12 +29,11 @@ namespace GameJam.Managers
         }
         public void GoMenu()
         {
-            StartCoroutine(generator.ResetAllBoard());
-            scoreManager.SetZeroScore();
+            Restart();
+            IsPaused = true;
             _menuObj.SetActive(false);
             
             Menu.SetBool("IsGame", false );
-            IsPaused = true;//я хз чому ispaused не працює йопт
         }
         public void PAUSEONGAMEOVER()
         {
@@ -39,16 +41,14 @@ namespace GameJam.Managers
             isgameover = true;
             _menuObj.SetActive(false);
         }
-        public void UNPAUSEONGAMEOVER()
-        {
-            IsPaused = false;
-            isgameover = false;
-            _menuObj.SetActive(true);
-        }
         public void Restart()
         {
             StartCoroutine(generator.ResetAllBoard());
             scoreManager.SetZeroScore();
+            items.RestartItems();
+            manamanager.mana = 0;
+            IsPaused = false;
+            isgameover = false;
         }
     }
 }

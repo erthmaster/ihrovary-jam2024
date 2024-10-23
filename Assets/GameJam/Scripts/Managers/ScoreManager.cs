@@ -1,6 +1,8 @@
 using System.Collections;
 using TMPro;
 using UnityEngine;
+using Zenject;
+
 namespace GameJam.Managers
 {
     public class ScoreManager : MonoBehaviour
@@ -18,6 +20,8 @@ namespace GameJam.Managers
         [SerializeField] private ParticleSystem _moneyParticle;
         [SerializeField] private TMP_Text _moneyText;
         [SerializeField] private TMP_Text _moneyMenuText;
+
+        [Inject] Items _items;
 
         private void Start()
         {
@@ -45,9 +49,12 @@ namespace GameJam.Managers
                 StartCoroutine(textAnim());
 
         }
-        public void textMoney()
+        public void AddMoney()
         {
-            money++;
+            if (_items._isDoubleGold)
+                money += 2;
+            else
+                money++;
             _moneyText.text = money.ToString();
             _moneyParticle.Play();
         }

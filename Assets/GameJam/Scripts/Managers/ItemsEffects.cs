@@ -1,7 +1,8 @@
 using GameJam.UI;
-using System.Collections;
 using UnityEngine;
 using Zenject;
+using UnityEngine.UI;
+using static GameJam.Managers.PlayerManager;
 
 namespace GameJam.Managers
 {
@@ -9,44 +10,96 @@ namespace GameJam.Managers
     {
         [Inject] ManaManager manaManager;
         [Inject] ScoreManager scoreManager;
+        [Inject] PlayerManager playerManager;
 
         [SerializeField] private int _coinsInMoment;
 
-        [SerializeField] private bool _isFreezed;
-        [SerializeField] private bool _isDoubleGold;
-        [SerializeField] private bool _isIncrManaSpeed;
+        public bool _isFreezed { get; private set; }
+        public bool _isDoubleGold { get; private set; }
+        public bool _isIncrManaSpeed { get; private set; }
 
         [SerializeField] private float _CDFreezed;
         [SerializeField] private float _CDDoubleGold;
         [SerializeField] private float _CDIncrManaSpeed;
-        public void _StartCoroutine(string name)
+
+        [SerializeField] private Image _FreezedImage;
+        [SerializeField] private Image _DoubleGoldImage;
+        [SerializeField] private Image _IncrManaSpeedImage;
+
+        private float TFreezed;
+        private float TDoubleGold;
+        private float TIncrManaSpeed;
+        public void RestartItems()
         {
-            StartCoroutine(name);
+            TFreezed = 0;
+            TDoubleGold = 0;
+            TIncrManaSpeed = 0;
         }
-        private IEnumerator FreezedDelay()//for all visual effects on camera and animations
+        private void FixedUpdate()
         {
+            if (_isFreezed)
+            {
+                TFreezed -= 0.02f;
+                _FreezedImage.fillAmount = TFreezed/_CDFreezed;
+                if (TFreezed <= 0) OffFreezed();
+            }
+            if( _isDoubleGold)
+            {
+                TDoubleGold -= 0.02f;
+                _DoubleGoldImage.fillAmount = TDoubleGold / _CDDoubleGold;
+                if (TDoubleGold <= 0) OffDoubleGold();
+            }
+            if (_isIncrManaSpeed)
+            {
+                TIncrManaSpeed -= 0.02f;
+                _IncrManaSpeedImage.fillAmount = TIncrManaSpeed / _CDIncrManaSpeed;
+                if (TIncrManaSpeed <= 0) OffDoubleGold();
+            }
+        }
+        public void FreezedDelay()//for all visual effects on camera and animations
+        {
+            TFreezed = _CDFreezed;
+            _FreezedImage.gameObject.SetActive(true);
             _isFreezed = true;
-            yield return new WaitForSeconds(_CDFreezed);
+        }
+        private void OffFreezed()
+        {
+            _FreezedImage.gameObject.SetActive(false);
             _isFreezed = false;
         }
-        private IEnumerator DoubleGoldDelay()
+        public void DoubleGoldDelay()
         {
+            _DoubleGoldImage.gameObject.SetActive(true);
+            TDoubleGold = _CDDoubleGold;
             _isDoubleGold = true;
-            yield return new WaitForSeconds(_CDDoubleGold);
+            
+        }
+        private void OffDoubleGold()
+        {
+            _DoubleGoldImage.gameObject.SetActive(false);
             _isDoubleGold = false;
         }
-        private IEnumerator IncrManaDelay()
+        public void IncrManaDelay()
         {
-            yield return new WaitForSeconds(_CDIncrManaSpeed);
+            _IncrManaSpeedImage.gameObject.SetActive(true);
+            TIncrManaSpeed = _CDIncrManaSpeed;
+            _isIncrManaSpeed = true;
+        }
+        private void OffIncrManaDelay()
+        {
+            _IncrManaSpeedImage.gameObject.SetActive(false);
             _isIncrManaSpeed = false;
         }
         public void RandomFigure()
         {
             //+sound +animation
+            playerManager.TurnInToRandomFigure();
         }
         public void RandomEffect()
         {
             //+sound +animation
+
+
         }
         public void AddMana(int count)
         {
@@ -55,7 +108,7 @@ namespace GameJam.Managers
         }
         public void AddCoin()
         {
-            scoreManager.textMoney();
+            scoreManager.AddMoney();
             //use _coinsInMoment
             //addCoin
         }
