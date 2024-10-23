@@ -17,6 +17,7 @@ namespace GameJam.Managers
         [Inject] private PlayerAudioManager audioManager;
         [Inject] private PauseManager pauseManager;
         [Inject] private BoardGenerator _gen;
+        [Inject] private BoardDestroyer Destroyer;
         [Inject] private GameManager ___;
         public ChessPiece CurrentChessType = ChessPiece.Pawn;
         public enum ChessPiece
@@ -43,9 +44,10 @@ namespace GameJam.Managers
         [SerializeField] private int[] _movesCount;
         private int currentMoves;
 
-        [SerializeField] private Animator _turnIntoAnim;
+        public Animator _turnIntoAnim;
         [SerializeField] private ParticleSystem _paricle;
         public event Action OnWalk;
+        public Animator An;
 
         public LayerMask Mask;
 
@@ -63,8 +65,10 @@ namespace GameJam.Managers
         private int RookWalkAnimation = Animator.StringToHash("Player_RookWalk");
         private int KnightWalkAnimation = Animator.StringToHash("Player_KnightWalk");
         //--ANimations
-
-
+        private void Start()
+        {
+            An = _player.transform.GetChild(0).GetComponent<Animator>();
+        }
 
         public void Deselect()
         {
@@ -202,7 +206,7 @@ namespace GameJam.Managers
         public void UnGameOver()
         {
             Deselect();
-            _player.transform.GetChild(0).GetComponent<Animator>().Play(IdleAnimation);
+            An.Play(IdleAnimation);
             if (PlayerTile != null)
                 Instantiate(PlayerTile.WhiteBreak, _player.transform.position, Quaternion.identity);
             gameOverObj.SetActive(false);
@@ -213,7 +217,7 @@ namespace GameJam.Managers
         {
 
             Deselect();
-            _player.transform.GetChild(0).GetComponent<Animator>().Play(DieAnimation);
+            An.Play(DieAnimation);
             if (PlayerTile != null)
                 Instantiate(PlayerTile.WhiteBreak, _player.transform.position, Quaternion.identity);
 
@@ -403,22 +407,22 @@ namespace GameJam.Managers
             switch (CurrentChessType)
             {
                 case ChessPiece.King:
-                    _player.transform.GetChild(0).GetComponent<Animator>().Play(WalkAnimation);
+                    An.Play(WalkAnimation);
                     break;
                 case ChessPiece.Queen:
-                    _player.transform.GetChild(0).GetComponent<Animator>().Play(WalkAnimation);
+                    An.Play(WalkAnimation);
                     break;
                 case ChessPiece.Rook:
-                    _player.transform.GetChild(0).GetComponent<Animator>().Play(RookWalkAnimation);
+                    An.Play(RookWalkAnimation);
                     break;
                 case ChessPiece.Bishop:
-                    _player.transform.GetChild(0).GetComponent<Animator>().Play(WalkAnimation);
+                    An.Play(WalkAnimation);
                     break;
                 case ChessPiece.Pawn:
-                    _player.transform.GetChild(0).GetComponent<Animator>().Play(WalkAnimation);
+                    An.Play(WalkAnimation);
                     break;
                 case ChessPiece.Knight:
-                    _player.transform.GetChild(0).GetComponent<Animator>().Play(KnightWalkAnimation);
+                    An.Play(KnightWalkAnimation);
                     break;
                 default:
                     break;
@@ -488,7 +492,7 @@ namespace GameJam.Managers
             Moving = false;
 
             audioManager.Walk();
-            _player.transform.GetChild(0).GetComponent<Animator>().Play("Player_Idle");
+            An.Play("Player_Idle");
             Instantiate(_paricle, transform.position, Quaternion.identity);
             if (currentMoves <= 0 && CurrentChessType != ChessPiece.Pawn)
             {

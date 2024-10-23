@@ -40,11 +40,12 @@ namespace GameJam.Behaviours
                 isBlack ? BlackSprite : WhiteSprite;
             SelectSprite.enabled = false;
             gen.TryRegesterTile(this);
+            _spriteRenderer.transform.localScale = Vector3.one;
         }
         public void Delete()
         {
             SelectSprite.enabled = false;
-            if (IsHole)
+            if (!IsHole)
             {
                 An.enabled = true;
                 if (IsBlack)
