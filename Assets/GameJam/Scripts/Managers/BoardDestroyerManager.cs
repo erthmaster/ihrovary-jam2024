@@ -40,9 +40,9 @@ namespace GameJam.Managers
         public void ResetDestroyer()
         {
             _boardDestroyer.transform.position = new Vector3(-0.235400006f, -5.65969992f, 0);
-            TickRate = 0.1f;
+            TickRate = 0.25f;
 
-            player.An.speed = 1;
+            player.ResetSpeed();
         }
 
         private void FixedUpdate()
@@ -58,7 +58,7 @@ namespace GameJam.Managers
             {
                 player.GameOver();
             }
-            player.An.speed += 0.01f;
+            player.AddSpeed();
             foreach (var item in ccs)
             {
                 if (item.TryGetComponent<EnemyAI>(out EnemyAI ai))

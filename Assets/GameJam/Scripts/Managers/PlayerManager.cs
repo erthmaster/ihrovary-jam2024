@@ -37,6 +37,8 @@ namespace GameJam.Managers
         [field: SerializeField] public bool IsEverMoved { get; set; }
         [field: SerializeField] public Sprite[] Skins { get; private set; }
 
+
+
         public bool Moving = false;
         private bool canMove = true;
 
@@ -54,7 +56,8 @@ namespace GameJam.Managers
         [SerializeField] private Animator _animCards;
 
         [Inject] ScoreManager scoreManager;
-
+        public float speed =1;
+        public float Acceleration = 0.001f;
 
 
 
@@ -75,6 +78,19 @@ namespace GameJam.Managers
 
             foreach (var tile in _gen.tiles)
             { if (tile != null) tile.DeSelect(); }
+        }
+        public void ResetSpeed()
+        {
+            speed = 1f;
+            An.speed = speed;
+            MaxMoveCoolDown = 0.4f;
+        }
+        public void AddSpeed()
+        {
+            speed += Acceleration;
+            MaxMoveCoolDown -= Acceleration;
+            An.speed = speed;
+
         }
         public void ShowSelect()
         {
@@ -430,7 +446,7 @@ namespace GameJam.Managers
 
             Moving = true;
 
-            StartCoroutine(Walk(tile.transform.position, 3));
+            StartCoroutine(Walk(tile.transform.position, speed*3));
 
             if (!IsEverMoved) IsEverMoved = true;
             PlayerTile = tile;

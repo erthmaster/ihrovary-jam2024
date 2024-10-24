@@ -3721,10 +3721,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 36cb4859d097d1165b269d0ebca00f8f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  TickRate: 0.1
+  TickRate: 0.25
   MaxTickRate: 250
   TickStep: 0.1
-  speed: 0.0005
+  speed: 0.001
   _tPlayer: {fileID: 1637869550}
   _shakeZone: {fileID: 1113571471}
   _WhiteBreak: {fileID: 8148927072767799458}
@@ -3799,6 +3799,8 @@ MonoBehaviour:
     serializedVersion: 2
     m_Bits: 64
   _animCards: {fileID: 1017901222}
+  speed: 1
+  Acceleration: 0.0006
   gameOverObj: {fileID: 1831301619}
 --- !u!114 &961388543
 MonoBehaviour:
@@ -8340,7 +8342,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!114 &1690797720
 MonoBehaviour:
   m_ObjectHideFlags: 0
