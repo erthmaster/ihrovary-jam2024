@@ -2062,8 +2062,8 @@ MonoBehaviour:
   _followSpeed: 3
   _offset: {x: 0, y: 2, z: 0}
   _shakeDuration: 0.3
-  _shakeStrength: 50
-  _shakeFactor: 5
+  _shakeStrength: 20
+  _shakeFactor: 0.7
 --- !u!1 &525068312
 GameObject:
   m_ObjectHideFlags: 0
@@ -4122,7 +4122,6 @@ MonoBehaviour:
   - {fileID: 3258722619119624877, guid: 3db0984ee5d0ef64dbada866d0faa100, type: 3}
   - {fileID: 7907674759387562639, guid: 7892bd45e7faf00488837836bd927015, type: 3}
   - {fileID: 1384336862072635245, guid: f9a38bbf00e1e214797ad31f58e0ca2e, type: 3}
-  - {fileID: 4803643615251575915, guid: a6c2d1d8f22747543925044dda8422da, type: 3}
 --- !u!114 &961388541
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -4261,6 +4260,7 @@ MonoBehaviour:
   _speed: 0.4
   _scoreText: {fileID: 1869559376}
   _scoreTextOnGameOver: {fileID: 1838325811}
+  _menuScoreText: {fileID: 614755960}
   _moneyParticle: {fileID: 5246524875292851200}
   _moneyText: {fileID: 198103597}
   _moneyMenuText: {fileID: 0}

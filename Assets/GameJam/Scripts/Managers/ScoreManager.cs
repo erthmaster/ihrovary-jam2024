@@ -1,4 +1,6 @@
+using System;
 using System.Collections;
+using System.Collections.Generic;
 using TMPro;
 using UnityEngine;
 using Zenject;
@@ -8,6 +10,7 @@ namespace GameJam.Managers
     public class ScoreManager : MonoBehaviour
     {
         public int score;
+        private int maxScore;
         private int visScore = 0;
 
         public int money;
@@ -17,14 +20,22 @@ namespace GameJam.Managers
         [SerializeField] private TMP_Text _scoreText;
         [SerializeField] private TMP_Text _scoreTextOnGameOver;
 
+        [SerializeField] private TMP_Text _menuScoreText;
+
         [SerializeField] private ParticleSystem _moneyParticle;
         [SerializeField] private TMP_Text _moneyText;
+
         [SerializeField] private TMP_Text _moneyMenuText;
 
         [Inject] Items _items;
 
-        private void Start()
+        private async void Start()
         {
+            await UnityServices.InitializeAsync();
+            var client = CloudSaveService.Instance.Data;
+            var query = await client.LoadAsync(new HashSet<string> { "max_score" });
+            maxScore = Convert.ToInt32(query["max_score"]);
+
             SetZeroScore();
         }
         public void SetZeroScore()
@@ -39,15 +50,22 @@ namespace GameJam.Managers
         {
             score -= _score;
         }
-        public void ShowEndScore()
+        public async void ShowEndScore()
         {
             _scoreTextOnGameOver.text = $"Score: \n{score}";
+            if(score > maxScore)
+            {
+                maxScore = score;
+                _menuScoreText.text = $"Score \n{maxScore}";
+
+                var data = new Dictionary<string, object> { { "max_score", maxScore } };
+                await CloudSaveService.Instance.Data.ForceSaveAsync(data);
+            }
         }
         private void Update()
         {
             if(visScore != score)
                 StartCoroutine(textAnim());
-
         }
         public void AddMoney()
         {
