@@ -1,22 +1,16 @@
 fileFormatVersion: 2
-guid: 44fe0e0485df0a14fb9a0846cfd84962
+guid: c93faa4592de9df4098636d84ab800f1
 TextureImporter:
   internalIDToNameTable:
   - first:
-      213: -1780020970381023785
-    second: menuButtons_0
+      213: 2332759187132597170
+    second: EffectsKnobsUI_0
   - first:
-      213: -8116832724500392004
-    second: menuButtons_1
+      213: 5968799255116770267
+    second: EffectsKnobsUI_1
   - first:
-      213: -707739129474786754
-    second: menuButtons_2
-  - first:
-      213: 7280839829642279632
-    second: menuButtons_3
-  - first:
-      213: 2336153471372345366
-    second: menuButtons_4
+      213: -3511161409690903978
+    second: EffectsKnobsUI_2
   externalObjects: {}
   serializedVersion: 13
   mipmaps:
@@ -60,10 +54,10 @@ TextureImporter:
   compressionQuality: 50
   spriteMode: 2
   spriteExtrude: 1
-  spriteMeshType: 0
+  spriteMeshType: 1
   alignment: 0
   spritePivot: {x: 0.5, y: 0.5}
-  spritePixelsToUnits: 100
+  spritePixelsToUnits: 65
   spriteBorder: {x: 0, y: 0, z: 0, w: 0}
   spriteGenerateFallbackPhysicsShape: 1
   alphaUsage: 1
@@ -84,7 +78,7 @@ TextureImporter:
   platformSettings:
   - serializedVersion: 4
     buildTarget: DefaultTexturePlatform
-    maxTextureSize: 1024
+    maxTextureSize: 2048
     resizeAlgorithm: 0
     textureFormat: -1
     textureCompression: 0
@@ -96,7 +90,7 @@ TextureImporter:
     androidETC2FallbackOverride: 0
     forceMaximumCompressionQuality_BC6H_BC7: 0
   - serializedVersion: 4
-    buildTarget: Win64
+    buildTarget: Standalone
     maxTextureSize: 2048
     resizeAlgorithm: 0
     textureFormat: -1
@@ -121,207 +115,181 @@ TextureImporter:
     ignorePlatformSupport: 0
     androidETC2FallbackOverride: 0
     forceMaximumCompressionQuality_BC6H_BC7: 0
-  - serializedVersion: 4
-    buildTarget: Standalone
-    maxTextureSize: 2048
-    resizeAlgorithm: 0
-    textureFormat: -1
-    textureCompression: 1
-    compressionQuality: 50
-    crunchedCompression: 0
-    allowsAlphaSplitting: 0
-    overridden: 0
-    ignorePlatformSupport: 0
-    androidETC2FallbackOverride: 0
-    forceMaximumCompressionQuality_BC6H_BC7: 0
-  - serializedVersion: 4
-    buildTarget: WebGL
-    maxTextureSize: 2048
-    resizeAlgorithm: 0
-    textureFormat: -1
-    textureCompression: 1
-    compressionQuality: 50
-    crunchedCompression: 0
-    allowsAlphaSplitting: 0
-    overridden: 0
-    ignorePlatformSupport: 0
-    androidETC2FallbackOverride: 0
-    forceMaximumCompressionQuality_BC6H_BC7: 0
   spriteSheet:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: menuButtons_0
+      name: EffectsKnobsUI_0
       rect:
         serializedVersion: 2
-        x: 0
-        y: 36
-        width: 64
-        height: 64
-      alignment: 0
-      pivot: {x: 0.5, y: 0.5}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      customData: 
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: cbf47b3c168500d489dfa94483e2acd4
-      internalID: -1579053979
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: menuButtons_1
-      rect:
-        serializedVersion: 2
-        x: 64
-        y: 36
-        width: 64
-        height: 64
-      alignment: 0
-      pivot: {x: 0.5, y: 0.5}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      customData: 
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: 20853cdfd26959a4a9313aae83719966
-      internalID: 197147173
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: menuButtons_2
-      rect:
-        serializedVersion: 2
-        x: 128
-        y: 36
-        width: 64
-        height: 64
-      alignment: 0
-      pivot: {x: 0.5, y: 0.5}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      customData: 
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: 8e8bcf20b559d2340af157e2fb631e95
-      internalID: -581833132
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: menuButtons_3
-      rect:
-        serializedVersion: 2
-        x: 192
-        y: 36
-        width: 64
-        height: 64
-      alignment: 0
-      pivot: {x: 0.5, y: 0.5}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      customData: 
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: d3b8983a17300694b82814ea6f545918
-      internalID: -843342063
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: menuButtons_4
-      rect:
-        serializedVersion: 2
-        x: 151
-        y: 0
-        width: 19
-        height: 35
-      alignment: 9
-      pivot: {x: 0.5, y: 0.12459852}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      customData: 
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: 1a3e2f71350d02c41929e10f25868650
-      internalID: 1219047385
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: menuButtons_5
-      rect:
-        serializedVersion: 2
-        x: 243
-        y: 2
-        width: 9
-        height: 10
-      alignment: 0
-      pivot: {x: 0.5, y: 0.5}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      customData: 
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: ededf6ab59d2c57408de5ad82c6ac6a1
-      internalID: -2102684663
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: UI_SQUARE
-      rect:
-        serializedVersion: 2
-        x: 192
-        y: 3
-        width: 16
-        height: 16
-      alignment: 0
-      pivot: {x: 0.5, y: 0.5}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      customData: 
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: 8cd6d46e05b45ca42832138a53810fa9
-      internalID: 1193091047
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: menuButtons_6
-      rect:
-        serializedVersion: 2
-        x: 64
-        y: 3
+        x: 5
+        y: 33
         width: 32
         height: 32
       alignment: 0
-      pivot: {x: 0.5, y: 0.5}
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 2b341970f10af5020800000000000000
+      internalID: 2332759187132597170
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: EffectsKnobsUI_1
+      rect:
+        serializedVersion: 2
+        x: 43
+        y: 35
+        width: 26
+        height: 26
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: bdbe9d86c4f65d250800000000000000
+      internalID: 5968799255116770267
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: EffectsKnobsUI_2
+      rect:
+        serializedVersion: 2
+        x: 74
+        y: 35
+        width: 26
+        height: 26
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 65a50520d49d54fc0800000000000000
+      internalID: -3511161409690903978
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: EffectsKnobsUI_3
+      rect:
+        serializedVersion: 2
+        x: 102
+        y: 35
+        width: 26
+        height: 26
+      alignment: 0
+      pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       customData: 
       outline: []
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 0ddcd655e0865e44d857ec8da3236809
-      internalID: 276815541
+      spriteID: 8a5086523b96f784f9a2416be2e9b839
+      internalID: 245000782
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: EffectsKnobsUI_4
+      rect:
+        serializedVersion: 2
+        x: 132
+        y: 35
+        width: 26
+        height: 26
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 4a021705048fbe94fb4e51610476b3c0
+      internalID: -1541844545
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: EffectsKnobsUI_5
+      rect:
+        serializedVersion: 2
+        x: 3
+        y: 2
+        width: 19
+        height: 19
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 8fa00630ad02da041acabdecafe9ca6b
+      internalID: 929054661
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: EffectsKnobsUI_6
+      rect:
+        serializedVersion: 2
+        x: 31
+        y: 0
+        width: 15
+        height: 23
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 526ce19f14ff8fb40a4f9510177eef7a
+      internalID: 480657009
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: EffectsKnobsUI_7
+      rect:
+        serializedVersion: 2
+        x: 53
+        y: 0
+        width: 21
+        height: 19
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 964b9f3efbe86a4448606f9a6f1bf3bc
+      internalID: -1196976296
       vertices: []
       indices: 
       edges: []
@@ -330,7 +298,7 @@ TextureImporter:
     customData: 
     physicsShape: []
     bones: []
-    spriteID: b433657b6f8aa0e4b839eacc2db85359
+    spriteID: 3faf5432f64ba154e96c9c4d12fe518c
     internalID: 0
     vertices: []
     indices: 
@@ -340,14 +308,14 @@ TextureImporter:
     spriteCustomMetadata:
       entries: []
     nameFileIdTable:
-      UI_SQUARE: 1193091047
-      menuButtons_0: -1579053979
-      menuButtons_1: 197147173
-      menuButtons_2: -581833132
-      menuButtons_3: -843342063
-      menuButtons_4: 1219047385
-      menuButtons_5: -2102684663
-      menuButtons_6: 276815541
+      EffectsKnobsUI_0: 2332759187132597170
+      EffectsKnobsUI_1: 5968799255116770267
+      EffectsKnobsUI_2: -3511161409690903978
+      EffectsKnobsUI_3: 245000782
+      EffectsKnobsUI_4: -1541844545
+      EffectsKnobsUI_5: 929054661
+      EffectsKnobsUI_6: 480657009
+      EffectsKnobsUI_7: -1196976296
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 
