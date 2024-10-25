@@ -31,10 +31,10 @@ namespace GameJam.Managers
 
         private async void Start()
         {
-            await UnityServices.InitializeAsync();
-            var client = CloudSaveService.Instance.Data;
-            var query = await client.LoadAsync(new HashSet<string> { "max_score" });
-            maxScore = Convert.ToInt32(query["max_score"]);
+            //await UnityServices.InitializeAsync();
+            //var client = CloudSaveService.Instance.Data;
+            //var query = await client.LoadAsync(new HashSet<string> { "max_score" });
+            //maxScore = Convert.ToInt32(query["max_score"]);
 
             SetZeroScore();
         }
@@ -59,7 +59,7 @@ namespace GameJam.Managers
                 _menuScoreText.text = $"Score \n{maxScore}";
 
                 var data = new Dictionary<string, object> { { "max_score", maxScore } };
-                await CloudSaveService.Instance.Data.ForceSaveAsync(data);
+                //await CloudSaveService.Instance.Data.ForceSaveAsync(data);
             }
         }
         private void Update()
