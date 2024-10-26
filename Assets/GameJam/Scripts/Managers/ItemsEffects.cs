@@ -26,6 +26,10 @@ namespace GameJam.Managers
         [SerializeField] private Image _DoubleGoldImage;
         [SerializeField] private Image _IncrManaSpeedImage;
 
+        [SerializeField] private GameObject _FreezedObj;
+        [SerializeField] private GameObject _DoubleGoldObj;
+        [SerializeField] private GameObject _IncrManaSpeedObj;
+
         private float TFreezed;
         private float TDoubleGold;
         private float TIncrManaSpeed;
@@ -59,35 +63,35 @@ namespace GameJam.Managers
         public void FreezedDelay()//for all visual effects on camera and animations
         {
             TFreezed = _CDFreezed;
-            _FreezedImage.gameObject.SetActive(true);
+            _FreezedObj.gameObject.SetActive(true);
             _isFreezed = true;
         }
         private void OffFreezed()
         {
-            _FreezedImage.gameObject.SetActive(false);
+            _FreezedObj.gameObject.SetActive(false);
             _isFreezed = false;
         }
         public void DoubleGoldDelay()
         {
-            _DoubleGoldImage.gameObject.SetActive(true);
+            _DoubleGoldObj.gameObject.SetActive(true);
             TDoubleGold = _CDDoubleGold;
             _isDoubleGold = true;
             
         }
         private void OffDoubleGold()
         {
-            _DoubleGoldImage.gameObject.SetActive(false);
+            _DoubleGoldObj.gameObject.SetActive(false);
             _isDoubleGold = false;
         }
         public void IncrManaDelay()
         {
-            _IncrManaSpeedImage.gameObject.SetActive(true);
+            _IncrManaSpeedObj.gameObject.SetActive(true);
             TIncrManaSpeed = _CDIncrManaSpeed;
             _isIncrManaSpeed = true;
         }
         private void OffIncrManaDelay()
         {
-            _IncrManaSpeedImage.gameObject.SetActive(false);
+            _IncrManaSpeedObj.gameObject.SetActive(false);
             _isIncrManaSpeed = false;
         }
         public void RandomFigure()

@@ -49,7 +49,7 @@ namespace GameJam.Managers
         {
             if(!pauseManager.IsPaused)
                 _boardDestroyer.transform.position += Vector3.up * TickStep * TickRate;
-        }   
+        }
 
         public void BreakTiles()
         {
