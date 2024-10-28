@@ -68,12 +68,15 @@ namespace GameJam.Managers
             TFreezed = _CDFreezed;
             _FreezedObj.gameObject.SetActive(true);
             _isFreezed = true;
+
             SnowStorm.Play("SnowShtormEventStart");
         }
         private void OffFreezed()
         {
             _FreezedObj.gameObject.SetActive(false);
             _isFreezed = false;
+
+            SnowStorm.Play("snowStormEventDisabled");
         }
         public void DoubleGoldDelay()
         {
@@ -111,7 +114,7 @@ namespace GameJam.Managers
         }
         public void AddMana(int count)
         {
-            manaManager.mana += count;
+            manaManager.AddMana(count);
             //+sound +animation
         }
         public void AddCoin()

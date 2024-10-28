@@ -16,7 +16,7 @@ namespace GameJam.UI
         [SerializeField] private Slider _slider;
         [SerializeField] private TMP_Text _manaText;
 
-        [SerializeField] private GameManager AddText;
+        [SerializeField] private TMP_Text AddText;
 
         [Inject] Items items;
         private void Start()
@@ -35,6 +35,12 @@ namespace GameJam.UI
                 mana = 0;
             _slider.value = mana;
             _manaText.text = Mathf.Floor(mana).ToString();
+        }
+        public void AddMana(int manaAdded)
+        {
+            mana += manaAdded;
+            TMP_Text text = Instantiate(AddText, _slider.transform);
+            text.text = manaAdded.ToString();
         }
     }
 }
