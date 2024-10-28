@@ -16,6 +16,8 @@ namespace GameJam.UI
         [SerializeField] private Slider _slider;
         [SerializeField] private TMP_Text _manaText;
 
+        [SerializeField] private GameManager AddText;
+
         [Inject] Items items;
         private void Start()
         {
