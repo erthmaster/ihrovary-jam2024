@@ -57,7 +57,7 @@ namespace GameJam.Managers
             {
                 TIncrManaSpeed -= 0.02f;
                 _IncrManaSpeedImage.fillAmount = TIncrManaSpeed / _CDIncrManaSpeed;
-                if (TIncrManaSpeed <= 0) OffDoubleGold();
+                if (TIncrManaSpeed <= 0) OffIncrManaDelay();
             }
         }
         public void FreezedDelay()//for all visual effects on camera and animations
