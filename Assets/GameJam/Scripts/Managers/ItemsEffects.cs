@@ -26,6 +26,8 @@ namespace GameJam.Managers
         [SerializeField] private Image _DoubleGoldImage;
         [SerializeField] private Image _IncrManaSpeedImage;
 
+        [SerializeField] private Animator SnowStorm;
+
         [SerializeField] private GameObject _FreezedObj;
         [SerializeField] private GameObject _DoubleGoldObj;
         [SerializeField] private GameObject _IncrManaSpeedObj;
@@ -33,6 +35,7 @@ namespace GameJam.Managers
         private float TFreezed;
         private float TDoubleGold;
         private float TIncrManaSpeed;
+
         public void RestartItems()
         {
             TFreezed = 0;
@@ -65,6 +68,7 @@ namespace GameJam.Managers
             TFreezed = _CDFreezed;
             _FreezedObj.gameObject.SetActive(true);
             _isFreezed = true;
+            SnowStorm.Play("SnowShtormEventStart");
         }
         private void OffFreezed()
         {
