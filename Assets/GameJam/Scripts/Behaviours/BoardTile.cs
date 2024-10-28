@@ -13,6 +13,7 @@ namespace GameJam.Behaviours
     {
         [field:SerializeField] public bool IsBlack { get; private set; }
         [field:SerializeField] public bool IsHole {get; private set;}
+        [field:SerializeField] public bool IsEnemyStanding {get; set;}
 
         [field:SerializeField] public int Row { get; set; }
 
@@ -41,6 +42,7 @@ namespace GameJam.Behaviours
             SelectSprite.enabled = false;
             gen.TryRegesterTile(this);
             _spriteRenderer.transform.localScale = Vector3.one;
+            IsEnemyStanding = false;
         }
         public void Delete()
         {
@@ -54,7 +56,7 @@ namespace GameJam.Behaviours
                     An.Play("TileDestroy");
             }
 
-
+            IsEnemyStanding = false;
             CancelInvoke();
             Invoke(nameof(Fade), 0.4f);
 
@@ -75,6 +77,25 @@ namespace GameJam.Behaviours
             }*/ //now in BoardDestroyer
 
             //Camera.main.GetComponent<CameraMovement>().Shake();
+
+
+            Collider2D[] ccs = Physics2D.OverlapCircleAll(transform.position, 1);
+            foreach (var item in ccs)
+            {
+                if (item.TryGetComponent<Player>(out Player pl))
+                {
+                    pl.Manager.GameOver();
+                }
+            }
+
+            foreach (var item in ccs)
+            {
+                if (item.TryGetComponent<EnemyAI>(out EnemyAI ai))
+                {
+                    ai.Die(false);
+                }
+            }
+
             _Manager.TilePool.Release(this);
         }
 
@@ -99,7 +120,7 @@ namespace GameJam.Behaviours
                 }
                 if (s.TryGetComponent(out EnemyAI ai))
                 {
-                    ai.Die();
+                    ai.Die(false);
                 }
                 
             }

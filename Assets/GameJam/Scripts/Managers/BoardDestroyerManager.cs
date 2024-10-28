@@ -53,19 +53,7 @@ namespace GameJam.Managers
 
         public void BreakTiles()
         {
-            Collider2D[] ccs = Physics2D.OverlapCircleAll(_boardDestroyer.transform.position, 4);
-            if (ccs.Any(n => n.transform.GetComponent<Player>() != null))
-            {
-                player.GameOver();
-            }
-            player.AddSpeed();
-            foreach (var item in ccs)
-            {
-                if (item.TryGetComponent<EnemyAI>(out EnemyAI ai))
-                {
-                    ai.Die();
-                }
-            }
+
             if (TickRate < MaxTickRate)
             {
                 UpdateTickRate(TickRate + speed);

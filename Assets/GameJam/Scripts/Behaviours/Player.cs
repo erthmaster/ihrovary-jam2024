@@ -1,3 +1,4 @@
+using GameJam.Managers;
 using UnityEngine;
 
 namespace GameJam.Behaviours
@@ -6,5 +7,6 @@ namespace GameJam.Behaviours
     {
         // Just a tag
         // All player functionality in PlayerManager
+        public PlayerManager Manager;
     }
 }

@@ -70,6 +70,7 @@ namespace GameJam.Managers
         //--ANimations
         private void Start()
         {
+            _player.Manager = this;
             An = _player.transform.GetChild(0).GetComponent<Animator>();
         }
 
@@ -519,7 +520,7 @@ namespace GameJam.Managers
             {
                 if (v.TryGetComponent(out EnemyAI ai))
                 {
-                    ai.Die();
+                    ai.Die(true);
                 }
             }
 

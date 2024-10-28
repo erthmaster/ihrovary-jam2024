@@ -49,6 +49,10 @@ namespace GameJam.Board
                 }
             }
         }
+        public BoardTile GetBoardTile(int row,int collum)
+        {
+            return tiles.Find((v) => { return v.Row == row && v.Collum == collum; }    );
+        }
         public IEnumerator ResetAllBoard()
         {
             foreach (var item in tiles)
@@ -91,7 +95,7 @@ namespace GameJam.Board
                     else
                         tile.Construct(x % 2 != 0, false);
 
-
+                    
                 }
                 _rows++;
             }
@@ -165,6 +169,8 @@ namespace GameJam.Board
                         v.audioManager = Audiomanager;
                         v.Row = tile.Row;
                         v.Column = tile.Collum;
+                        tile.IsEnemyStanding = true;
+                        v.gen = this;
                     }
                 }
             }

@@ -1,3 +1,4 @@
+using GameJam.Board;
 using GameJam.Managers;
 using System.Collections;
 using UnityEngine;
@@ -19,7 +20,7 @@ namespace GameJam.Behaviours
         [SerializeField] private ParticleSystem _paricle;
         public Animator An; 
         public ScoreManager scoreManager;
-
+        public BoardGenerator gen;
         [SerializeField]private int[] enemyCost;//8 10 10 10 4 7
 
         public Items items;
@@ -37,33 +38,46 @@ namespace GameJam.Behaviours
 
         public EnemyState CurrentState;
         public float DetectDist = 20;
-        public void Die()
+        public void Die(bool DropExp)
         {
+            if (CurrentState == EnemyState.FUCKINGDEAD)
+                return;
             pl.OnWalk -= EnemyWalk;
             CurrentState = EnemyState.FUCKINGDEAD;
-            switch (CurrentChessType)
+            if (DropExp)
             {
-                case ChessPiece.King:
-                    scoreManager.AddScore(enemyCost[0]);
-                    break;
-                case ChessPiece.Queen:
-                    scoreManager.AddScore(enemyCost[1]);
-                    break;
-                case ChessPiece.Rook:
-                    scoreManager.AddScore(enemyCost[2]);
-                    break;
-                case ChessPiece.Bishop:
-                    scoreManager.AddScore(enemyCost[3]);
-                    break;
-                case ChessPiece.Pawn:
-                    scoreManager.AddScore(enemyCost[4]);
-                    break;
-                case ChessPiece.Knight:
-                    scoreManager.AddScore(enemyCost[5]);
-                    break;
-                default:
-                    break;
+                switch (CurrentChessType)
+                {
+                    case ChessPiece.King:
+                        scoreManager.AddScore(enemyCost[0]);
+                        break;
+                    case ChessPiece.Queen:
+                        scoreManager.AddScore(enemyCost[1]);
+                        break;
+                    case ChessPiece.Rook:
+                        scoreManager.AddScore(enemyCost[2]);
+                        break;
+                    case ChessPiece.Bishop:
+                        scoreManager.AddScore(enemyCost[3]);
+                        break;
+                    case ChessPiece.Pawn:
+                        scoreManager.AddScore(enemyCost[4]);
+                        break;
+                    case ChessPiece.Knight:
+                        scoreManager.AddScore(enemyCost[5]);
+                        break;
+                    default:
+                        break;
+                }
             }
+            
+
+            var v = gen.GetBoardTile(Row, Column);
+            if (v != null)
+            {
+                v.IsEnemyStanding = false;
+            }
+
             An.Play(DieAnimation);
 
             Destroy(gameObject,2);
@@ -144,6 +158,8 @@ namespace GameJam.Behaviours
                 if (item.TryGetComponent(out BoardTile tile))
                 {
                     if (tile.IsHole)
+                        continue;
+                    if (tile.IsEnemyStanding)
                         continue;
                     if (!CheckIfCanWalkThere(tile))
                     {
@@ -306,8 +322,24 @@ namespace GameJam.Behaviours
 
             if (!IsEverMoved) IsEverMoved = true;
 
+
+
+            var v = gen.GetBoardTile(Row, Column);
+            if (v != null)
+            {
+                v.IsEnemyStanding = false;
+            }
+
+
             Row = tile.Row;
             Column = tile.Collum;
+
+
+            var v2 = gen.GetBoardTile(Row, Column);
+            if (v2 != null)
+            {
+                v2.IsEnemyStanding = true;
+            }
 
         }
 
