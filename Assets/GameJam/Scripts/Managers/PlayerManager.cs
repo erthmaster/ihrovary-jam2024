@@ -19,6 +19,7 @@ namespace GameJam.Managers
         [Inject] private BoardGenerator _gen;
         [Inject] private BoardDestroyer Destroyer;
         [Inject] private GameManager ___;
+        [Inject] private PiesesBuyingManager buyManager;
         public ChessPiece CurrentChessType = ChessPiece.Pawn;
         public enum ChessPiece
         {
@@ -52,8 +53,6 @@ namespace GameJam.Managers
         public Animator An;
 
         public LayerMask Mask;
-
-        [SerializeField] private Animator _animCards;
 
         [Inject] ScoreManager scoreManager;
         public float speed =1;
@@ -259,17 +258,6 @@ namespace GameJam.Managers
             _turnIntoAnim.SetBool("Turn", false);
             _turnIntoAnim.gameObject.SetActive(false);
         }
-        private void ChangeAnim(string nameActiveAnim)//cards anim
-        {
-            _animCards.SetBool("Pawn", false);
-            _animCards.SetBool("King", false);
-            _animCards.SetBool("Rook", false);
-            _animCards.SetBool("Bishop", false);
-            _animCards.SetBool("Knight", false);
-            _animCards.SetBool("Queen", false);
-
-            _animCards.SetBool(nameActiveAnim, true);
-        }
         
         public void TurnInToRandomFigure()
         {
@@ -288,29 +276,7 @@ namespace GameJam.Managers
             canMove = false;
 
             CurrentChessType = piece;
-            switch (CurrentChessType)
-            {
-                case ChessPiece.King:
-                    ChangeAnim("King");
-                    break;
-                case ChessPiece.Queen:
-                    ChangeAnim("Queen");
-                    break;
-                case ChessPiece.Rook:
-                    ChangeAnim("Rook");
-                    break;
-                case ChessPiece.Bishop:
-                    ChangeAnim("Bishop");
-                    break;
-                case ChessPiece.Pawn:
-                    ChangeAnim("Pawn");
-                    break;
-                case ChessPiece.Knight:
-                    ChangeAnim("Knight");
-                    break;
-                default:
-                    break;
-            }
+            
             await TurnInAnimation();
 
             StartCoroutine(WaitEndOfAnim());
@@ -336,6 +302,7 @@ namespace GameJam.Managers
                     currentMoves = _movesCount[1];
                     break;
                 case ChessPiece.Pawn:
+                    buyManager.DisableAll();
                     _player.transform.GetChild(0).GetComponent<SpriteRenderer>().sprite = Skins[0];
                     currentMoves = 0;
                     break;

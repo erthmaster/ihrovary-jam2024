@@ -5932,6 +5932,7 @@ GameObject:
   - component: {fileID: 352791551}
   - component: {fileID: 352791550}
   - component: {fileID: 352791549}
+  - component: {fileID: 352791553}
   m_Layer: 5
   m_Name: Queen
   m_TagString: Untagged
@@ -6068,6 +6069,28 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 352791547}
   m_CullTransparentMesh: 1
+--- !u!95 &352791553
+Animator:
+  serializedVersion: 7
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 352791547}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: 16e1dbb943eb6b741a8bc4430ed3ec67, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_StabilizeFeet: 0
+  m_AnimatePhysics: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorStateOnDisable: 0
+  m_WriteDefaultValuesOnDisable: 0
 --- !u!1 &401354410
 GameObject:
   m_ObjectHideFlags: 0
@@ -12028,6 +12051,7 @@ GameObject:
   - component: {fileID: 608721882}
   - component: {fileID: 608721881}
   - component: {fileID: 608721883}
+  - component: {fileID: 608721885}
   m_Layer: 5
   m_Name: Rook
   m_TagString: Untagged
@@ -12164,6 +12188,28 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   <Button>k__BackingField: {fileID: 608721881}
   <CostText>k__BackingField: {fileID: 1617306777}
+--- !u!95 &608721885
+Animator:
+  serializedVersion: 7
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 608721879}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: 16e1dbb943eb6b741a8bc4430ed3ec67, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_StabilizeFeet: 0
+  m_AnimatePhysics: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorStateOnDisable: 0
+  m_WriteDefaultValuesOnDisable: 0
 --- !u!1 &614501490
 GameObject:
   m_ObjectHideFlags: 0
@@ -13932,7 +13978,6 @@ MonoBehaviour:
   Mask:
     serializedVersion: 2
     m_Bits: 64
-  _animCards: {fileID: 1017901222}
   speed: 1
   Acceleration: 0.0006
   gameOverObj: {fileID: 1831301619}
@@ -13954,6 +13999,11 @@ MonoBehaviour:
   _buyBishopButton: {fileID: 1727033339}
   _buyKnightButton: {fileID: 1642373577}
   _buyQueenButton: {fileID: 352791551}
+  _buyKingButtonAnimator: {fileID: 1771974562}
+  _buyRookButtonAnimator: {fileID: 608721885}
+  _buyBishopButtonAnimator: {fileID: 1727033341}
+  _buyKnightButtonAnimator: {fileID: 1642373579}
+  _buyQueenButtonAnimator: {fileID: 352791553}
   _queenPrice: 7
   _knightPrice: 5
   _bishopPrice: 4
@@ -14555,7 +14605,6 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 1017901219}
-  - component: {fileID: 1017901222}
   m_Layer: 5
   m_Name: BuyPieces
   m_TagString: Untagged
@@ -14590,28 +14639,6 @@ RectTransform:
   m_AnchoredPosition: {x: -789.1, y: -2041}
   m_SizeDelta: {x: 344.93994, y: 100}
   m_Pivot: {x: 0.5, y: 0.5}
---- !u!95 &1017901222
-Animator:
-  serializedVersion: 7
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1017901218}
-  m_Enabled: 1
-  m_Avatar: {fileID: 0}
-  m_Controller: {fileID: 9100000, guid: b15b0d7a256f53941a124ef0330c4208, type: 2}
-  m_CullingMode: 0
-  m_UpdateMode: 0
-  m_ApplyRootMotion: 0
-  m_LinearVelocityBlending: 0
-  m_StabilizeFeet: 0
-  m_AnimatePhysics: 0
-  m_WarningMessage: 
-  m_HasTransformHierarchy: 1
-  m_AllowConstantClipSamplingOptimization: 1
-  m_KeepAnimatorStateOnDisable: 0
-  m_WriteDefaultValuesOnDisable: 0
 --- !u!1 &1047737546
 GameObject:
   m_ObjectHideFlags: 0
@@ -23250,6 +23277,7 @@ GameObject:
   - component: {fileID: 1642373577}
   - component: {fileID: 1642373576}
   - component: {fileID: 1642373575}
+  - component: {fileID: 1642373579}
   m_Layer: 5
   m_Name: Knight
   m_TagString: Untagged
@@ -23386,6 +23414,28 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1642373573}
   m_CullTransparentMesh: 1
+--- !u!95 &1642373579
+Animator:
+  serializedVersion: 7
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1642373573}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: 16e1dbb943eb6b741a8bc4430ed3ec67, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_StabilizeFeet: 0
+  m_AnimatePhysics: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorStateOnDisable: 0
+  m_WriteDefaultValuesOnDisable: 0
 --- !u!1 &1690797719
 GameObject:
   m_ObjectHideFlags: 0
@@ -23501,6 +23551,7 @@ GameObject:
   - component: {fileID: 1727033339}
   - component: {fileID: 1727033338}
   - component: {fileID: 1727033337}
+  - component: {fileID: 1727033341}
   m_Layer: 5
   m_Name: Bishop
   m_TagString: Untagged
@@ -23637,6 +23688,28 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1727033335}
   m_CullTransparentMesh: 1
+--- !u!95 &1727033341
+Animator:
+  serializedVersion: 7
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1727033335}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: 16e1dbb943eb6b741a8bc4430ed3ec67, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_StabilizeFeet: 0
+  m_AnimatePhysics: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorStateOnDisable: 0
+  m_WriteDefaultValuesOnDisable: 0
 --- !u!1 &1736847230
 GameObject:
   m_ObjectHideFlags: 0
@@ -23779,6 +23852,7 @@ GameObject:
   - component: {fileID: 1771974561}
   - component: {fileID: 1771974559}
   - component: {fileID: 1771974558}
+  - component: {fileID: 1771974562}
   m_Layer: 5
   m_Name: King
   m_TagString: Untagged
@@ -23796,7 +23870,7 @@ RectTransform:
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
-  m_ConstrainProportionsScale: 1
+  m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 1827411905}
   - {fileID: 46355876}
@@ -23915,6 +23989,28 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   <Button>k__BackingField: {fileID: 1771974558}
   <CostText>k__BackingField: {fileID: 1827411906}
+--- !u!95 &1771974562
+Animator:
+  serializedVersion: 7
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1771974556}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: 16e1dbb943eb6b741a8bc4430ed3ec67, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_StabilizeFeet: 0
+  m_AnimatePhysics: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorStateOnDisable: 0
+  m_WriteDefaultValuesOnDisable: 0
 --- !u!1 &1827411904
 GameObject:
   m_ObjectHideFlags: 0
