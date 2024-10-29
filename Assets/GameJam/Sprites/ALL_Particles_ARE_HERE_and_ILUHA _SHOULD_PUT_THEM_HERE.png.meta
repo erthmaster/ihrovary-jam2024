@@ -142,6 +142,32 @@ TextureImporter:
     ignorePlatformSupport: 0
     androidETC2FallbackOverride: 0
     forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 4
+    buildTarget: WebGL
+    maxTextureSize: 1024
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 0
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 4
+    buildTarget: iOS
+    maxTextureSize: 1024
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 0
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
   spriteSheet:
     serializedVersion: 2
     sprites:
@@ -149,12 +175,12 @@ TextureImporter:
       name: ALL_Particles_ARE_HERE_and_ILUHA _SHOULD_PUT_THEM_HERE_0
       rect:
         serializedVersion: 2
-        x: 2
-        y: 33
-        width: 6
-        height: 6
+        x: 1
+        y: 34
+        width: 3
+        height: 5
       alignment: 0
-      pivot: {x: 0.5, y: 0.5}
+      pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       customData: 
       outline: []
@@ -171,12 +197,12 @@ TextureImporter:
       name: ALL_Particles_ARE_HERE_and_ILUHA _SHOULD_PUT_THEM_HERE_1
       rect:
         serializedVersion: 2
-        x: 22
-        y: 30
-        width: 10
-        height: 10
+        x: 3
+        y: 29
+        width: 8
+        height: 3
       alignment: 0
-      pivot: {x: 0.5, y: 0.5}
+      pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       customData: 
       outline: []
@@ -457,12 +483,12 @@ TextureImporter:
       name: ALL_Particles_ARE_HERE_and_ILUHA _SHOULD_PUT_THEM_HERE_14
       rect:
         serializedVersion: 2
-        x: 12
-        y: 35
+        x: 10
+        y: 36
         width: 3
         height: 3
       alignment: 0
-      pivot: {x: 0.5, y: 0.5}
+      pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       customData: 
       outline: []
@@ -506,7 +532,7 @@ TextureImporter:
         width: 15
         height: 15
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       customData: 
       outline: []
@@ -528,7 +554,7 @@ TextureImporter:
         width: 15
         height: 15
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       customData: 
       outline: []
@@ -537,6 +563,138 @@ TextureImporter:
       bones: []
       spriteID: 349ecce62ec36e642867002fab5b948e
       internalID: 1876332893
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: ALL_Particles_ARE_HERE_and_ILUHA _SHOULD_PUT_THEM_HERE_18
+      rect:
+        serializedVersion: 2
+        x: 14
+        y: 29
+        width: 5
+        height: 4
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 46413311a4e58b94aaa51ec31153d9b4
+      internalID: -355438995
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: ALL_Particles_ARE_HERE_and_ILUHA _SHOULD_PUT_THEM_HERE_19
+      rect:
+        serializedVersion: 2
+        x: 17
+        y: 34
+        width: 2
+        height: 4
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: a9a1b5e5091f7b548941d23bf56058b9
+      internalID: 1351430533
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: ALL_Particles_ARE_HERE_and_ILUHA _SHOULD_PUT_THEM_HERE_20
+      rect:
+        serializedVersion: 2
+        x: 22
+        y: 39
+        width: 3
+        height: 2
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 6b56db7b615f1ba4ea6016769e98c562
+      internalID: -2111634809
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: ALL_Particles_ARE_HERE_and_ILUHA _SHOULD_PUT_THEM_HERE_21
+      rect:
+        serializedVersion: 2
+        x: 23
+        y: 35
+        width: 2
+        height: 2
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 0fd0748ecfb97cd468c87298bc0c4897
+      internalID: 1628463321
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: ALL_Particles_ARE_HERE_and_ILUHA _SHOULD_PUT_THEM_HERE_22
+      rect:
+        serializedVersion: 2
+        x: 22
+        y: 27
+        width: 4
+        height: 3
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 9ff22388c48e2cf4ead6935c638358b1
+      internalID: 494834825
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: ALL_Particles_ARE_HERE_and_ILUHA _SHOULD_PUT_THEM_HERE_23
+      rect:
+        serializedVersion: 2
+        x: 30
+        y: 32
+        width: 2
+        height: 6
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 81291a1029065c249b26135fb3678f21
+      internalID: 361900004
       vertices: []
       indices: 
       edges: []
@@ -565,7 +723,13 @@ TextureImporter:
       ALL_Particles_ARE_HERE_and_ILUHA _SHOULD_PUT_THEM_HERE_15: 2086939324
       ALL_Particles_ARE_HERE_and_ILUHA _SHOULD_PUT_THEM_HERE_16: -1587957504
       ALL_Particles_ARE_HERE_and_ILUHA _SHOULD_PUT_THEM_HERE_17: 1876332893
+      ALL_Particles_ARE_HERE_and_ILUHA _SHOULD_PUT_THEM_HERE_18: -355438995
+      ALL_Particles_ARE_HERE_and_ILUHA _SHOULD_PUT_THEM_HERE_19: 1351430533
       ALL_Particles_ARE_HERE_and_ILUHA _SHOULD_PUT_THEM_HERE_2: 2290148084484375474
+      ALL_Particles_ARE_HERE_and_ILUHA _SHOULD_PUT_THEM_HERE_20: -2111634809
+      ALL_Particles_ARE_HERE_and_ILUHA _SHOULD_PUT_THEM_HERE_21: 1628463321
+      ALL_Particles_ARE_HERE_and_ILUHA _SHOULD_PUT_THEM_HERE_22: 494834825
+      ALL_Particles_ARE_HERE_and_ILUHA _SHOULD_PUT_THEM_HERE_23: 361900004
       ALL_Particles_ARE_HERE_and_ILUHA _SHOULD_PUT_THEM_HERE_3: 2510811265253437611
       ALL_Particles_ARE_HERE_and_ILUHA _SHOULD_PUT_THEM_HERE_4: -5412173409755011690
       ALL_Particles_ARE_HERE_and_ILUHA _SHOULD_PUT_THEM_HERE_5: -4557500087423650588

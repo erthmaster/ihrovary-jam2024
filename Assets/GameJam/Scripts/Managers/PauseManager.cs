@@ -17,6 +17,7 @@ namespace GameJam.Managers
         [Inject] ScoreManager scoreManager;
         [Inject] Items items;
         [Inject] ManaManager manamanager;
+        [Inject] PiesesBuyingManager piesesBuyingManager;
         public void Pause()
         { 
             IsPaused = true;
@@ -44,8 +45,12 @@ namespace GameJam.Managers
         public void Restart()
         {
             StartCoroutine(generator.ResetAllBoard());
+            Transform cam = Camera.main.transform;
+            cam.position = new Vector2(cam.position.x,8);
+
             scoreManager.SetZeroScore();
             items.RestartItems();
+            piesesBuyingManager.DisableAll();
             manamanager.mana = 0;
             IsPaused = false;
             isgameover = false;

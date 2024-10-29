@@ -20,11 +20,11 @@ namespace GameJam.Managers
         [SerializeField] private Animator _buyKnightButtonAnimator;
         [SerializeField] private Animator _buyQueenButtonAnimator;
 
-        private bool boolKingButtonAnimator;
-        private bool boolRookButtonAnimator;
-        private bool boolBishopButtonAnimator;
-        private bool boolKnightButtonAnimator;
-        private bool boolQueenButtonAnimator;
+        private bool boolKingButtonAnimator = true;
+        private bool boolRookButtonAnimator = true;
+        private bool boolBishopButtonAnimator = true;
+        private bool boolKnightButtonAnimator = true;
+        private bool boolQueenButtonAnimator = true;
 
 
         [Inject] private PlayerManager _playerManager;
@@ -44,42 +44,27 @@ namespace GameJam.Managers
         public void BuyQueen()
         {
             BuyPiece(_queenPrice, PlayerManager.ChessPiece.Queen);
-            DisableAll();
-            _buyQueenButtonAnimator.Play("Activating");
-            boolQueenButtonAnimator = true;
         }
         public void BuyKnight()
         {
             BuyPiece(_knightPrice, PlayerManager.ChessPiece.Knight);
-            DisableAll();
-            _buyKnightButtonAnimator.Play("Activating");
-            boolKnightButtonAnimator = true;
+
         }
         public void BuyBishop()
         {
             BuyPiece(_bishopPrice, PlayerManager.ChessPiece.Bishop);
-            DisableAll();
-            _buyBishopButtonAnimator.Play("Activating");
-            boolBishopButtonAnimator = false;
         }
         public void BuyRook()
         { 
             BuyPiece(_rookPrice, PlayerManager.ChessPiece.Rook);
-            DisableAll();
-            _buyRookButtonAnimator.Play("Activating");
-            boolRookButtonAnimator = false;
         }
         public void BuyKing() 
         {
             BuyPiece(_kingPrice, PlayerManager.ChessPiece.King);
-            DisableAll();
-            _buyKingButtonAnimator.Play("Activating");
-            boolKingButtonAnimator = false;
         }
         public void BuyPawn() 
         { 
             BuyPiece(_pawnPrice, PlayerManager.ChessPiece.Pawn);
-            DisableAll();
         }
 
         public void DisableAll()
@@ -160,6 +145,38 @@ namespace GameJam.Managers
             {
                 NotEnoughMana(piecetype);
                 return;
+            }
+
+            switch (piecetype)
+            {
+                case PlayerManager.ChessPiece.King:
+                    DisableAll();
+                    _buyKingButtonAnimator.Play("Activating");
+                    boolKingButtonAnimator = false;
+                    break;
+                case PlayerManager.ChessPiece.Queen:
+                    DisableAll();
+                    _buyQueenButtonAnimator.Play("Activating");
+                    boolQueenButtonAnimator = true;
+                    break;
+                case PlayerManager.ChessPiece.Rook:
+                    DisableAll();
+                    _buyRookButtonAnimator.Play("Activating");
+                    boolRookButtonAnimator = false;
+                    break;
+                case PlayerManager.ChessPiece.Bishop:
+                    DisableAll();
+                    _buyBishopButtonAnimator.Play("Activating");
+                    boolBishopButtonAnimator = false;
+                    break;
+                case PlayerManager.ChessPiece.Knight:
+                    DisableAll();
+                    _buyKnightButtonAnimator.Play("Activating");
+                    boolKnightButtonAnimator = true;
+                    break;
+                default:
+                    DisableAll();
+                    break;
             }
 
             _manaManager.mana -= price;
