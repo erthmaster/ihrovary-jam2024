@@ -178,7 +178,12 @@ namespace GameJam.Board
                         v.Column = tile.Collum;
                         tile.IsEnemyStanding = true;
                         v.gen = this;
+                        if (_itemsEffects._isFreezed)
+                        {
+                            v.Freeze();
+                        }
                         Ais.Add(v);
+
                     }
                 }
             }

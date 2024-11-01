@@ -69,9 +69,13 @@ namespace GameJam.Managers
         {
             TFreezed = _CDFreezed;
             _FreezedObj.gameObject.SetActive(true);
+            if (_isFreezed)
+            {
+                _gen.FreezeAll();
+                SnowStorm.Play("SnowShtormEventStart");
+            }
             _isFreezed = true;
-            _gen.FreezeAll();
-            SnowStorm.Play("SnowShtormEventStart");
+
         }
         private void OffFreezed()
         {

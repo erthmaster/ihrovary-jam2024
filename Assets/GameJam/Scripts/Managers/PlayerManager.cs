@@ -387,6 +387,8 @@ namespace GameJam.Managers
 
             if (!CheckForHoles(tile))
                 return;
+            if (!CheckForAndriy(tile))
+                return;
             Deselect();
             switch (CurrentChessType)
             {
@@ -421,6 +423,30 @@ namespace GameJam.Managers
             Row = tile.Row;
             Column = tile.Collum;
             MoveCoolDown = 0;
+        }
+        private bool CheckForAndriy(BoardTile tile)
+        {
+            if (CurrentChessType == ChessPiece.Knight)
+                return true;
+
+            Vector2 origin = transform.position;
+            Vector2 target = tile.transform.position;
+            Vector2 direction = (target - origin).normalized;
+            float distance = Vector2.Distance(origin, target);
+
+            RaycastHit2D[] hits = Physics2D.RaycastAll(origin, direction, distance);
+
+            foreach (var hit in hits)
+            {
+                if (hit.collider != null && hit.collider.gameObject != tile.gameObject
+                                         && hit.collider.gameObject.TryGetComponent<EnemyAI>(out var tileComponent))
+                {
+                    //Debug.Log("Cannot move through the hole!");
+                    return false;
+                }
+            }
+
+            return true;
         }
 
         private bool CheckForHoles(BoardTile tile)

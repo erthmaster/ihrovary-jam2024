@@ -99,9 +99,9 @@ namespace GameJam.Behaviours
                     default:
                         break;
                 }
-                gen.Ais.Remove(this);
+
             }
-            
+            gen.Ais.Remove(this);
 
             var v = gen.GetBoardTile(Row, Column);
             if (v != null)
@@ -144,6 +144,8 @@ namespace GameJam.Behaviours
         {
             CurrentState = a;
         }
+
+
         public void EnemyWalk()
         {
 
@@ -175,6 +177,9 @@ namespace GameJam.Behaviours
 
         }
 
+
+
+
         private BoardTile GetDesiredWalkTile()
         {
             if (transform == null)
@@ -191,6 +196,10 @@ namespace GameJam.Behaviours
                     if (tile.IsHole)
                         continue;
                     if (tile.IsEnemyStanding)
+                        continue;
+                    if (!CheckForHoles(tile))
+                        continue;
+                    if (!CheckForAndriy(tile))
                         continue;
                     if (!CheckIfCanWalkThere(tile))
                     {
@@ -293,7 +302,30 @@ namespace GameJam.Behaviours
 
         }
 
+        private bool CheckForAndriy(BoardTile tile)
+        {
+            if (CurrentChessType == ChessPiece.Knight)
+                return true;
 
+            Vector2 origin = transform.position;
+            Vector2 target = tile.transform.position;
+            Vector2 direction = (target - origin).normalized;
+            float distance = Vector2.Distance(origin, target);
+
+            RaycastHit2D[] hits = Physics2D.RaycastAll(origin, direction, distance);
+
+            foreach (var hit in hits)
+            {
+                if (hit.collider != null && hit.collider.gameObject != tile.gameObject
+                                         && hit.collider.gameObject.TryGetComponent<EnemyAI>(out var tileComponent))
+                {
+                    //Debug.Log("Cannot move through the hole!");
+                    return false;
+                }
+            }
+
+            return true;
+        }
 
 
         private bool CheckForHoles(BoardTile tile)
@@ -322,8 +354,7 @@ namespace GameJam.Behaviours
         }
         public void MoveTo(BoardTile tile)
         {
-            if (!CheckForHoles(tile))
-                return;
+
             if (CurrentState == EnemyState.FUCKINGDEAD)
                 return;
             switch (CurrentChessType)
@@ -401,6 +432,7 @@ namespace GameJam.Behaviours
             {
                 pl.GameOver();
             }
+            yield return new WaitForSeconds(0.5f);
             pl.ShowSelect();
         }
 
