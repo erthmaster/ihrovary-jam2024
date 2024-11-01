@@ -292,7 +292,7 @@ TextureImporter:
         width: 32
         height: 32
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       customData: 
       outline: []
@@ -301,6 +301,94 @@ TextureImporter:
       bones: []
       spriteID: 0b965a71cab2c024ebcb811f84717bff
       internalID: -1137023838
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: buttons+slider_7
+      rect:
+        serializedVersion: 2
+        x: 32
+        y: 0
+        width: 32
+        height: 32
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 151587b1cc5afd849afa339a2dca449f
+      internalID: 1635962742
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: buttons+slider_8
+      rect:
+        serializedVersion: 2
+        x: 75
+        y: 3
+        width: 10
+        height: 26
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: ad94427d6ee793b4f8b74f8769a714ec
+      internalID: -2034468103
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: buttons+slider_9
+      rect:
+        serializedVersion: 2
+        x: 89
+        y: 3
+        width: 10
+        height: 26
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: ef49ce80185df494a904d71fb60c3120
+      internalID: 1280859718
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: buttons+slider_10
+      rect:
+        serializedVersion: 2
+        x: 103
+        y: 3
+        width: 10
+        height: 26
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: fac6d231234635e49a7c08b9e6ec82c0
+      internalID: -1484306998
       vertices: []
       indices: 
       edges: []
@@ -321,11 +409,15 @@ TextureImporter:
     nameFileIdTable:
       buttons+slider_0: 5554499803756642628
       buttons+slider_1: 844383268
+      buttons+slider_10: -1484306998
       buttons+slider_2: -2135523698
       buttons+slider_3: -1866240337
       buttons+slider_4: -2003158690
       buttons+slider_5: -1132340750
       buttons+slider_6: -1137023838
+      buttons+slider_7: 1635962742
+      buttons+slider_8: -2034468103
+      buttons+slider_9: 1280859718
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 
