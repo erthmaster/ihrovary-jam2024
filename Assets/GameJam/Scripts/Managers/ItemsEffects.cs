@@ -3,6 +3,8 @@ using UnityEngine;
 using Zenject;
 using UnityEngine.UI;
 using static GameJam.Managers.PlayerManager;
+using System;
+using GameJam.Board;
 
 namespace GameJam.Managers
 {
@@ -11,6 +13,7 @@ namespace GameJam.Managers
         [Inject] ManaManager manaManager;
         [Inject] ScoreManager scoreManager;
         [Inject] PlayerManager playerManager;
+        [Inject] BoardGenerator _gen;
 
         [SerializeField] private int _coinsInMoment;
 
@@ -35,7 +38,6 @@ namespace GameJam.Managers
         private float TFreezed;
         private float TDoubleGold;
         private float TIncrManaSpeed;
-
         public void RestartItems()
         {
             TFreezed = 0;
@@ -68,11 +70,12 @@ namespace GameJam.Managers
             TFreezed = _CDFreezed;
             _FreezedObj.gameObject.SetActive(true);
             _isFreezed = true;
-
+            _gen.FreezeAll();
             SnowStorm.Play("SnowShtormEventStart");
         }
         private void OffFreezed()
         {
+            _gen.UnFreezeAll();
             _FreezedObj.gameObject.SetActive(false);
             _isFreezed = false;
 

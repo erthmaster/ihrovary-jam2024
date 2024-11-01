@@ -29,13 +29,20 @@ namespace GameJam.Board
         public List<BoardTile> tiles = new List<BoardTile>();
         public Item[] items;
         [Inject] ScoreManager scoreManager;
-
+        public List<EnemyAI> Ais = new List<EnemyAI>();
         private void Start()
         {
             playerManager.OnWalk += UpdateRows;
         }
 
-
+        public void FreezeAll()
+        {
+            Ais.ForEach((v) => { v.Freeze(); });
+        }
+        public void UnFreezeAll()
+        {
+            Ais.ForEach((v) => { v.UnFreeze(); });
+        }
         public void UpdateRows()
         {
 
@@ -171,6 +178,7 @@ namespace GameJam.Board
                         v.Column = tile.Collum;
                         tile.IsEnemyStanding = true;
                         v.gen = this;
+                        Ais.Add(v);
                     }
                 }
             }

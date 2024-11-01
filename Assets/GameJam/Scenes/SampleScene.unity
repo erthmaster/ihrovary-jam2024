@@ -254,6 +254,63 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 46355875}
   m_CullTransparentMesh: 1
+--- !u!1001 &74153521
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    serializedVersion: 3
+    m_TransformParent: {fileID: 0}
+    m_Modifications:
+    - target: {fileID: 3868516907562406645, guid: 3db0984ee5d0ef64dbada866d0faa100, type: 3}
+      propertyPath: m_Name
+      value: FreezeEnemies (2)
+      objectReference: {fileID: 0}
+    - target: {fileID: 5769530598707526674, guid: 3db0984ee5d0ef64dbada866d0faa100, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 6.302211
+      objectReference: {fileID: 0}
+    - target: {fileID: 5769530598707526674, guid: 3db0984ee5d0ef64dbada866d0faa100, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 47.860508
+      objectReference: {fileID: 0}
+    - target: {fileID: 5769530598707526674, guid: 3db0984ee5d0ef64dbada866d0faa100, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5769530598707526674, guid: 3db0984ee5d0ef64dbada866d0faa100, type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 5769530598707526674, guid: 3db0984ee5d0ef64dbada866d0faa100, type: 3}
+      propertyPath: m_LocalRotation.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5769530598707526674, guid: 3db0984ee5d0ef64dbada866d0faa100, type: 3}
+      propertyPath: m_LocalRotation.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5769530598707526674, guid: 3db0984ee5d0ef64dbada866d0faa100, type: 3}
+      propertyPath: m_LocalRotation.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5769530598707526674, guid: 3db0984ee5d0ef64dbada866d0faa100, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5769530598707526674, guid: 3db0984ee5d0ef64dbada866d0faa100, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5769530598707526674, guid: 3db0984ee5d0ef64dbada866d0faa100, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+    m_RemovedGameObjects: []
+    m_AddedGameObjects: []
+    m_AddedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: 3db0984ee5d0ef64dbada866d0faa100, type: 3}
 --- !u!1 &91379145
 GameObject:
   m_ObjectHideFlags: 0
@@ -12704,6 +12761,63 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 635459295}
   m_CullTransparentMesh: 1
+--- !u!1001 &638304759
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    serializedVersion: 3
+    m_TransformParent: {fileID: 0}
+    m_Modifications:
+    - target: {fileID: 3868516907562406645, guid: 3db0984ee5d0ef64dbada866d0faa100, type: 3}
+      propertyPath: m_Name
+      value: FreezeEnemies (1)
+      objectReference: {fileID: 0}
+    - target: {fileID: 5769530598707526674, guid: 3db0984ee5d0ef64dbada866d0faa100, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 0.36260223
+      objectReference: {fileID: 0}
+    - target: {fileID: 5769530598707526674, guid: 3db0984ee5d0ef64dbada866d0faa100, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 39.786354
+      objectReference: {fileID: 0}
+    - target: {fileID: 5769530598707526674, guid: 3db0984ee5d0ef64dbada866d0faa100, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5769530598707526674, guid: 3db0984ee5d0ef64dbada866d0faa100, type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 5769530598707526674, guid: 3db0984ee5d0ef64dbada866d0faa100, type: 3}
+      propertyPath: m_LocalRotation.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5769530598707526674, guid: 3db0984ee5d0ef64dbada866d0faa100, type: 3}
+      propertyPath: m_LocalRotation.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5769530598707526674, guid: 3db0984ee5d0ef64dbada866d0faa100, type: 3}
+      propertyPath: m_LocalRotation.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5769530598707526674, guid: 3db0984ee5d0ef64dbada866d0faa100, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5769530598707526674, guid: 3db0984ee5d0ef64dbada866d0faa100, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5769530598707526674, guid: 3db0984ee5d0ef64dbada866d0faa100, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+    m_RemovedGameObjects: []
+    m_AddedGameObjects: []
+    m_AddedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: 3db0984ee5d0ef64dbada866d0faa100, type: 3}
 --- !u!1 &672078825
 GameObject:
   m_ObjectHideFlags: 0
@@ -13943,6 +14057,7 @@ MonoBehaviour:
   - {fileID: 3258722619119624877, guid: 3db0984ee5d0ef64dbada866d0faa100, type: 3}
   - {fileID: 7907674759387562639, guid: 7892bd45e7faf00488837836bd927015, type: 3}
   - {fileID: 1384336862072635245, guid: f9a38bbf00e1e214797ad31f58e0ca2e, type: 3}
+  Ais: []
 --- !u!114 &961388541
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -24681,6 +24796,63 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1858467521}
   m_CullTransparentMesh: 1
+--- !u!1001 &1863481380
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    serializedVersion: 3
+    m_TransformParent: {fileID: 0}
+    m_Modifications:
+    - target: {fileID: 3868516907562406645, guid: 3db0984ee5d0ef64dbada866d0faa100, type: 3}
+      propertyPath: m_Name
+      value: FreezeEnemies
+      objectReference: {fileID: 0}
+    - target: {fileID: 5769530598707526674, guid: 3db0984ee5d0ef64dbada866d0faa100, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 0.4453106
+      objectReference: {fileID: 0}
+    - target: {fileID: 5769530598707526674, guid: 3db0984ee5d0ef64dbada866d0faa100, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 24.97763
+      objectReference: {fileID: 0}
+    - target: {fileID: 5769530598707526674, guid: 3db0984ee5d0ef64dbada866d0faa100, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5769530598707526674, guid: 3db0984ee5d0ef64dbada866d0faa100, type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 5769530598707526674, guid: 3db0984ee5d0ef64dbada866d0faa100, type: 3}
+      propertyPath: m_LocalRotation.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5769530598707526674, guid: 3db0984ee5d0ef64dbada866d0faa100, type: 3}
+      propertyPath: m_LocalRotation.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5769530598707526674, guid: 3db0984ee5d0ef64dbada866d0faa100, type: 3}
+      propertyPath: m_LocalRotation.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5769530598707526674, guid: 3db0984ee5d0ef64dbada866d0faa100, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5769530598707526674, guid: 3db0984ee5d0ef64dbada866d0faa100, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5769530598707526674, guid: 3db0984ee5d0ef64dbada866d0faa100, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+    m_RemovedGameObjects: []
+    m_AddedGameObjects: []
+    m_AddedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: 3db0984ee5d0ef64dbada866d0faa100, type: 3}
 --- !u!1 &1869559374
 GameObject:
   m_ObjectHideFlags: 0
@@ -46422,3 +46594,6 @@ SceneRoots:
   - {fileID: 401354412}
   - {fileID: 614501494}
   - {fileID: 1568483849}
+  - {fileID: 1863481380}
+  - {fileID: 638304759}
+  - {fileID: 74153521}

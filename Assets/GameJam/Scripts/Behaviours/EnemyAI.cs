@@ -35,9 +35,39 @@ namespace GameJam.Behaviours
 
 
 
-
+        public SpriteRenderer IceThing;
         public EnemyState CurrentState;
         public float DetectDist = 20;
+
+        public void Freeze()
+        {
+            StartCoroutine(FadeToAlpha(0.45f, 2));
+        }
+        public void UnFreeze()
+        {
+            StartCoroutine(FadeToAlpha(0f, 0.7f));
+        }
+        private IEnumerator FadeToAlpha(float targetAlpha, float duration)
+        {
+
+            Color color = IceThing.color;
+            float startAlpha = color.a;
+            float elapsedTime = 0f;
+
+            while (elapsedTime < duration)
+            {
+                elapsedTime += Time.deltaTime;
+                float newAlpha = Mathf.Lerp(startAlpha, targetAlpha, elapsedTime / duration);
+                IceThing.color = new Color(color.r, color.g, color.b, newAlpha);
+                yield return null;
+            }
+
+            // Ensure the final alpha is set precisely to the target
+            IceThing.color = new Color(color.r, color.g, color.b, targetAlpha);
+            IceThing.transform.GetChild(0).GetComponent<ParticleSystem>().Play();
+        }
+
+
         public void Die(bool DropExp)
         {
             if (CurrentState == EnemyState.FUCKINGDEAD)
@@ -69,6 +99,7 @@ namespace GameJam.Behaviours
                     default:
                         break;
                 }
+                gen.Ais.Remove(this);
             }
             
 
