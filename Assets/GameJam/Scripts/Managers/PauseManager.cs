@@ -18,6 +18,7 @@ namespace GameJam.Managers
         [Inject] Items items;
         [Inject] ManaManager manamanager;
         [Inject] PiesesBuyingManager piesesBuyingManager;
+        [Inject] DailyQuests dailyQuests;
         public void Pause()
         { 
             IsPaused = true;
@@ -38,6 +39,8 @@ namespace GameJam.Managers
         }
         public void PAUSEONGAMEOVER()
         {
+            dailyQuests.CheckQuestsComplete();
+
             IsPaused = true;
             isgameover = true;
             _menuObj.SetActive(false);

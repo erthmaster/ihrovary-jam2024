@@ -1,6 +1,4 @@
-using System;
 using System.Collections;
-using System.Collections.Generic;
 using TMPro;
 using UnityEngine;
 using Zenject;
@@ -13,7 +11,8 @@ namespace GameJam.Managers
         private int maxScore;
         private int visScore = 0;
 
-        public int money;
+        public int InGameMoney;
+        public int Money;
 
         [SerializeField] private float _speed;
 
@@ -50,17 +49,16 @@ namespace GameJam.Managers
         {
             score -= _score;
         }
-        public async void ShowEndScore()
+        public void ShowEndScore()
         {
             _scoreTextOnGameOver.text = $"Score: \n{score}";
             if(score > maxScore)
             {
                 maxScore = score;
                 _menuScoreText.text = $"Score \n{maxScore}";
-
-                var data = new Dictionary<string, object> { { "max_score", maxScore } };
-                //await CloudSaveService.Instance.Data.ForceSaveAsync(data);
             }
+            Money += InGameMoney;
+            InGameMoney = 0;
         }
         private void Update()
         {
@@ -70,10 +68,10 @@ namespace GameJam.Managers
         public void AddMoney()
         {
             if (_items._isDoubleGold)
-                money += 2;
+                InGameMoney += 2;
             else
-                money++;
-            _moneyText.text = money.ToString();
+                InGameMoney++;
+            _moneyText.text = InGameMoney.ToString();
             _moneyParticle.Play();
         }
         IEnumerator textAnim()

@@ -3,6 +3,7 @@ using GameJam.Board;
 using GameJam.Managers;
 using GameJam.Network;
 using GameJam.UI;
+using UnityEngine;
 using Zenject;
 
 namespace GameJam
@@ -22,14 +23,13 @@ namespace GameJam
             Container.Bind<ScoreManager>().FromComponentInHierarchy().AsSingle();
             Container.Bind<BoardDestroyerManager>().FromComponentInHierarchy().AsSingle();
             Container.Bind<PiesesBuyingManager>().FromComponentInHierarchy().AsSingle();
+            Container.Bind<DailyQuests>().FromComponentInHierarchy().AsSingle();
 
             Container.Bind<NetworkManager>().FromComponentInHierarchy().AsSingle();
-            Container.Bind<CloudSave>().FromComponentInHierarchy().AsSingle();
 
             // Tags
             Container.Bind<Player>().FromComponentInHierarchy().AsSingle();
             Container.Bind<BoardDestroyer>().FromComponentInHierarchy().AsSingle();
-
         }
     }
 }
